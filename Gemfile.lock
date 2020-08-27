@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/coopdevs/decidim-module-action_delegator.git
+  revision: 73948e2f6fba2fbf890dee7639fd6c89b6398481
+  specs:
+    decidim-action_delegator (0.1)
+      decidim-admin (= 0.21.0)
+      decidim-core (= 0.21.0)
+
+GIT
   remote: https://github.com/codegram/decidim-deploy-heroku.git
   revision: 2684552cf7b2d5845043d5c5bbd41faacc07aa3b
   specs:
@@ -795,6 +803,7 @@ DEPENDENCIES
   byebug (~> 11.0)
   dalli
   decidim (= 0.21.0)
+  decidim-action_delegator!
   decidim-consultations (= 0.21.0)
   decidim-deploy-heroku!
   decidim-dev (= 0.21.0)
