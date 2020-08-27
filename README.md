@@ -24,3 +24,15 @@ You're good to go!
 This app has Heroku [automatic deploys](https://devcenter.heroku.com/articles/github-integration#automatic-deploys) enabled on `master` so any push there will trigger a deploy.
 
 Alternatively, you can trigger one from the `Manual deploy` section in the Heroku dashboard. There you can choose any branch.
+
+## Development
+
+### Run action delegator's seed data
+
+You can do so from the Rails console and manually executing the method:
+
+```sh
+$ heroku run rails c
+irb(main):001:0> Decidim::ActionDelegator::Engine.load_seed
+=> true
+```
