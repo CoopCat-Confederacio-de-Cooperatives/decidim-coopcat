@@ -21,10 +21,6 @@ You're good to go!
 
 ### How to deploy
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+This app has Heroku [automatic deploys](https://devcenter.heroku.com/articles/github-integration#automatic-deploys) enabled on `master` so any push there will trigger a deploy.
 
-1. Use the "Deploy to Heroku" button
-1. Choose a name for the app, and organization and a tier
-1. Fill in the required env vars.
-1. Create the app
-1. Enable Review Apps for this app (you'll need to create a Pipeline)
+Alternatively, you can trigger one from the `Manual deploy` section in the Heroku dashboard. There you can choose any branch.
