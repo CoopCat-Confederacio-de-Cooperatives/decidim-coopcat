@@ -1,0 +1,50 @@
+{
+  "name": "decidim_application",
+  "description": "decidim_application - Direct and participatory democracy web platform based on Decidim framework",
+  "keywords": [],
+  "addons": [
+    "heroku-postgresql:standard-0",
+    "heroku-redis:hobby-dev",
+    "logentries:le_tryit",
+    "memcachedcloud:30",
+    "newrelic:wayne",
+    "sendgrid:starter"
+  ],
+  "scripts": {
+    "postdeploy":"SEED=true rake db:schema:load db:migrate db:seed"
+  },
+  "env": {
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "CENSUS_PASSWORD": {
+      "description": "Password for a custom CensusAuthenticationHandler, if needed",
+      "required": false
+    },
+    "CENSUS_URL": {
+      "description": "URL for a custom CensusAuthenticationHandler, if needed",
+      "required": false
+    },
+    "CENSUS_USERNAME": {
+      "description": "Username for a custom CensusAuthenticationHandler, if needed",
+      "required": false
+    },
+    "GEOCODER_LOOKUP_APP_ID": {
+      "required": false
+    },
+    "GEOCODER_LOOKUP_APP_CODE": {
+      "required": false
+    },
+    "HEROKU_APP_NAME": {
+      "description": "Needed for review apps and seed data",
+      "required": false
+    },
+    "SECRET_KEY_BASE": {
+      "description": "A secret used by Rails to identify sessions",
+      "generator": "secret"
+    }
+  }
+}
