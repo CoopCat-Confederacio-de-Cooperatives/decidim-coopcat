@@ -8,7 +8,7 @@ gem "decidim", "0.21.0"
 gem "decidim-consultations", "0.21.0"
 # gem "decidim-initiatives", "0.21.0"
 
-gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "add-delegation-settings"
+gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "admin-delegations-ui"
 
 gem "bootsnap", "~> 1.3"
 
