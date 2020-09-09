@@ -6,13 +6,6 @@ GIT
       decidim-admin (= 0.21.0)
       decidim-core (= 0.21.0)
 
-GIT
-  remote: https://github.com/codegram/decidim-deploy-heroku.git
-  revision: 2684552cf7b2d5845043d5c5bbd41faacc07aa3b
-  specs:
-    decidim-deploy-heroku (0.0.1)
-      decidim (~> 0.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -805,7 +798,6 @@ DEPENDENCIES
   decidim (= 0.21.0)
   decidim-action_delegator!
   decidim-consultations (= 0.21.0)
-  decidim-deploy-heroku!
   decidim-dev (= 0.21.0)
   faker (~> 1.9)
   fog-aws
