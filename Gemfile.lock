@@ -557,9 +557,6 @@ GEM
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
-    passenger (6.0.6)
-      rack
-      rake (>= 0.8.1)
     pg (1.1.4)
     pg_search (2.3.2)
       activerecord (>= 5.2)
@@ -805,7 +802,6 @@ DEPENDENCIES
   listen (~> 3.1)
   lograge
   newrelic_rpm
-  passenger
   puma (~> 4.3.3)
   sendgrid-ruby
   sentry-raven
