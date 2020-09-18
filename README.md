@@ -27,6 +27,12 @@ Alternatively, you can trigger one from the `Manual deploy` section in the Herok
 
 ## Development
 
+### Project management
+
+In this repo you'll find all the issues needed to fulfill CoopCat's requirements. These are epics that represent the development that needs to happen to implement the features that CoopCat needs. Among these, you'll also find other regular issues that are simply things we need to do to maintain the Rails app.
+
+Most of the implementation for these epics is happening in the separate module [decidim-module-action_delegator](https://github.com/coopdevs/decidim-module-action_delegator/). So expect to see non-epic issues and pull requests there.
+
 ### Run action delegator's seed data
 
 You can do so from the Rails console and manually executing the method:
