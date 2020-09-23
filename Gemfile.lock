@@ -7,6 +7,15 @@ GIT
       decidim-consultations (= 0.21.0)
       decidim-core (= 0.21.0)
 
+GIT
+  remote: git://github.com/coopdevs/decidim-verifications-direct_verifications.git
+  revision: d5deb11eee87b805a8f0dc181dc90fcc069a4278
+  branch: read-multiple-columns
+  specs:
+    decidim-direct_verifications (0.20)
+      decidim-admin (>= 0.17.0)
+      decidim-core (>= 0.17.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -285,9 +294,6 @@ GEM
       system_test_html_screenshots (~> 0.1.1)
       webmock (~> 3.6)
       wisper-rspec (~> 1.0)
-    decidim-direct_verifications (0.20)
-      decidim-admin (>= 0.17.0)
-      decidim-core (>= 0.17.0)
     decidim-forms (0.21.0)
       decidim-core (= 0.21.0)
     decidim-generators (0.21.0)
@@ -800,7 +806,7 @@ DEPENDENCIES
   decidim-action_delegator!
   decidim-consultations (= 0.21.0)
   decidim-dev (= 0.21.0)
-  decidim-direct_verifications
+  decidim-direct_verifications!
   faker (~> 1.9)
   fog-aws
   letter_opener_web (~> 1.3)
