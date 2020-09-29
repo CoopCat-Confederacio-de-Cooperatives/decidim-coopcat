@@ -7,7 +7,7 @@ ruby RUBY_VERSION
 gem "decidim", "0.21.0"
 gem "decidim-consultations", "0.21.0"
 
-gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "results-by-membershhip-type-and-weight"
+gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
 gem "decidim-direct_verifications", github: "coopdevs/decidim-verifications-direct_verifications", branch: "read-multiple-columns"
 
 gem "bootsnap", "~> 1.3"
