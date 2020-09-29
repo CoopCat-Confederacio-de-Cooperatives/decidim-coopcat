@@ -1,0 +1,46 @@
+name: Action Delegator module deployment
+
+on:
+  workflow_dispatch:
+
+env:
+  RUBY_VERSION: 2.6.6
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  bundle_update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.0.0
+        with:
+          fetch-depth: 1
+
+      - name: Set env
+        run: echo ::set-env name=workspace::$GITHUB_WORKSPACE
+
+      - uses: ruby/setup-ruby@master
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+
+      - name: Recover Ruby dependency cache
+        uses: actions/cache@v1
+        with:
+          path: ./vendor/bundle
+          key: ${{ runner.OS }}-rubydeps-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-rubydeps-${{ env.cache-name }}-
+            ${{ runner.OS }}-rubydeps-
+            ${{ runner.OS }}-
+
+      - name: Install Ruby deps
+        run: |
+          gem install bundler:2.1.4
+          bundle install --path vendor/bundle --jobs 4 --retry 3
+
+      - run: |
+          bundle update decidim-action_delegator
+
+      - uses: EndBug/add-and-commit@v5
+        with:
+          add: Gemfile.lock
+          branch: master
