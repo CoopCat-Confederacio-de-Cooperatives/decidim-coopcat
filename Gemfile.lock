@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: 6ff9bffef7a64ea5dedde4838429987b6ffe0e8a
+  revision: ed08ce02fc8f69c87d38177f758e45a5899bcd86
   specs:
     decidim-action_delegator (0.1)
       decidim-admin (= 0.21.0)
@@ -429,7 +429,7 @@ GEM
     graphiql-rails (1.4.11)
       railties
       sprockets-rails
-    graphql (1.11.4)
+    graphql (1.11.5)
     hashdiff (1.0.1)
     hashie (3.6.0)
     highline (2.0.3)
