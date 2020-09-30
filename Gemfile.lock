@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: ed08ce02fc8f69c87d38177f758e45a5899bcd86
+  revision: 360a1168c5d0aa0fae8844e1cb0cc45d1aa120eb
   specs:
     decidim-action_delegator (0.1)
       decidim-admin (= 0.21.0)
