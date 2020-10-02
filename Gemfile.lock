@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/Platoniq/decidim-verifications-direct_verifications.git
+  revision: ad8c6c02fe0b5ffc27977361ec047420ca845b92
+  branch: devel
+  specs:
+    decidim-direct_verifications (0.20)
+      decidim-admin (>= 0.17.0)
+      decidim-core (>= 0.17.0)
+
+GIT
   remote: git://github.com/coopdevs/decidim-module-action_delegator.git
   revision: 8e19825dcf5d972f2598a9203bbebcba44b24235
   specs:
@@ -6,15 +15,6 @@ GIT
       decidim-admin (= 0.21.0)
       decidim-consultations (= 0.21.0)
       decidim-core (= 0.21.0)
-
-GIT
-  remote: git://github.com/coopdevs/decidim-verifications-direct_verifications.git
-  revision: d5deb11eee87b805a8f0dc181dc90fcc069a4278
-  branch: read-multiple-columns
-  specs:
-    decidim-direct_verifications (0.20)
-      decidim-admin (>= 0.17.0)
-      decidim-core (>= 0.17.0)
 
 GEM
   remote: https://rubygems.org/
