@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: a8e78a9834c38de224669d59c35cab27de1bb25e
+  revision: a4c1ec8f9ed98867547bf6098c309f0d7730ce50
   specs:
     decidim-action_delegator (0.1)
       decidim-admin (= 0.21.0)
