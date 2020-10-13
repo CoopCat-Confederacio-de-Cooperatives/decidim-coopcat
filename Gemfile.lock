@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: 2935989892bb37ea63d8f1c61f3aefac13906b90
+  revision: a8e78a9834c38de224669d59c35cab27de1bb25e
   specs:
     decidim-action_delegator (0.1)
       decidim-admin (= 0.21.0)
@@ -568,7 +568,7 @@ GEM
     parser (2.7.1.4)
       ast (~> 2.4.1)
     pg (1.1.4)
-    pg_search (2.3.3)
+    pg_search (2.3.4)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
     premailer (1.14.2)
