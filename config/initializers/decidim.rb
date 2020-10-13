@@ -2,7 +2,7 @@
 
 Decidim.configure do |config|
   config.application_name = "My Application Name"
-  config.mailer_sender = "change-me@domain.org"
+  config.mailer_sender = "notificacions@cercles.coop"
 
   # Change these lines to set your preferred locales
   config.default_locale = :en
