@@ -45,5 +45,5 @@ jobs:
 
       - uses: EndBug/add-and-commit@v5
         with:
-          add: Gemfile.lock db/migrate
+          add: Gemfile.lock db/
           branch: master
