@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 Decidim.configure do |config|
-  config.application_name = "My Application Name"
+  config.application_name = "Cercles.coop"
   config.mailer_sender = "notificacions@cercles.coop"
 
   # Change these lines to set your preferred locales
-  config.default_locale = :en
+  config.default_locale = :ca
   config.available_locales = [:en, :ca, :es]
 
   # Geocoder configuration
@@ -21,7 +21,7 @@ Decidim.configure do |config|
   # end
 
   # Currency unit
-  # config.currency_unit = "€"
+  config.currency_unit = "€"
 
   # The number of reports which an object can receive before hiding it
   # config.max_reports_before_hiding = 3
