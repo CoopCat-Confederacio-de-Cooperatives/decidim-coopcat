@@ -40,7 +40,10 @@ jobs:
       - run: |
           bundle update decidim-action_delegator
 
+      - run: |
+          bundle exec rails decidim_action_delegator:install:migrations
+
       - uses: EndBug/add-and-commit@v5
         with:
-          add: Gemfile.lock
+          add: Gemfile.lock db/migrate
           branch: master
