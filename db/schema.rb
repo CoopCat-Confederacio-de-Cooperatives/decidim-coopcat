@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_124237) do
+ActiveRecord::Schema.define(version: 2020_10_13_142131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -67,14 +67,13 @@ ActiveRecord::Schema.define(version: 2020_09_08_124237) do
     t.datetime "updated_at", null: false
     t.bigint "decidim_organization_id"
     t.bigint "decidim_action_delegator_setting_id", null: false
-    t.index ["decidim_action_delegator_setting_id"], name: "index_decidim_delegations_on_action_delegator_setting_id"
+    t.index ["decidim_action_delegator_setting_id", "granter_id"], name: "index_unique_decidim_delegations_on_setting_id_granter_id", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_delegations_on_decidim_organization_id"
     t.index ["grantee_id"], name: "index_decidim_action_delegator_delegations_on_grantee_id"
     t.index ["granter_id"], name: "index_decidim_action_delegator_delegations_on_granter_id"
   end
 
   create_table "decidim_action_delegator_settings", force: :cascade do |t|
-    t.datetime "expires_at", null: false
     t.integer "max_grants", limit: 2, default: 0, null: false
     t.bigint "decidim_consultation_id", null: false
     t.datetime "created_at", null: false
