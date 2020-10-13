@@ -1,16 +1,16 @@
 Rails.application.configure do
   config.active_job.queue_adapter = :sidekiq
   config.lograge.enabled = true
-    config.lograge.formatter = Lograge::Formatters::Json.new
-    config.lograge.custom_options = lambda do |event|
-      {
-        remote_ip: event.payload[:remote_ip],
-        params: event.payload[:params].except('controller', 'action', 'format', 'utf8'),
-        user_id: event.payload[:user_id],
-        organization_id: event.payload[:organization_id],
-        referer: event.payload[:referer],
-      }
-    end  # Settings specified here will take precedence over those in config/application.rb.
+  config.lograge.formatter = Lograge::Formatters::Json.new
+  config.lograge.custom_options = lambda do |event|
+    {
+      remote_ip: event.payload[:remote_ip],
+      params: event.payload[:params].except('controller', 'action', 'format', 'utf8'),
+      user_id: event.payload[:user_id],
+      organization_id: event.payload[:organization_id],
+      referer: event.payload[:referer],
+    }
+  end  # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
   config.cache_classes = true
