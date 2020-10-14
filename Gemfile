@@ -32,10 +32,7 @@ group :development do
 end
 
 group :production do
-  gem 'fog-aws'
   gem 'dalli'
-  gem 'sendgrid-ruby'
-  gem 'newrelic_rpm'
   gem 'lograge'
   gem 'sentry-raven'
   gem 'sidekiq'
