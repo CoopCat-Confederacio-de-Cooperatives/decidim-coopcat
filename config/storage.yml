@@ -6,6 +6,13 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+blackblaze:
+  service: S3 # Blackblaze has an S3-comptabile API
+  endpoint: s3.us-west-001.backblazeb2.com
+  access_key_id: <%= Rails.application.credentials.dig(:blackblaze, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:blackblaze, :secret_access_key) %>
+  bucket: cercles-coop-production
+
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
