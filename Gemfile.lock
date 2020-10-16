@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: 9699e78147eb473438c4a3902ccb6cdff1bd7916
+  revision: 7965bd6df49b26a46c3b245b49460f93210e651e
   branch: feature/sms-integration
   specs:
     decidim-action_delegator (0.1)
