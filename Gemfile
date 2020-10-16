@@ -32,8 +32,8 @@ group :development do
 end
 
 group :production do
-  gem "aws-sdk-s3", require: false
   gem 'dalli'
+  gem 'fog-backblaze'
   gem 'lograge'
   gem 'sentry-raven'
   gem 'sidekiq'
