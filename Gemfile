@@ -33,6 +33,7 @@ end
 
 group :production do
   gem 'dalli'
+  gem 'fog-aws'
   gem 'lograge'
   gem 'sentry-raven'
   gem 'sidekiq'
