@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: 3b164d5d38f69cfce6495622d6c381f4f10f6c3d
+  revision: 842ecbfd50be5bff5c77a82fba8754ad558f08e7
   specs:
     decidim-action_delegator (0.1)
       decidim-admin (= 0.21.0)
@@ -389,8 +389,9 @@ GEM
       railties (>= 3.0.0)
     faker (1.9.3)
       i18n (>= 0.7)
-    faraday (1.0.1)
+    faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
+      ruby2_keywords
     ffi (1.9.25)
     file_validators (2.3.0)
       activemodel (>= 3.2)
@@ -673,6 +674,7 @@ GEM
       rubocop (>= 0.68.1)
     ruby-ole (1.2.12.2)
     ruby-progressbar (1.10.1)
+    ruby2_keywords (0.0.2)
     ruby_dep (1.5.0)
     rubyzip (2.0.0)
     safe_yaml (1.0.5)
