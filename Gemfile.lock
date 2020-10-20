@@ -9,12 +9,13 @@ GIT
 
 GIT
   remote: git://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: 842ecbfd50be5bff5c77a82fba8754ad558f08e7
+  revision: be29d125a1b90ce516887b89569acdf4c07188c7
   specs:
     decidim-action_delegator (0.1)
       decidim-admin (= 0.21.0)
       decidim-consultations (= 0.21.0)
       decidim-core (= 0.21.0)
+      savon
 
 GEM
   remote: https://rubygems.org/
@@ -67,6 +68,9 @@ GEM
       activerecord (>= 3.0)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    akami (1.3.1)
+      gyoku (>= 0.4.0)
+      nokogiri
     anchored (1.1.0)
     arel (9.0.0)
     ast (2.4.1)
@@ -431,6 +435,8 @@ GEM
       railties
       sprockets-rails
     graphql (1.11.5)
+    gyoku (1.3.1)
+      builder (>= 2.1.2)
     hashdiff (1.0.1)
     hashie (3.6.0)
     highline (2.0.3)
@@ -442,6 +448,9 @@ GEM
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
+    httpi (2.4.5)
+      rack
+      socksify
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.31)
@@ -532,6 +541,7 @@ GEM
     nobspw (0.6.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    nori (2.6.0)
     oauth (0.5.4)
     oauth2 (1.4.4)
       faraday (>= 0.8, < 2.0)
@@ -708,6 +718,14 @@ GEM
       sprockets (> 2.11)
       sprockets-rails
       tilt
+    savon (2.12.1)
+      akami (~> 1.2)
+      builder (>= 2.1.2)
+      gyoku (~> 1.2)
+      httpi (~> 2.3)
+      nokogiri (>= 1.8.1)
+      nori (~> 2.4)
+      wasabi (~> 3.4)
     searchlight (4.1.0)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
@@ -728,6 +746,7 @@ GEM
     smart_properties (1.15.0)
     social-share-button (1.2.3)
       coffee-rails
+    socksify (1.7.1)
     spreadsheet (1.2.6)
       ruby-ole (>= 1.0)
     spring (2.1.0)
@@ -776,6 +795,10 @@ GEM
       equalizer (~> 0.0, >= 0.0.9)
     warden (1.2.9)
       rack (>= 2.0.9)
+    wasabi (3.6.1)
+      addressable
+      httpi (~> 2.0)
+      nokogiri (>= 1.4.2)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
