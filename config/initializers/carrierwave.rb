@@ -11,7 +11,7 @@ end
 
 # Although we use Backblaze's B2 as object storage for assets, we use its S3's compatible API. We
 # briefly tried the `fog-backblaze` gem but things didn't seem to work at first.
-if Rails.application.secrets.backblaze[:access_key_id].present?
+if Rails.application.secrets.dig(:backblaze, :access_key_id).present?
   require 'carrierwave/storage/fog'
 
   CarrierWave.configure do |config|
