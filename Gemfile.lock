@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Platoniq/decidim-verifications-direct_verifications.git
-  revision: ad8c6c02fe0b5ffc27977361ec047420ca845b92
+  revision: a971f8b63e066b98a481324075c03007dfd54381
   branch: devel
   specs:
     decidim-direct_verifications (0.20)
