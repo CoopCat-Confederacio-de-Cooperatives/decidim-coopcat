@@ -23,7 +23,7 @@ if Rails.application.secrets.dig(:backblaze, :access_key_id).present?
       aws_secret_access_key: Rails.application.secrets.backblaze[:secret_access_key],
       endpoint: 'https://s3.us-west-001.backblazeb2.com'
     }
-    config.fog_directory  = 'cercles-coop-production'
+    config.fog_directory  = Rails.application.secrets.backblaze[:bucket_name]
     config.fog_public     = true
     config.fog_attributes = {
       'Cache-Control' => "max-age=#{365.day.to_i}",
