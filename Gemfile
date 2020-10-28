@@ -4,8 +4,10 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim", "0.22.0"
-gem "decidim-consultations", "0.22.0"
+DECIDIM_VERSION = { git: "https://github.com/decidim/decidim", tag: "release/0.22-stable" }
+
+gem "decidim", DECIDIM_VERSION
+gem "decidim-consultations", DECIDIM_VERSION
 
 gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "feature/decidim-0.22"
 gem "decidim-direct_verifications", github: "Platoniq/decidim-verifications-direct_verifications", branch: "devel"
