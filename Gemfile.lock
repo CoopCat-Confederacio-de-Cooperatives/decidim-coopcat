@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/Platoniq/decidim-verifications-direct_verifications.git
-  revision: a971f8b63e066b98a481324075c03007dfd54381
-  branch: devel
-  specs:
-    decidim-direct_verifications (0.20)
-      decidim-admin (>= 0.17.0)
-      decidim-core (>= 0.17.0)
-
-GIT
   remote: git://github.com/coopdevs/decidim-module-action_delegator.git
   revision: c85cc84f4ab92b8557f0956c3df010420071062a
   branch: feature/decidim-0.22
@@ -20,8 +11,17 @@ GIT
       twilio-ruby
 
 GIT
+  remote: git://github.com/coopdevs/decidim-verifications-direct_verifications.git
+  revision: 09157b4699e75d7c27b3e327fe5509392cd10cfa
+  branch: feature/decidim-0.22
+  specs:
+    decidim-direct_verifications (0.20)
+      decidim-admin (>= 0.17.0)
+      decidim-core (>= 0.17.0)
+
+GIT
   remote: https://github.com/decidim/decidim
-  revision: e0cb3a1ee409820e806262d29cae2c3ca4bd2f57
+  revision: ab0699464a08b957edda78d94274e60be7c2e5b7
   tag: release/0.22-stable
   specs:
     decidim (0.22.0)
@@ -442,7 +442,7 @@ GEM
     graphiql-rails (1.4.11)
       railties
       sprockets-rails
-    graphql (1.11.5)
+    graphql (1.11.6)
     gyoku (1.3.1)
       builder (>= 2.1.2)
     hashdiff (1.0.1)
