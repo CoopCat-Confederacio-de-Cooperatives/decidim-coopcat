@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: c85cc84f4ab92b8557f0956c3df010420071062a
+  revision: 70c5939a8cef03a35fe3efb6b42666a838530487
   branch: feature/decidim-0.22
   specs:
     decidim-action_delegator (0.1)
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: git://github.com/coopdevs/decidim-verifications-direct_verifications.git
-  revision: 8d7137b5b3a899ed721f84a4f540e4b6a356eb80
+  revision: f1f13daa9cf178b2d6d69bff326e68d8d45b4d6c
   branch: feature/decidim-0.22
   specs:
     decidim-direct_verifications (0.22)
