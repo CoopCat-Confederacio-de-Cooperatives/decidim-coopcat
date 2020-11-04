@@ -125,6 +125,8 @@ Decidim.configure do |config|
   if ENV["HEROKU_APP_NAME"].present?
     config.base_uploads_path = ENV["HEROKU_APP_NAME"] + "/"
   end
+
+  config.force_ssl = ENV.fetch("FORCE_SSL", false)
 end
 
 Rails.application.config.i18n.available_locales = Decidim.available_locales
