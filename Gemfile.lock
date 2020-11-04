@@ -20,9 +20,9 @@ GIT
       decidim-core (>= 0.22.0)
 
 GIT
-  remote: https://github.com/decidim/decidim
-  revision: ab0699464a08b957edda78d94274e60be7c2e5b7
-  tag: release/0.22-stable
+  remote: https://github.com/CodiTramuntana/decidim
+  revision: a294e1f3f2cd25089e57c9f153986b95899c4300
+  tag: backport/6775_to_release/0.22-stable
   specs:
     decidim (0.22.0)
       decidim-accountability (= 0.22.0)
@@ -544,7 +544,7 @@ GEM
     mixlib-cli (2.1.8)
     mixlib-config (3.0.9)
       tomlrb
-    mixlib-shellout (3.1.6)
+    mixlib-shellout (3.1.7)
       chef-utils
     msgpack (1.2.10)
     multi_json (1.15.0)
@@ -684,7 +684,7 @@ GEM
       rspec-rails (< 5.0)
     rspec-core (3.9.3)
       rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.3)
+    rspec-expectations (3.9.4)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-html-matchers (0.9.4)
@@ -785,7 +785,7 @@ GEM
     system_test_html_screenshots (0.1.2)
       actionpack (>= 5.2, < 6.0.a)
     temple (0.8.2)
-    terminal-table (1.8.0)
+    terminal-table (2.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     thor (1.0.1)
     thread_safe (0.3.6)
