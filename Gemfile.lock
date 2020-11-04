@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: git://github.com/coopdevs/decidim-verifications-direct_verifications.git
-  revision: 60d8dc4018245b69f4ab05c8be29c650f589778e
+  revision: 0bafff32dfee320633aba9eff88334f439871c7a
   branch: feature/decidim-0.22
   specs:
     decidim-direct_verifications (0.22)
