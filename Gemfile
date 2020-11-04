@@ -4,11 +4,13 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim", "0.21.0"
-gem "decidim-consultations", "0.21.0"
+DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim", tag: "backport/6775_to_release/0.22-stable" }
+
+gem "decidim", DECIDIM_VERSION
+gem "decidim-consultations", DECIDIM_VERSION
 
 gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
-gem "decidim-direct_verifications", github: "Platoniq/decidim-verifications-direct_verifications", branch: "devel"
+gem "decidim-direct_verifications", github: "coopdevs/decidim-verifications-direct_verifications", branch: "feature/decidim-0.22"
 
 gem "bootsnap", "~> 1.3"
 
@@ -21,7 +23,7 @@ gem "faker", "~> 1.9"
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
 
-  gem "decidim-dev", "0.21.0"
+  gem "decidim-dev", "0.22.0"
 end
 
 group :development do
