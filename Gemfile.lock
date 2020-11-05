@@ -19,9 +19,9 @@ GIT
       decidim-core (>= 0.22.0)
 
 GIT
-  remote: https://github.com/CodiTramuntana/decidim
-  revision: a294e1f3f2cd25089e57c9f153986b95899c4300
-  tag: backport/6775_to_release/0.22-stable
+  remote: https://github.com/decidim/decidim
+  revision: 7dc340aa5c1071e4e9f440652cd210a8f2ca161f
+  tag: release/0.22-stable
   specs:
     decidim (0.22.0)
       decidim-accountability (= 0.22.0)
