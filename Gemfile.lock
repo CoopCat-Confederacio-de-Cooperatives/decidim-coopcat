@@ -19,9 +19,9 @@ GIT
       decidim-core (>= 0.22.0)
 
 GIT
-  remote: https://github.com/decidim/decidim
-  revision: 7dc340aa5c1071e4e9f440652cd210a8f2ca161f
-  tag: release/0.22-stable
+  remote: git://github.com/coopdevs/decidim.git
+  revision: c170a2c6d3410f4d308f77a2aedad8437ffe964b
+  branch: fix/consultation-description-rich-text
   specs:
     decidim (0.22.0)
       decidim-accountability (= 0.22.0)
@@ -825,7 +825,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webmock (3.9.3)
+    webmock (3.9.4)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
