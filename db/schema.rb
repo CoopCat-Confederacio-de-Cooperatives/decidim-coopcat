@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_143178) do
+ActiveRecord::Schema.define(version: 2020_11_05_105834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -1459,6 +1459,8 @@ ActiveRecord::Schema.define(version: 2020_10_27_143178) do
     t.jsonb "object"
     t.datetime "created_at"
     t.text "object_changes"
+    t.integer "decidim_action_delegator_delegation_id"
+    t.index ["decidim_action_delegator_delegation_id"], name: "index_versions_on_decidim_action_delegator_delegation_id"
     t.index ["item_id", "item_type"], name: "index_versions_on_item_id_and_item_type"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
