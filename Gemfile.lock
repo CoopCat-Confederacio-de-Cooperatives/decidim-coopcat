@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/Platoniq/decidim-verifications-direct_verifications.git
+  revision: 893da69f79fcf9d0c28911aeb90591572fc44096
+  branch: devel
+  specs:
+    decidim-direct_verifications (0.22)
+      decidim-admin (>= 0.22.0)
+      decidim-core (>= 0.22.0)
+
+GIT
   remote: git://github.com/coopdevs/decidim-module-action_delegator.git
   revision: 053cce3ea3fab0059bb0baa6e1f4c72bed8bfe4f
   specs:
@@ -8,15 +17,6 @@ GIT
       decidim-core (= 0.22.0)
       savon
       twilio-ruby
-
-GIT
-  remote: git://github.com/coopdevs/decidim-verifications-direct_verifications.git
-  revision: 0bafff32dfee320633aba9eff88334f439871c7a
-  branch: feature/decidim-0.22
-  specs:
-    decidim-direct_verifications (0.22)
-      decidim-admin (>= 0.22.0)
-      decidim-core (>= 0.22.0)
 
 GIT
   remote: git://github.com/coopdevs/decidim.git
