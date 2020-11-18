@@ -16,7 +16,6 @@ gem "bootsnap", "~> 1.3"
 
 gem "puma", "~> 4.3.3"
 gem "rack-timeout"
-gem "rails_autoscale_agent"
 gem "uglifier", "~> 4.1"
 
 gem "faker", "~> 1.9"
@@ -43,4 +42,5 @@ group :production do
   gem 'sidekiq'
   gem 'barnes'
   gem 'scout_apm'
+  gem 'rails_autoscale_agent'
 end
