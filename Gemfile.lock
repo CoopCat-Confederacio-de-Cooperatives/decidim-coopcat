@@ -747,6 +747,8 @@ GEM
       nokogiri (>= 1.8.1)
       nori (~> 2.4)
       wasabi (~> 3.4)
+    scout_apm (2.6.10)
+      parser
     searchlight (4.1.0)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
@@ -863,6 +865,7 @@ DEPENDENCIES
   puma (~> 4.3.3)
   rack-timeout
   rails_autoscale_agent
+  scout_apm
   sentry-raven
   sidekiq
   spring (~> 2.0)
