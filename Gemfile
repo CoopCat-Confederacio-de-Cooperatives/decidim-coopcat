@@ -42,4 +42,5 @@ group :production do
   gem 'sentry-raven'
   gem 'sidekiq'
   gem 'barnes'
+  gem 'scout_apm'
 end
