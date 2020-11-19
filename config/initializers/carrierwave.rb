@@ -26,7 +26,7 @@ if Rails.application.secrets.dig(:backblaze, :access_key_id).present?
     config.fog_directory  = Rails.application.secrets.backblaze[:bucket_name]
     config.fog_public     = true
     config.fog_attributes = {
-      'Cache-Control' => "max-age=#{365.day.to_i}",
+      'Cache-Control' => "public, max-age=#{365.day.to_i}",
       'X-Content-Type-Options' => 'nosniff'
     }
   end
