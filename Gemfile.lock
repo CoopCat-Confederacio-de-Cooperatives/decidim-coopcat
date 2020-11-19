@@ -411,22 +411,13 @@ GEM
     file_validators (2.3.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
-    fog-aws (3.6.7)
-      fog-core (~> 2.1)
-      fog-json (~> 1.1)
-      fog-xml (~> 0.1)
-      ipaddress (~> 0.8)
+    fog-backblaze (0.3.0)
+      fog-core (>= 1.40, < 3)
     fog-core (2.2.3)
       builder
       excon (~> 0.71)
       formatador (~> 0.2)
       mime-types
-    fog-json (1.2.0)
-      fog-core
-      multi_json (~> 1.10)
-    fog-xml (0.1.3)
-      fog-core
-      nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.2.5)
     foundation-rails (6.6.2.0)
       railties (>= 3.1.0)
@@ -479,7 +470,6 @@ GEM
     ice_nine (0.11.2)
     invisible_captcha (0.13.0)
       rails (>= 3.2.0)
-    ipaddress (0.8.3)
     jaro_winkler (1.5.4)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
@@ -546,7 +536,7 @@ GEM
     mixlib-cli (2.1.8)
     mixlib-config (3.0.9)
       tomlrb
-    mixlib-shellout (3.1.7)
+    mixlib-shellout (3.2.2)
       chef-utils
     msgpack (1.2.10)
     multi_json (1.15.0)
@@ -591,11 +581,11 @@ GEM
     paper_trail (10.3.1)
       activerecord (>= 4.2)
       request_store (~> 1.1)
-    parallel (1.19.2)
+    parallel (1.20.0)
     parser (2.7.2.0)
       ast (~> 2.4.1)
     pg (1.1.4)
-    pg_search (2.3.4)
+    pg_search (2.3.5)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
     premailer (1.14.2)
@@ -832,7 +822,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webmock (3.9.4)
+    webmock (3.10.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -858,7 +848,7 @@ DEPENDENCIES
   decidim-dev (= 0.22.0)
   decidim-direct_verifications!
   faker (~> 1.9)
-  fog-aws
+  fog-backblaze
   letter_opener_web (~> 1.3)
   listen (~> 3.1)
   lograge
