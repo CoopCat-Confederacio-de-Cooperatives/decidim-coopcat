@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: git://github.com/coopdevs/decidim.git
-  revision: 3d68e0f8a7e49ca4801d74bbdd69b959597f687a
+  revision: fc95f75a5055be829d31bfc793036f29c26476bb
   branch: fix/consultation-description-rich-text
   specs:
     decidim (0.22.0)
