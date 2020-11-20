@@ -15,7 +15,6 @@ gem "decidim-direct_verifications", github: "Platoniq/decidim-verifications-dire
 gem "bootsnap", "~> 1.3"
 
 gem "puma", "~> 4.3.3"
-gem "rack-timeout"
 gem "uglifier", "~> 4.1"
 
 gem "faker", "~> 1.9"
@@ -35,12 +34,13 @@ group :development do
 end
 
 group :production do
+  gem 'barnes'
   gem 'dalli'
   gem 'fog-aws'
   gem 'lograge'
+  gem 'rack-timeout'
+  gem 'rails_autoscale_agent'
+  gem 'scout_apm'
   gem 'sentry-raven'
   gem 'sidekiq'
-  gem 'barnes'
-  gem 'scout_apm'
-  gem 'rails_autoscale_agent'
 end
