@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "coopdevs/decidim", branch: "fix/consultation-description-rich-text" }
+DECIDIM_VERSION = { github: "coopdevs/decidim", branch: "0.22-stable-plus-fixes" }
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
