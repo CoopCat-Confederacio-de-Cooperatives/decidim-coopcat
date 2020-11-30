@@ -19,9 +19,9 @@ GIT
       twilio-ruby
 
 GIT
-  remote: git://github.com/coopdevs/decidim.git
-  revision: fc95f75a5055be829d31bfc793036f29c26476bb
-  branch: 0.22-stable-plus-fixes
+  remote: git://github.com/decidim/decidim.git
+  revision: ad71041c817c16c46586e7d6b7881da3bd2f4565
+  branch: release/0.22-stable
   specs:
     decidim (0.22.0)
       decidim-accountability (= 0.22.0)
@@ -307,7 +307,7 @@ GEM
     browser (2.7.1)
     builder (3.2.4)
     byebug (11.0.1)
-    capybara (3.33.0)
+    capybara (3.34.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -331,7 +331,7 @@ GEM
       actionpack (>= 3.0)
       cells (>= 4.1.6, < 5.0.0)
     charlock_holmes (0.7.7)
-    chef-utils (16.6.14)
+    chef-utils (16.7.61)
     childprocess (3.0.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -796,7 +796,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tomlrb (1.3.0)
+    tomlrb (2.0.0)
     truncato (0.7.11)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.7.0, <= 2.0)
