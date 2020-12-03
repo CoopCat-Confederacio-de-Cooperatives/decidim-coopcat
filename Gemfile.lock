@@ -772,7 +772,7 @@ GEM
     socksify (1.7.1)
     spreadsheet (1.2.6)
       ruby-ole (>= 1.0)
-    spring (2.1.0)
+    spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
@@ -868,7 +868,7 @@ DEPENDENCIES
   scout_apm
   sentry-raven
   sidekiq
-  spring (~> 2.0)
+  spring (~> 2.1)
   spring-watcher-listen (~> 2.0)
   uglifier (~> 4.1)
   web-console (~> 3.5)
