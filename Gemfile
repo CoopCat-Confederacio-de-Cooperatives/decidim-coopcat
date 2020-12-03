@@ -12,7 +12,7 @@ gem "decidim-consultations", DECIDIM_VERSION
 gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
 gem "decidim-direct_verifications", github: "Platoniq/decidim-verifications-direct_verifications", branch: "devel"
 
-gem "bootsnap", "~> 1.3"
+gem "bootsnap", "~> 1.5"
 
 gem "puma", "~> 4.3.3"
 gem "uglifier", "~> 4.1"
