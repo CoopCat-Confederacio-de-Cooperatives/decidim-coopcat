@@ -20,7 +20,7 @@ gem "uglifier", "~> 4.1"
 gem "faker", "~> 2.15"
 
 group :development, :test do
-  gem "byebug", "~> 11.0", platform: :mri
+  gem "byebug", "~> 11.1", platform: :mri
 
   gem "decidim-dev", "0.22.0"
 end
