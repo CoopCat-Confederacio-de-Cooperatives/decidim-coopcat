@@ -605,7 +605,7 @@ GEM
       actionmailer (>= 3)
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (4.0.6)
-    puma (5.1.0)
+    puma (5.1.1)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-attack (6.3.1)
@@ -860,7 +860,7 @@ DEPENDENCIES
   letter_opener_web (~> 1.4)
   listen (~> 3.3)
   lograge
-  puma (~> 5.1.0)
+  puma (~> 5.1.1)
   rack-timeout
   rails_autoscale_agent
   scout_apm
