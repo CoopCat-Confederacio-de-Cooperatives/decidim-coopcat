@@ -594,7 +594,7 @@ GEM
       activerecord (>= 4.2)
       request_store (~> 1.1)
     parallel (1.20.1)
-    parser (2.7.2.0)
+    parser (3.0.0.0)
       ast (~> 2.4.1)
     pg (1.1.4)
     pg_search (2.3.5)
@@ -748,7 +748,7 @@ GEM
       nokogiri (>= 1.8.1)
       nori (~> 2.4)
       wasabi (~> 3.4)
-    scout_apm (4.0.0)
+    scout_apm (4.0.1)
       parser
     searchlight (4.1.0)
     selenium-webdriver (3.142.7)
