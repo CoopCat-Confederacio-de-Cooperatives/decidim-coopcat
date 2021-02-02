@@ -302,7 +302,7 @@ GEM
       parser (>= 2.4)
       smart_properties
     bindex (0.7.0)
-    bootsnap (1.6.0)
+    bootsnap (1.7.0)
       msgpack (~> 1.0)
     browser (2.7.1)
     builder (3.2.4)
@@ -549,7 +549,7 @@ GEM
       tomlrb
     mixlib-shellout (3.2.2)
       chef-utils
-    msgpack (1.4.1)
+    msgpack (1.4.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
@@ -850,7 +850,7 @@ PLATFORMS
 
 DEPENDENCIES
   barnes
-  bootsnap (~> 1.6)
+  bootsnap (~> 1.7)
   byebug (~> 11.1)
   dalli
   decidim!
