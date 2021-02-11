@@ -42,3 +42,27 @@ $ heroku run rails c
 irb(main):001:0> Decidim::ActionDelegator::Engine.load_seed
 => true
 ```
+
+### Upgrading Decidim
+
+This entails updating the non-core Decidim modules we rely on, decidim-action_delegator
+and decidim-direct_verifications, to support the Decidim version we want to
+upgrade to. See
+https://github.com/coopdevs/decidim-module-action_delegator/pull/80 for
+reference.
+
+Once that's done, we need to update `DECIDIM_VERSION` in the Gemfile to point to the target
+version and possibly update the `gem "decidim-action_delegator"` and `gem
+"decidim-direct_verifications"` to point to their upgrade branches. Don't forget
+to get those merged and released so they get updated in our Gemfile later on.
+
+Then, to update run:
+
+```sh
+bundle update decidim decidim-consultations
+bundle exec rake railties:install:migrations
+bundle exec rake db:migrate
+```
+
+You can check https://github.com/coopdevs/decidim-coopcat/pull/109 as an
+example.
