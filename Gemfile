@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.22-stable" }
+DECIDIM_VERSION = "0.23.2"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
@@ -22,7 +22,7 @@ gem "faker", "~> 2.16"
 group :development, :test do
   gem "byebug", "~> 11.1", platform: :mri
 
-  gem "decidim-dev", "0.22.0"
+  gem "decidim-dev", DECIDIM_VERSION
 end
 
 group :development do
