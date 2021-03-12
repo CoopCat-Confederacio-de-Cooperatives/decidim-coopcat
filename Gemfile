@@ -17,7 +17,7 @@ gem "bootsnap", "~> 1.7"
 gem "puma", "~> 5.2.2"
 gem "uglifier", "~> 4.1"
 
-gem "faker", "~> 2.16"
+gem "faker", "~> 2.17"
 
 group :development, :test do
   gem "byebug", "~> 11.1", platform: :mri
