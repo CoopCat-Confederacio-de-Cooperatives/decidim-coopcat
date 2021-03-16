@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: cbd7d19d3e6739b4aee8fe45463c4df0c40f4c51
+  revision: 2445edd76d850a568a9cf5a5f75545ef312f5634
   specs:
     decidim-action_delegator (0.2)
       decidim-admin (>= 0.22, <= 0.23.2)
@@ -804,7 +804,7 @@ GEM
     truncato (0.7.11)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.7.0, <= 2.0)
-    twilio-ruby (5.47.0)
+    twilio-ruby (5.49.0)
       faraday (>= 0.9, < 2.0)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
