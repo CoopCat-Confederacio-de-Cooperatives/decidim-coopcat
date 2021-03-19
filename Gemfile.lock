@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: ed9553970bd1926b27e2ce0c3b7342ebeebdd9af
+  revision: d596f9a60b37c4c77ac8ca0f5493c0164dbfb519
   specs:
     decidim-action_delegator (0.2)
       decidim-admin (>= 0.22, < 0.24)
@@ -562,7 +562,7 @@ GEM
       racc (~> 1.4)
     nori (2.6.0)
     oauth (0.5.5)
-    oauth2 (1.4.4)
+    oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
       multi_json (~> 1.3)
