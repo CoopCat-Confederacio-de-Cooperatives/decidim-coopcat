@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_120245) do
+ActiveRecord::Schema.define(version: 2021_03_24_161755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -36,6 +36,23 @@ ActiveRecord::Schema.define(version: 2021_02_11_120245) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "background_jobs", force: :cascade do |t|
+    t.string "status"
+    t.datetime "finished_at"
+    t.string "job_id"
+    t.bigint "batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_background_jobs_on_batch_id"
+  end
+
+  create_table "batches", force: :cascade do |t|
+    t.datetime "finished_at"
+    t.string "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "decidim_accountability_results", id: :serial, force: :cascade do |t|
