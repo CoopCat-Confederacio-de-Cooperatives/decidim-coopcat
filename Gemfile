@@ -39,7 +39,6 @@ group :production do
   gem 'fog-aws'
   gem 'lograge'
   gem 'rack-timeout'
-  gem 'rails_autoscale_agent'
   gem 'scout_apm'
   gem 'sentry-raven'
   gem 'sidekiq'
