@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: 95604651cae5c8195574841d9a5b6dd05dee6b3b
+  revision: f9279b53561b06c7f96a187cbbdd65fd701c7a52
   specs:
     decidim-action_delegator (0.2)
       decidim-admin (>= 0.22, < 0.24)
@@ -539,10 +539,11 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0225)
-    mimemagic (0.3.7)
-      nokogiri (~> 1.11.2)
+    mimemagic (0.3.9)
+      nokogiri (~> 1)
+      rake
     mini_magick (4.11.0)
-    mini_mime (1.0.2)
+    mini_mime (1.0.3)
     mini_portile2 (2.5.0)
     minitest (5.14.4)
     mixlib-cli (2.1.8)
