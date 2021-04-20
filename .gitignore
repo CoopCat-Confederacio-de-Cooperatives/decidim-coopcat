@@ -36,3 +36,5 @@ public/uploads
 .rspec-failures
 spec/examples.txt
 coverage/
+decidim_dummy_app/
+.vscode
