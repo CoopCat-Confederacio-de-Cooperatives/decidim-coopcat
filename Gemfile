@@ -4,13 +4,14 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = "0.23.2"
+DECIDIM_VERSION = "~>0.23.2"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 
 gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
 gem "decidim-direct_verifications", github: "coopdevs/decidim-verifications-direct_verifications", branch: "async-csv-import"
+gem "decidim-decidim_awesome", "~> 0.6.6"
 
 gem "bootsnap", "~> 1.7"
 

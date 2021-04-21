@@ -32,32 +32,25 @@ jobs:
         with:
           fetch-depth: 1
 
-      - uses: ruby/setup-ruby@master
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-
-      - name: Recover Ruby dependency cache
-        uses: actions/cache@v2.1.5
-        with:
-          path: ./vendor/bundle
-          key: ${{ runner.OS }}-rubydeps-${{ hashFiles('Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-rubydeps-${{ env.cache-name }}-
-            ${{ runner.OS }}-rubydeps-
-            ${{ runner.OS }}-
-
-      - name: Install Ruby deps
-        run: |
-          gem install bundler
-          bundle install --path vendor/bundle --jobs 4 --retry 3
+          bundler-cache: true
 
       - name: Setup database
         run: |
-          bundle exec rake db:create RAILS_ENV=test
-          bundle exec rake db:schema:load RAILS_ENV=test
+          bundle exec rake db:create
+          bundle exec rake db:schema:load
+        env:
+          RAILS_ENV: test
+
+      - name: Precompile assets
+        run: bundle exec rake assets:precompile
+        env:
+          RAILS_ENV: test
 
       - name: Run RSpec
-        run: COBERTURA=1 bundle exec rake
+        run: COBERTURA=1 bundle exec rspec
 
       - name: Codecov
         uses: codecov/codecov-action@v1
