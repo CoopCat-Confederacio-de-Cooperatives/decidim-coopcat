@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe "Custom styles", type: :system do
   let(:organization) { create :organization }
-  let!(:participatory_process) { create :participatory_process, organization: organization }
+  let!(:participatory_process) { create :participatory_process, organization: organization, slug: "slug" }
   let!(:config) { create :awesome_config, organization: organization, var: :scoped_styles, value: styles }
   let(:config_helper) { create :awesome_config, organization: organization, var: :scoped_style_bar }
   let(:styles) do
