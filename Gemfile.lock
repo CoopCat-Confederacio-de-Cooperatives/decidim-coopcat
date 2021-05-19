@@ -407,7 +407,7 @@ GEM
     factory_bot_rails (4.11.1)
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
-    faker (2.17.0)
+    faker (2.18.0)
       i18n (>= 1.6, < 2)
     faraday (1.4.1)
       faraday-excon (~> 1.1)
@@ -871,7 +871,7 @@ DEPENDENCIES
   decidim-decidim_awesome (~> 0.6.6)
   decidim-dev (~> 0.23.2)
   decidim-direct_verifications!
-  faker (~> 2.17)
+  faker (~> 2.18)
   fog-aws
   letter_opener_web (~> 1.4)
   listen (~> 3.5)
