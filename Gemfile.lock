@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/coopdevs/decidim-verifications-direct_verifications.git
-  revision: b45a3113c65c3b821840bc9c11d90130315750df
+  revision: a6f4dcbf10ab703d6ca69912589b91cde6ad31e4
   branch: async-csv-import
   specs:
     decidim-direct_verifications (0.23)
@@ -416,16 +416,20 @@ GEM
       railties (>= 3.0.0)
     faker (2.18.0)
       i18n (>= 1.6, < 2)
-    faraday (1.4.1)
+    faraday (1.4.2)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
       faraday-net_http (~> 1.0)
       faraday-net_http_persistent (~> 1.1)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords (>= 0.0.4)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
     faraday-excon (1.1.0)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
-    ffi (1.15.0)
+    ffi (1.15.1)
     file_validators (2.3.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
@@ -571,7 +575,7 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.7)
     nobspw (0.6.2)
-    nokogiri (1.11.5)
+    nokogiri (1.11.6)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     nori (2.6.0)
@@ -853,7 +857,7 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    websocket-driver (0.7.3)
+    websocket-driver (0.7.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     wicked_pdf (1.4.0)
