@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/coopdevs/decidim-verifications-direct_verifications.git
-  revision: 9e30bad3d239ebda576c1b8106875581ef8ed81e
+  revision: a6f4dcbf10ab703d6ca69912589b91cde6ad31e4
   branch: async-csv-import
   specs:
     decidim-direct_verifications (0.23)
@@ -466,7 +466,7 @@ GEM
     graphiql-rails (1.4.11)
       railties
       sprockets-rails
-    graphql (1.12.11)
+    graphql (1.12.10)
     gyoku (1.3.1)
       builder (>= 2.1.2)
     hashdiff (1.0.1)
