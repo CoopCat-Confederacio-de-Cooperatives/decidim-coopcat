@@ -18,12 +18,11 @@ gem "bootsnap", "~> 1.7"
 gem "puma", "~> 5.3.2"
 gem "uglifier", "~> 4.1"
 
-gem "faker", "~> 2.18"
-
 group :development, :test do
   gem "byebug", "~> 11.1", platform: :mri
 
   gem "decidim-dev", DECIDIM_VERSION
+  gem "faker", "~> 2.18"
 end
 
 group :development do
