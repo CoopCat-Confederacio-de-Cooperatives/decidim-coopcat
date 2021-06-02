@@ -40,6 +40,7 @@ group :production do
   gem 'lograge'
   gem 'rack-timeout'
   gem 'scout_apm'
-  gem 'sentry-raven'
+  gem 'sentry-ruby'
+  gem 'sentry-rails'
   gem 'sidekiq'
 end
