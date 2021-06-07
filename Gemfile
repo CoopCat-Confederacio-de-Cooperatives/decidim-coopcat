@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "coopdevs/decidim", branch: "fix/question-page-when-unpublished" }
+DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.23-stable" }
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
