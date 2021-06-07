@@ -19,9 +19,9 @@ GIT
       decidim-core (>= 0.22.0)
 
 GIT
-  remote: https://github.com/coopdevs/decidim.git
-  revision: d67c6866918dcaf611cb9b9d207ed4cff33dd592
-  branch: fix/question-page-when-unpublished
+  remote: https://github.com/decidim/decidim.git
+  revision: dd26de389f5a08105957e9286ff97e7125b83393
+  branch: release/0.23-stable
   specs:
     decidim (0.23.6)
       decidim-accountability (= 0.23.6)
@@ -466,7 +466,7 @@ GEM
     graphiql-rails (1.4.11)
       railties
       sprockets-rails
-    graphql (1.12.11)
+    graphql (1.12.12)
     gyoku (1.3.1)
       builder (>= 2.1.2)
     hashdiff (1.0.1)
