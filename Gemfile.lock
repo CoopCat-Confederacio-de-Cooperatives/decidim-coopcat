@@ -347,7 +347,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
     crack (0.4.5)
       rexml
@@ -501,7 +501,6 @@ GEM
     ice_nine (0.11.2)
     invisible_captcha (0.13.0)
       rails (>= 3.2.0)
-    io-wait (0.1.0)
     ipaddress (0.8.3)
     jaro_winkler (1.5.4)
     jquery-rails (4.4.0)
@@ -561,8 +560,7 @@ GEM
     mime-types-data (3.2021.0225)
     mini_magick (4.11.0)
     mini_mime (1.1.0)
-    mini_portile2 (2.5.2)
-      net-ftp (~> 0.1)
+    mini_portile2 (2.5.3)
     minitest (5.14.4)
     mixlib-cli (2.1.8)
     mixlib-config (3.0.9)
@@ -574,16 +572,10 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     mustache (1.1.1)
-    net-ftp (0.1.2)
-      net-protocol
-      time
-    net-protocol (0.1.1)
-      io-wait
-      timeout
     netrc (0.11.0)
     nio4r (2.5.7)
     nobspw (0.6.2)
-    nokogiri (1.11.6)
+    nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     nori (2.6.0)
@@ -781,7 +773,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sentry-rails (4.5.0)
+    sentry-rails (4.5.1)
       railties (>= 5.0)
       sentry-ruby-core (~> 4.5.0)
     sentry-ruby (4.5.0)
@@ -833,8 +825,6 @@ GEM
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    time (0.1.0)
-    timeout (0.1.1)
     tomlrb (2.0.1)
     truncato (0.7.11)
       htmlentities (~> 4.3.1)
