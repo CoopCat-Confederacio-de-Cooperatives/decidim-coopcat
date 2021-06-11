@@ -31,6 +31,9 @@ group :development do
   gem "spring", "~> 2.1"
   gem "spring-watcher-listen", "~> 2.0"
   gem "web-console", "~> 3.5"
+  gem "rack-mini-profiler"
+  gem "memory_profiler"
+  gem "stackprof"
 end
 
 group :production do
