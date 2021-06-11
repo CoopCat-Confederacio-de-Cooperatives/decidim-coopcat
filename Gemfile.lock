@@ -554,6 +554,7 @@ GEM
       mixlib-cli (~> 2.1, >= 2.1.1)
       mixlib-config (>= 2.2.1, < 4)
       mixlib-shellout
+    memory_profiler (1.0.0)
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
@@ -635,6 +636,8 @@ GEM
       rack (>= 1.0, < 3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
+    rack-mini-profiler (2.3.2)
+      rack (>= 1.2.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rack-timeout (0.6.0)
@@ -816,6 +819,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     ssrf_filter (1.0.7)
+    stackprof (0.2.17)
     statsd-ruby (1.5.0)
     system_test_html_screenshots (0.1.2)
       actionpack (>= 5.2, < 6.0.a)
@@ -895,7 +899,9 @@ DEPENDENCIES
   letter_opener_web (~> 1.4)
   listen (~> 3.5)
   lograge
+  memory_profiler
   puma (~> 5.3.2)
+  rack-mini-profiler
   rack-timeout
   scout_apm
   sentry-rails
@@ -903,6 +909,7 @@ DEPENDENCIES
   sidekiq
   spring (~> 2.1)
   spring-watcher-listen (~> 2.0)
+  stackprof
   uglifier (~> 4.1)
   web-console (~> 3.5)
 
