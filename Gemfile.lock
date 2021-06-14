@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: 1c22b438cbd51afcc7ac4cfb41bc70deacb94f5f
+  revision: 095f4f61b27660fadaf06244366974865b688d06
   specs:
     decidim-action_delegator (0.2)
       decidim-admin (>= 0.22, < 0.24)
@@ -390,7 +390,7 @@ GEM
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    doorkeeper (5.5.1)
+    doorkeeper (5.5.2)
       railties (>= 5)
     doorkeeper-i18n (4.0.1)
     equalizer (0.0.11)
@@ -475,7 +475,7 @@ GEM
     html_tokenizer (0.0.7)
     htmlentities (4.3.4)
     http-accept (1.7.0)
-    http-cookie (1.0.3)
+    http-cookie (1.0.4)
       domain_name (~> 0.5)
     httparty (0.18.1)
       mime-types (~> 3.0)
@@ -689,7 +689,7 @@ GEM
       virtus (~> 1.0.5)
       wisper (>= 1.6.1)
     redcarpet (3.5.1)
-    redis (4.2.5)
+    redis (4.3.1)
     regexp_parser (2.1.1)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -833,7 +833,7 @@ GEM
     truncato (0.7.11)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.7.0, <= 2.0)
-    twilio-ruby (5.54.0)
+    twilio-ruby (5.54.1)
       faraday (>= 0.9, < 2.0)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
@@ -869,7 +869,7 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    websocket-driver (0.7.4)
+    websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     wicked_pdf (1.4.0)
