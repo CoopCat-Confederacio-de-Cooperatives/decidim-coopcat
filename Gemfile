@@ -45,5 +45,6 @@ group :production do
   gem 'scout_apm'
   gem 'sentry-ruby'
   gem 'sentry-rails'
+  gem 'sentry-sidekiq'
   gem 'sidekiq'
 end
