@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/coopdevs/decidim-verifications-direct_verifications.git
-  revision: c3b160ed747c8d7edc6b3fe7e20f41ac55bc076d
+  revision: d87938851f15c156b2a104c36b3d8298031cd8f0
   branch: async-csv-import
   specs:
     decidim-direct_verifications (0.23)
