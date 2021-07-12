@@ -10,15 +10,6 @@ GIT
       twilio-ruby
 
 GIT
-  remote: https://github.com/coopdevs/decidim-verifications-direct_verifications.git
-  revision: 96f9a56108bae8382956b9ed9b0e99ec0ab8598f
-  branch: async-csv-import
-  specs:
-    decidim-direct_verifications (0.23)
-      decidim-admin (>= 0.22.0)
-      decidim-core (>= 0.22.0)
-
-GIT
   remote: https://github.com/decidim/decidim.git
   revision: dd26de389f5a08105957e9286ff97e7125b83393
   branch: release/0.23-stable
@@ -366,6 +357,9 @@ GEM
       decidim-core (>= 0.22.0, < 0.24)
       redcarpet (~> 3.4)
       sassc (~> 2.3.0)
+    decidim-direct_verifications (1.0)
+      decidim-admin (>= 0.23.0)
+      decidim-core (>= 0.23.0)
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
@@ -899,7 +893,7 @@ DEPENDENCIES
   decidim-consultations!
   decidim-decidim_awesome (~> 0.6.6)
   decidim-dev!
-  decidim-direct_verifications!
+  decidim-direct_verifications (~> 1.0)
   faker (~> 2.18)
   fog-aws
   letter_opener_web (~> 1.4)
