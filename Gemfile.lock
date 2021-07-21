@@ -532,7 +532,7 @@ GEM
       actionmailer (>= 3.2)
       letter_opener (~> 1.0)
       railties (>= 3.2)
-    listen (3.5.1)
+    listen (3.6.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lograge (0.11.2)
@@ -897,7 +897,7 @@ DEPENDENCIES
   faker (~> 2.18)
   fog-aws
   letter_opener_web (~> 1.4)
-  listen (~> 3.5)
+  listen (~> 3.6)
   lograge
   memory_profiler
   puma (~> 5.3.2)
