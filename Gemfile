@@ -13,7 +13,7 @@ gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegato
 gem "decidim-direct_verifications", "~> 1.0"
 gem "decidim-decidim_awesome", "~> 0.6.6"
 
-gem "bootsnap", "~> 1.7"
+gem "bootsnap", "~> 1.8"
 
 gem "puma", "~> 5.3.2"
 gem "uglifier", "~> 4.1"
