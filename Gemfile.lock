@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/Platoniq/decidim-module-term_customizer.git
+  revision: 161bcbb4364cd265af8eeceed3f393f196136564
+  branch: temp/0.23
+  specs:
+    decidim-term_customizer (0.23.0)
+      decidim-admin (~> 0.23.0)
+      decidim-core (~> 0.23.0)
+
+GIT
   remote: https://github.com/coopdevs/decidim-module-action_delegator.git
   revision: 27712206e29640cc615e2a5b84d5ab1991523b64
   specs:
@@ -894,6 +903,7 @@ DEPENDENCIES
   decidim-decidim_awesome (~> 0.6.6)
   decidim-dev!
   decidim-direct_verifications (~> 1.0)
+  decidim-term_customizer!
   faker (~> 2.18)
   fog-aws
   letter_opener_web (~> 1.4)
