@@ -12,6 +12,7 @@ gem "decidim-consultations", DECIDIM_VERSION
 gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
 gem "decidim-direct_verifications", "~> 1.0"
 gem "decidim-decidim_awesome", "~> 0.6.6"
+gem "decidim-term_customizer", github: "Platoniq/decidim-module-term_customizer", branch: "temp/0.23"
 
 gem "bootsnap", "~> 1.7"
 
