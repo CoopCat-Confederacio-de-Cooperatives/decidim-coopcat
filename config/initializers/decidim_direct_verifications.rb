@@ -1,1 +1,3 @@
-Rails.application.config.direct_verifications_parser = :metadata
+Decidim::DirectVerifications.configure do |config|
+  config.input_parser = :metadata_parser
+end
