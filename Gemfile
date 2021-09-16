@@ -14,7 +14,7 @@ gem "decidim-direct_verifications", "~> 1.0"
 gem "decidim-decidim_awesome", "~> 0.6.6"
 gem "decidim-term_customizer", github: "Platoniq/decidim-module-term_customizer", branch: "temp/0.23"
 
-gem "bootsnap", "~> 1.7"
+gem "bootsnap", "~> 1.9"
 
 gem "puma", "~> 5.3.2"
 gem "uglifier", "~> 4.1"
