@@ -8,6 +8,15 @@ GIT
       decidim-core (~> 0.23.0)
 
 GIT
+  remote: https://github.com/Platoniq/decidim-verifications-direct_verifications.git
+  revision: 46ba2fad0e02bb8bf8c61867262bba783890e03a
+  branch: main
+  specs:
+    decidim-direct_verifications (1.0)
+      decidim-admin (>= 0.23.0)
+      decidim-core (>= 0.23.0)
+
+GIT
   remote: https://github.com/coopdevs/decidim-module-action_delegator.git
   revision: 27712206e29640cc615e2a5b84d5ab1991523b64
   specs:
@@ -366,9 +375,6 @@ GEM
       decidim-core (>= 0.22.0, < 0.24)
       redcarpet (~> 3.4)
       sassc (~> 2.3.0)
-    decidim-direct_verifications (1.0)
-      decidim-admin (>= 0.23.0)
-      decidim-core (>= 0.23.0)
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
@@ -902,7 +908,7 @@ DEPENDENCIES
   decidim-consultations!
   decidim-decidim_awesome (~> 0.6.6)
   decidim-dev!
-  decidim-direct_verifications (~> 1.0)
+  decidim-direct_verifications!
   decidim-term_customizer!
   faker (~> 2.18)
   fog-aws
