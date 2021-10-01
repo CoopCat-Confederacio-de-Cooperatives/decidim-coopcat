@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "barnes"
 
 workers Integer(ENV["WEB_CONCURRENCY"] || 2)

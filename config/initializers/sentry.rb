@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if Rails.application.secrets.sentry_enabled
   Sentry.init do |config|
     config.dsn = ENV["SENTRY_DSN"]

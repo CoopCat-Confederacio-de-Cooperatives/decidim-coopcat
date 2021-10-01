@@ -122,7 +122,7 @@ Decidim.configure do |config|
   #   api_version: Rails.application.secrets.etherpad[:api_version]
   # }
 
-  config.base_uploads_path = ENV["HEROKU_APP_NAME"] + "/" if ENV["HEROKU_APP_NAME"].present?
+  config.base_uploads_path = "#{ENV["HEROKU_APP_NAME"]}/" if ENV["HEROKU_APP_NAME"].present?
 
   config.force_ssl = ENV.fetch("FORCE_SSL", false)
 end

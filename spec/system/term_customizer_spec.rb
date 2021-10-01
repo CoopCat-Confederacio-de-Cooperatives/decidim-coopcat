@@ -17,6 +17,6 @@ describe "Term customizer", type: :system do
 
   it "allows visiting the admin page for Term Customizer" do
     visit decidim_admin.root_path
-    expect(page).to have_link "Term customizer", href: decidim_admin.root_path + "term_customizer/sets"
+    expect(page).to have_link "Term customizer", href: "#{decidim_admin.root_path}term_customizer/sets"
   end
 end
