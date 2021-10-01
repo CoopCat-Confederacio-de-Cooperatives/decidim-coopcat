@@ -39,7 +39,6 @@ jobs:
 
       - name: Setup & create Database
         run: |
-          bundle exec rake decidim:generate_external_test_app
           bundle exec rails db:create db:schema:load
         env:
           RAILS_ENV: test
