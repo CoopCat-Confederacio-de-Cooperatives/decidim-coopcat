@@ -31,7 +31,7 @@ Decidim::Organization.first || Decidim::Organization.create!(
   },
   host: ENV["DECIDIM_HOST"] || "localhost",
   description: Decidim::Faker::Localized.wrapped("<p>", "</p>") do
-    Decidim::Faker::Localized.sentence(15)
+    Decidim::Faker::Localized.sentence(word_count: 15)
   end,
   default_locale: Decidim.default_locale,
   available_locales: Decidim.available_locales,

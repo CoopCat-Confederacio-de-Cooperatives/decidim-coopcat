@@ -9,7 +9,7 @@ class DecidimController < ApplicationController
   def set_raven_context
     return unless Rails.application.secrets.sentry_enabled
 
-    Sentry.set_user({id: try(:current_user).try(:id)}.merge(session))
+    Sentry.set_user({ id: try(:current_user).try(:id) }.merge(session))
     Sentry.set_extras(params: params.to_unsafe_h, url: request.url)
   end
 end
