@@ -12,7 +12,9 @@ Rails.application.configure do
       organization_id: event.payload[:organization_id],
       referer: event.payload[:referer]
     }
-  end # Settings specified here will take precedence over those in config/application.rb.
+  end
+
+  # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
   config.cache_classes = true

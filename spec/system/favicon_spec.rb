@@ -12,7 +12,7 @@ describe "Favicon", type: :system do
 
     it "uses the default favicon" do
       visit decidim.root_path
-      expect(page).to have_xpath("/html/head/link[contains(@href, 'default_favicon')]", visible: false)
+      expect(page).to have_xpath("/html/head/link[contains(@href, 'default_favicon')]", visible: :all)
     end
   end
 
@@ -25,7 +25,7 @@ describe "Favicon", type: :system do
 
     it "uses the organization favicon" do
       visit decidim.root_path
-      expect(page).to have_xpath("/html/head/link[contains(@href, 'icon.png')]", visible: false)
+      expect(page).to have_xpath("/html/head/link[contains(@href, 'icon.png')]", visible: :all)
     end
   end
 end
