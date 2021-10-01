@@ -4,15 +4,15 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.23-stable" }
+DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.24-stable" }
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 
-gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
+gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "master"
 gem "decidim-direct_verifications", github: "Platoniq/decidim-verifications-direct_verifications", branch: "main"
-gem "decidim-decidim_awesome", "~> 0.6.6"
-gem "decidim-term_customizer", github: "Platoniq/decidim-module-term_customizer", branch: "temp/0.23"
+gem "decidim-decidim_awesome", "~> 0.7.0"
+gem "decidim-term_customizer", github: "Platoniq/decidim-module-term_customizer", branch: "temp/0.24"
 
 gem "bootsnap", "~> 1.7"
 
