@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 describe "Custom styles", type: :system do
   let(:organization) { create :organization }
