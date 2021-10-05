@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -7,7 +9,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # You can remove the 'faker' gem if you don't want Decidim seeds.
 if ENV["HEROKU_APP_NAME"].present?
-  ENV["DECIDIM_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com"
+  ENV["DECIDIM_HOST"] = "#{ENV["HEROKU_APP_NAME"]}.herokuapp.com"
   ENV["SEED"] = "true"
 end
 
@@ -31,7 +33,7 @@ Decidim::Organization.first || Decidim::Organization.create!(
   },
   host: ENV["DECIDIM_HOST"] || "localhost",
   description: Decidim::Faker::Localized.wrapped("<p>", "</p>") do
-    Decidim::Faker::Localized.sentence(15)
+    Decidim::Faker::Localized.sentence(word_count: 15)
   end,
   default_locale: Decidim.default_locale,
   available_locales: Decidim.available_locales,
