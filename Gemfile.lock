@@ -321,7 +321,7 @@ GEM
       parser (>= 2.4)
       smart_properties
     bindex (0.8.1)
-    bootsnap (1.7.5)
+    bootsnap (1.9.3)
       msgpack (~> 1.0)
     browser (2.7.1)
     builder (3.2.4)
@@ -947,7 +947,7 @@ PLATFORMS
 
 DEPENDENCIES
   barnes
-  bootsnap (~> 1.7)
+  bootsnap (~> 1.9)
   byebug (~> 11.1)
   dalli
   decidim!
