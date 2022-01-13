@@ -29,7 +29,7 @@ end
 
 group :development do
   gem "letter_opener_web", "~> 1.4"
-  gem "listen", "~> 3.5"
+  gem "listen", "~> 3.7"
   gem "memory_profiler"
   gem "rack-mini-profiler"
   gem "spring", "~> 2.1"
