@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/Platoniq/decidim-verifications-direct_verifications.git
-  revision: 46ba2fad0e02bb8bf8c61867262bba783890e03a
-  branch: main
+  revision: 9346c4ab16345b9709947d804b8670e07974b162
+  branch: fix/csv-upload-and-parsing
   specs:
     decidim-direct_verifications (1.0)
       decidim-admin (>= 0.23.0)
@@ -381,10 +381,9 @@ GEM
     db-query-matchers (0.9.0)
       activesupport (>= 4.0, <= 6.0)
       rspec (~> 3.0)
-    decidim-decidim_awesome (0.7.0)
+    decidim-decidim_awesome (0.7.2)
       decidim-admin (>= 0.23.0, < 0.25)
       decidim-core (>= 0.23.0, < 0.25)
-      redcarpet (~> 3.4)
       sassc (~> 2.3)
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
@@ -982,4 +981,4 @@ RUBY VERSION
    ruby 2.7.3p183
 
 BUNDLED WITH
-   2.2.8
+   2.2.33
