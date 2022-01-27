@@ -9,29 +9,17 @@ GIT
 
 GIT
   remote: https://github.com/Platoniq/decidim-verifications-direct_verifications.git
-  revision: 46ba2fad0e02bb8bf8c61867262bba783890e03a
-  branch: main
+  revision: 63d3e16ac7061ce5b4d8a1b4208e6b190340d40e
+  branch: fix/csv-upload-and-parsing
   specs:
     decidim-direct_verifications (1.0)
       decidim-admin (>= 0.23.0)
       decidim-core (>= 0.23.0)
 
 GIT
-  remote: https://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: 2722e765e3065d56f036bd993b282dac3c121bd4
-  branch: master
-  specs:
-    decidim-action_delegator (0.3)
-      decidim-admin (>= 0.24.0, <= 0.24.3)
-      decidim-consultations (>= 0.24.0, <= 0.24.3)
-      decidim-core (>= 0.24.0, <= 0.24.3)
-      savon
-      twilio-ruby
-
-GIT
-  remote: https://github.com/decidim/decidim.git
-  revision: a610ad4fe4c4a821e0dc66188bdd6c7fe2998c34
-  branch: release/0.24-stable
+  remote: https://github.com/Platoniq/decidim.git
+  revision: 55fa532cd6ff1e3cab1f6a655d95ca6f14ee8fef
+  branch: temp/0.24
   specs:
     decidim (0.24.3)
       decidim-accountability (= 0.24.3)
@@ -240,6 +228,18 @@ GIT
     decidim-verifications (0.24.3)
       decidim-core (= 0.24.3)
 
+GIT
+  remote: https://github.com/coopdevs/decidim-module-action_delegator.git
+  revision: 2722e765e3065d56f036bd993b282dac3c121bd4
+  branch: master
+  specs:
+    decidim-action_delegator (0.3)
+      decidim-admin (>= 0.24.0, <= 0.24.3)
+      decidim-consultations (>= 0.24.0, <= 0.24.3)
+      decidim-core (>= 0.24.0, <= 0.24.3)
+      savon
+      twilio-ruby
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -321,13 +321,14 @@ GEM
       parser (>= 2.4)
       smart_properties
     bindex (0.8.1)
-    bootsnap (1.7.5)
-      msgpack (~> 1.0)
+    bootsnap (1.10.2)
+      msgpack (~> 1.2)
     browser (2.7.1)
     builder (3.2.4)
     byebug (11.1.3)
-    capybara (3.35.3)
+    capybara (3.36.0)
       addressable
+      matrix
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
@@ -354,7 +355,7 @@ GEM
       actionpack (>= 3.0)
       cells (>= 4.1.6, < 5.0.0)
     charlock_holmes (0.7.7)
-    chef-utils (17.6.15)
+    chef-utils (17.9.26)
       concurrent-ruby
     childprocess (3.0.0)
     coercible (1.0.0)
@@ -372,45 +373,44 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
-    css_parser (1.10.0)
+    css_parser (1.11.0)
       addressable
-    dalli (2.7.11)
+    dalli (3.2.0)
     date_validator (0.9.0)
       activemodel
       activesupport
     db-query-matchers (0.9.0)
       activesupport (>= 4.0, <= 6.0)
       rspec (~> 3.0)
-    decidim-decidim_awesome (0.7.0)
+    decidim-decidim_awesome (0.7.2)
       decidim-admin (>= 0.23.0, < 0.25)
       decidim-core (>= 0.23.0, < 0.25)
-      redcarpet (~> 3.4)
       sassc (~> 2.3)
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
-    devise (4.8.0)
+    devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.10.0)
+    devise-i18n (1.10.1)
       devise (>= 4.8.0)
     devise_invitable (1.7.5)
       actionmailer (>= 4.1.0)
       devise (>= 4.0.0)
-    diff-lcs (1.4.4)
+    diff-lcs (1.5.0)
     diffy (3.4.0)
-    doc2text (0.4.3)
-      nokogiri (~> 1.11.1)
+    doc2text (0.4.4)
+      nokogiri (>= 1.12.5, < 1.13.0)
       rubyzip (~> 2.3.0)
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    doorkeeper (5.5.3)
+    doorkeeper (5.5.4)
       railties (>= 5)
     doorkeeper-i18n (4.0.1)
     em-http-request (1.1.7)
@@ -439,44 +439,48 @@ GEM
       rest-client (>= 1.6)
     eventmachine (1.2.7)
     eventmachine_httpserver (0.2.1)
-    excon (0.80.1)
+    excon (0.90.0)
     execjs (2.8.1)
     factory_bot (4.11.1)
       activesupport (>= 3.0.0)
     factory_bot_rails (4.11.1)
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
-    faker (2.18.0)
+    faker (2.19.0)
       i18n (>= 1.6, < 2)
-    faraday (1.8.0)
+    faraday (1.9.3)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
-      faraday-httpclient (~> 1.0.1)
+      faraday-httpclient (~> 1.0)
+      faraday-multipart (~> 1.0)
       faraday-net_http (~> 1.0)
-      faraday-net_http_persistent (~> 1.1)
+      faraday-net_http_persistent (~> 1.0)
       faraday-patron (~> 1.0)
       faraday-rack (~> 1.0)
-      multipart-post (>= 1.2, < 3)
+      faraday-retry (~> 1.0)
       ruby2_keywords (>= 0.0.4)
     faraday-em_http (1.0.0)
     faraday-em_synchrony (1.0.0)
     faraday-excon (1.1.0)
     faraday-httpclient (1.0.1)
+    faraday-multipart (1.0.3)
+      multipart-post (>= 1.2, < 3)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
-    ffi (1.15.4)
+    faraday-retry (1.0.3)
+    ffi (1.15.5)
     file_validators (2.3.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
-    fog-aws (3.10.0)
+    fog-aws (3.12.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
       fog-xml (~> 0.1)
       ipaddress (~> 0.8)
-    fog-core (2.2.3)
+    fog-core (2.2.4)
       builder
       excon (~> 0.71)
       formatador (~> 0.2)
@@ -484,12 +488,12 @@ GEM
     fog-json (1.2.0)
       fog-core
       multi_json (~> 1.10)
-    fog-local (0.7.0)
+    fog-local (0.8.0)
       fog-core (>= 1.27, < 3.0)
-    fog-xml (0.1.3)
+    fog-xml (0.1.4)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
-    formatador (0.2.5)
+    formatador (0.3.0)
     foundation-rails (6.6.2.0)
       railties (>= 3.1.0)
       sass (>= 3.3.0)
@@ -500,17 +504,17 @@ GEM
       activesupport (>= 4.1, < 6.0)
       railties (>= 4.1, < 6.0)
       tzinfo (~> 1.2, >= 1.2.2)
-    geocoder (1.6.7)
-    globalid (0.5.2)
+    geocoder (1.7.3)
+    globalid (1.0.0)
       activesupport (>= 5.0)
     graphiql-rails (1.4.11)
       railties
       sprockets-rails
-    graphql (1.12.16)
+    graphql (1.13.6)
     gyoku (1.3.1)
       builder (>= 2.1.2)
     hashdiff (1.0.1)
-    hashie (4.1.0)
+    hashie (5.0.0)
     highline (2.0.3)
     html_tokenizer (0.0.7)
     htmlentities (4.3.4)
@@ -518,12 +522,12 @@ GEM
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     http_parser.rb (0.6.0)
-    httpi (2.4.5)
+    httpi (2.5.0)
       rack
       socksify
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.34)
+    i18n-tasks (0.9.37)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
@@ -535,7 +539,7 @@ GEM
       terminal-table (>= 1.5.1)
     icalendar (2.7.1)
       ice_cube (~> 0.16)
-    ice_cube (0.16.3)
+    ice_cube (0.16.4)
     ice_nine (0.11.2)
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
@@ -549,19 +553,19 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-tmpl-rails (1.1.0)
       rails (>= 3.1.0)
-    jwt (2.2.3)
-    kaminari (1.2.1)
+    jwt (2.3.0)
+    kaminari (1.2.2)
       activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.1)
-      kaminari-activerecord (= 1.2.1)
-      kaminari-core (= 1.2.1)
-    kaminari-actionview (1.2.1)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
       actionview
-      kaminari-core (= 1.2.1)
-    kaminari-activerecord (1.2.1)
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
       activerecord
-      kaminari-core (= 1.2.1)
-    kaminari-core (1.2.1)
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     kramdown (2.3.1)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -570,11 +574,11 @@ GEM
       addressable (~> 2.7)
     letter_opener (1.7.0)
       launchy (~> 2.2)
-    letter_opener_web (1.4.0)
+    letter_opener_web (1.4.1)
       actionmailer (>= 3.2)
       letter_opener (~> 1.0)
       railties (>= 3.2)
-    listen (3.5.1)
+    listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lograge (0.11.2)
@@ -588,6 +592,7 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
+    matrix (0.4.2)
     mdl (0.11.0)
       kramdown (~> 2.3)
       kramdown-parser-gfm (~> 1.1)
@@ -596,19 +601,19 @@ GEM
       mixlib-shellout
     memory_profiler (1.0.0)
     method_source (1.0.0)
-    mime-types (3.3.1)
+    mime-types (3.4.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0901)
+    mime-types-data (3.2022.0105)
     mini_magick (4.11.0)
-    mini_mime (1.1.1)
-    mini_portile2 (2.5.3)
-    minitest (5.14.4)
+    mini_mime (1.1.2)
+    mini_portile2 (2.6.1)
+    minitest (5.15.0)
     mixlib-cli (2.1.8)
     mixlib-config (3.0.9)
       tomlrb
     mixlib-shellout (3.2.5)
       chef-utils
-    msgpack (1.4.2)
+    msgpack (1.4.4)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
@@ -616,11 +621,11 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.8)
     nobspw (0.6.2)
-    nokogiri (1.11.7)
-      mini_portile2 (~> 2.5.0)
+    nokogiri (1.12.5)
+      mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     nori (2.6.0)
-    oauth (0.5.6)
+    oauth (0.5.8)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
@@ -640,7 +645,7 @@ GEM
     omniauth-oauth (1.2.0)
       oauth
       omniauth (>= 1.0, < 3)
-    omniauth-oauth2 (1.7.1)
+    omniauth-oauth2 (1.7.2)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
     omniauth-rails_csrf_protection (0.1.2)
@@ -654,10 +659,10 @@ GEM
       activerecord (>= 4.2)
       request_store (~> 1.1)
     parallel (1.21.0)
-    parser (3.0.1.1)
+    parser (3.1.0.0)
       ast (~> 2.4.1)
     pg (1.1.4)
-    pg_search (2.3.5)
+    pg_search (2.3.6)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
     premailer (1.15.0)
@@ -676,15 +681,15 @@ GEM
       eventmachine_httpserver
       http_parser.rb (~> 0.6.0)
       multi_json
-    puma (5.3.2)
+    puma (5.6.1)
       nio4r (~> 2.0)
-    racc (1.5.2)
+    racc (1.6.0)
     rack (2.2.3)
     rack-attack (6.5.0)
       rack (>= 1.0, < 3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
-    rack-mini-profiler (2.3.2)
+    rack-mini-profiler (2.3.3)
       rack (>= 1.2.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -720,7 +725,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
-    rainbow (3.0.0)
+    rainbow (3.1.1)
     rake (13.0.6)
     ransack (2.1.1)
       actionpack (>= 5.0)
@@ -737,9 +742,9 @@ GEM
       virtus (~> 1.0.5)
       wisper (>= 1.6.1)
     redcarpet (3.5.1)
-    redis (4.4.0)
-    regexp_parser (2.1.1)
-    request_store (1.5.0)
+    redis (4.5.1)
+    regexp_parser (2.2.0)
+    request_store (1.5.1)
       rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -790,7 +795,7 @@ GEM
       rubocop-ast (>= 0.5.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (1.12.0)
+    rubocop-ast (1.15.1)
       parser (>= 3.0.1.1)
     rubocop-faker (1.1.0)
       faker (>= 2.12.0)
@@ -804,7 +809,7 @@ GEM
       rubocop-ast (>= 0.7.1)
     ruby-ole (1.2.12.2)
     ruby-progressbar (1.11.0)
-    ruby-vips (2.1.3)
+    ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
@@ -829,26 +834,25 @@ GEM
       nokogiri (>= 1.8.1)
       nori (~> 2.4)
       wasabi (~> 3.4)
-    scout_apm (4.1.1)
+    scout_apm (5.1.1)
       parser
     searchlight (4.1.0)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sentry-rails (4.6.1)
+    sentry-rails (5.0.1)
       railties (>= 5.0)
-      sentry-ruby-core (~> 4.6.0)
-    sentry-ruby (4.6.1)
+      sentry-ruby-core (~> 5.0.1)
+    sentry-ruby (5.0.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      faraday (>= 1.0)
-      sentry-ruby-core (= 4.6.1)
-    sentry-ruby-core (4.6.1)
+      sentry-ruby-core (= 5.0.1)
+    sentry-ruby-core (5.0.1)
       concurrent-ruby
-      faraday
-    sentry-sidekiq (4.6.1)
-      sentry-ruby-core (~> 4.6.0)
+    sentry-sidekiq (5.0.1)
+      sentry-ruby-core (~> 5.0.1)
+      sidekiq (>= 3.0)
     seven_zip_ruby (1.3.0)
-    sidekiq (6.2.1)
+    sidekiq (6.4.0)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
@@ -858,7 +862,7 @@ GEM
     simplecov-cobertura (1.3.1)
       simplecov (~> 0.8)
     simplecov-html (0.12.3)
-    smart_properties (1.16.3)
+    smart_properties (1.17.0)
     social-share-button (1.2.4)
       coffee-rails
     socksify (1.7.1)
@@ -875,9 +879,9 @@ GEM
       babel-source (>= 5.8.11)
       babel-transpiler
       sprockets (>= 3.0.0)
-    sprockets-rails (3.2.2)
-      actionpack (>= 4.0)
-      activesupport (>= 4.0)
+    sprockets-rails (3.4.2)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     ssrf_filter (1.0.7)
     stackprof (0.2.17)
@@ -887,14 +891,14 @@ GEM
     temple (0.8.2)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
-    thor (1.1.0)
+    thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
     tomlrb (2.0.1)
     truncato (0.7.11)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.7.0, <= 2.0)
-    twilio-ruby (5.58.3)
+    twilio-ruby (5.63.1)
       faraday (>= 0.9, < 2.0)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
@@ -918,7 +922,7 @@ GEM
       equalizer (~> 0.0, >= 0.0.9)
     warden (1.2.9)
       rack (>= 2.0.9)
-    wasabi (3.6.1)
+    wasabi (3.7.0)
       addressable
       httpi (~> 2.0)
       nokogiri (>= 1.4.2)
@@ -963,7 +967,7 @@ DEPENDENCIES
   listen (~> 3.5)
   lograge
   memory_profiler
-  puma (~> 5.3.2)
+  puma (~> 5.6.1)
   rack-mini-profiler
   rack-timeout
   rubocop-faker (~> 1.0)
@@ -982,4 +986,4 @@ RUBY VERSION
    ruby 2.7.3p183
 
 BUNDLED WITH
-   2.2.8
+   2.2.33
