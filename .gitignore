@@ -38,3 +38,6 @@ spec/examples.txt
 coverage/
 decidim_dummy_app/
 .vscode
+
+config/deploy*
+Capfile
