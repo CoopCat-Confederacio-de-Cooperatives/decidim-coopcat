@@ -50,6 +50,7 @@ group :development do
 end
 
 group :production do
+  gem "figaro", "~> 1.2"
   gem "barnes"
   gem "dalli"
   gem "fog-aws"
