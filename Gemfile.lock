@@ -496,6 +496,8 @@ GEM
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
     ffi (1.15.5)
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
     file_validators (2.3.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
@@ -999,6 +1001,7 @@ DEPENDENCIES
   decidim-direct_verifications!
   decidim-term_customizer!
   faker (~> 2.18)
+  figaro (~> 1.2)
   fog-aws
   i18n (~> 1.8.1)
   letter_opener_web (~> 1.4)
