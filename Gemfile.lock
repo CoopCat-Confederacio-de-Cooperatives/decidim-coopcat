@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/Platoniq/decidim-verifications-direct_verifications.git
-  revision: 63d3e16ac7061ce5b4d8a1b4208e6b190340d40e
+  revision: bf61da5fa0328f9c4b4abe72995e44bf51f8f726
   branch: fix/csv-upload-and-parsing
   specs:
     decidim-direct_verifications (1.0)
@@ -243,25 +243,25 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (5.2.6)
-      actionpack (= 5.2.6)
+    actioncable (5.2.6.2)
+      actionpack (= 5.2.6.2)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actionmailer (5.2.6)
-      actionpack (= 5.2.6)
-      actionview (= 5.2.6)
-      activejob (= 5.2.6)
+    actionmailer (5.2.6.2)
+      actionpack (= 5.2.6.2)
+      actionview (= 5.2.6.2)
+      activejob (= 5.2.6.2)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (5.2.6)
-      actionview (= 5.2.6)
-      activesupport (= 5.2.6)
+    actionpack (5.2.6.2)
+      actionview (= 5.2.6.2)
+      activesupport (= 5.2.6.2)
       rack (~> 2.0, >= 2.0.8)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.2.6)
-      activesupport (= 5.2.6)
+    actionview (5.2.6.2)
+      activesupport (= 5.2.6.2)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
@@ -269,20 +269,20 @@ GEM
     active_link_to (1.0.5)
       actionpack
       addressable
-    activejob (5.2.6)
-      activesupport (= 5.2.6)
+    activejob (5.2.6.2)
+      activesupport (= 5.2.6.2)
       globalid (>= 0.3.6)
-    activemodel (5.2.6)
-      activesupport (= 5.2.6)
-    activerecord (5.2.6)
-      activemodel (= 5.2.6)
-      activesupport (= 5.2.6)
+    activemodel (5.2.6.2)
+      activesupport (= 5.2.6.2)
+    activerecord (5.2.6.2)
+      activemodel (= 5.2.6.2)
+      activesupport (= 5.2.6.2)
       arel (>= 9.0)
-    activestorage (5.2.6)
-      actionpack (= 5.2.6)
-      activerecord (= 5.2.6)
+    activestorage (5.2.6.2)
+      actionpack (= 5.2.6.2)
+      activerecord (= 5.2.6.2)
       marcel (~> 1.0.0)
-    activesupport (5.2.6)
+    activesupport (5.2.6.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
@@ -323,7 +323,7 @@ GEM
       parser (>= 2.4)
       smart_properties
     bindex (0.8.1)
-    bootsnap (1.10.2)
+    bootsnap (1.10.3)
       msgpack (~> 1.2)
     browser (2.7.1)
     builder (3.2.4)
@@ -379,7 +379,7 @@ GEM
       actionpack (>= 3.0)
       cells (>= 4.1.6, < 5.0.0)
     charlock_holmes (0.7.7)
-    chef-utils (17.9.26)
+    chef-utils (17.9.46)
       concurrent-ruby
     childprocess (3.0.0)
     coercible (1.0.0)
@@ -399,7 +399,7 @@ GEM
     crass (1.0.6)
     css_parser (1.11.0)
       addressable
-    dalli (3.2.0)
+    dalli (3.2.1)
     date_validator (0.9.0)
       activemodel
       activesupport
@@ -463,7 +463,7 @@ GEM
       rest-client (>= 1.6)
     eventmachine (1.2.7)
     eventmachine_httpserver (0.2.1)
-    excon (0.90.0)
+    excon (0.91.0)
     execjs (2.8.1)
     factory_bot (4.11.1)
       activesupport (>= 3.0.0)
@@ -499,11 +499,10 @@ GEM
     file_validators (2.3.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
-    fog-aws (3.12.0)
+    fog-aws (3.13.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
       fog-xml (~> 0.1)
-      ipaddress (~> 0.8)
     fog-core (2.2.4)
       builder
       excon (~> 0.71)
@@ -534,7 +533,7 @@ GEM
     graphiql-rails (1.4.11)
       railties
       sprockets-rails
-    graphql (1.13.6)
+    graphql (1.13.10)
     gyoku (1.3.1)
       builder (>= 2.1.2)
     hashdiff (1.0.1)
@@ -549,7 +548,7 @@ GEM
     httpi (2.5.0)
       rack
       socksify
-    i18n (1.8.10)
+    i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.37)
       activesupport (>= 4.0.2)
@@ -570,7 +569,6 @@ GEM
       ruby-vips (>= 2.0.17, < 3)
     invisible_captcha (0.13.0)
       rails (>= 3.2.0)
-    ipaddress (0.8.3)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -637,7 +635,7 @@ GEM
       tomlrb
     mixlib-shellout (3.2.5)
       chef-utils
-    msgpack (1.4.4)
+    msgpack (1.4.5)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
@@ -712,7 +710,7 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
-    rack-attack (6.5.0)
+    rack-attack (6.6.0)
       rack (>= 1.0, < 3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
@@ -721,18 +719,18 @@ GEM
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rack-timeout (0.6.0)
-    rails (5.2.6)
-      actioncable (= 5.2.6)
-      actionmailer (= 5.2.6)
-      actionpack (= 5.2.6)
-      actionview (= 5.2.6)
-      activejob (= 5.2.6)
-      activemodel (= 5.2.6)
-      activerecord (= 5.2.6)
-      activestorage (= 5.2.6)
-      activesupport (= 5.2.6)
+    rails (5.2.6.2)
+      actioncable (= 5.2.6.2)
+      actionmailer (= 5.2.6.2)
+      actionpack (= 5.2.6.2)
+      actionview (= 5.2.6.2)
+      activejob (= 5.2.6.2)
+      activemodel (= 5.2.6.2)
+      activerecord (= 5.2.6.2)
+      activestorage (= 5.2.6.2)
+      activesupport (= 5.2.6.2)
       bundler (>= 1.3.0)
-      railties (= 5.2.6)
+      railties (= 5.2.6.2)
       sprockets-rails (>= 2.0.0)
     rails-controller-testing (1.0.5)
       actionpack (>= 5.0.1.rc1)
@@ -746,9 +744,9 @@ GEM
     rails-i18n (5.1.3)
       i18n (>= 0.7, < 2)
       railties (>= 5.0, < 6)
-    railties (5.2.6)
-      actionpack (= 5.2.6)
-      activesupport (= 5.2.6)
+    railties (5.2.6.2)
+      actionpack (= 5.2.6.2)
+      activesupport (= 5.2.6.2)
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
@@ -759,7 +757,7 @@ GEM
       activerecord (>= 5.0)
       activesupport (>= 5.0)
       i18n
-    rb-fsevent (0.11.0)
+    rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rectify (0.13.0)
@@ -769,8 +767,8 @@ GEM
       virtus (~> 1.0.5)
       wisper (>= 1.6.1)
     redcarpet (3.5.1)
-    redis (4.5.1)
-    regexp_parser (2.2.0)
+    redis (4.6.0)
+    regexp_parser (2.2.1)
     request_store (1.5.1)
       rack (>= 1.4)
     responders (3.0.1)
@@ -822,7 +820,7 @@ GEM
       rubocop-ast (>= 0.5.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (1.15.1)
+    rubocop-ast (1.15.2)
       parser (>= 3.0.1.1)
     rubocop-faker (1.1.0)
       faker (>= 2.12.0)
@@ -867,19 +865,19 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sentry-rails (5.0.1)
+    sentry-rails (5.1.0)
       railties (>= 5.0)
-      sentry-ruby-core (~> 5.0.1)
-    sentry-ruby (5.0.1)
+      sentry-ruby-core (~> 5.1.0)
+    sentry-ruby (5.1.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      sentry-ruby-core (= 5.0.1)
-    sentry-ruby-core (5.0.1)
+      sentry-ruby-core (= 5.1.0)
+    sentry-ruby-core (5.1.0)
       concurrent-ruby
-    sentry-sidekiq (5.0.1)
-      sentry-ruby-core (~> 5.0.1)
+    sentry-sidekiq (5.1.0)
+      sentry-ruby-core (~> 5.1.0)
       sidekiq (>= 3.0)
     seven_zip_ruby (1.3.0)
-    sidekiq (6.4.0)
+    sidekiq (6.4.1)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
@@ -930,7 +928,7 @@ GEM
     truncato (0.7.11)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.7.0, <= 2.0)
-    twilio-ruby (5.63.1)
+    twilio-ruby (5.64.0)
       faraday (>= 0.9, < 2.0)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
@@ -1002,6 +1000,7 @@ DEPENDENCIES
   decidim-term_customizer!
   faker (~> 2.18)
   fog-aws
+  i18n (~> 1.8.1)
   letter_opener_web (~> 1.4)
   listen (~> 3.5)
   lograge
@@ -1022,7 +1021,7 @@ DEPENDENCIES
   web-console (~> 3.5)
 
 RUBY VERSION
-   ruby 2.7.3p183
+   ruby 2.7.5p203
 
 BUNDLED WITH
    2.2.33
