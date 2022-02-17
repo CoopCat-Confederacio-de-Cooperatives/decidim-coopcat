@@ -61,4 +61,5 @@ group :production do
   gem "sentry-ruby"
   gem "sentry-sidekiq"
   gem "sidekiq"
+  gem "sidekiq-cron"
 end
