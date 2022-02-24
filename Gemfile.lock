@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/Platoniq/decidim-verifications-direct_verifications.git
-  revision: bf61da5fa0328f9c4b4abe72995e44bf51f8f726
+  revision: 8869f078712a415a7aa53eeb0e14d8fbf1b1c8ea
   branch: fix/csv-upload-and-parsing
   specs:
     decidim-direct_verifications (1.0)
@@ -421,7 +421,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.10.1)
+    devise-i18n (1.10.2)
       devise (>= 4.8.0)
     devise_invitable (1.7.5)
       actionmailer (>= 4.1.0)
@@ -474,7 +474,7 @@ GEM
       railties (>= 3.0.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
-    faraday (1.9.3)
+    faraday (1.10.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -658,8 +658,8 @@ GEM
       racc (~> 1.4)
     nori (2.6.0)
     oauth (0.5.8)
-    oauth2 (1.4.7)
-      faraday (>= 0.8, < 2.0)
+    oauth2 (1.4.9)
+      faraday (>= 0.17.3, < 3.0)
       jwt (>= 1.0, < 3.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
