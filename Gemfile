@@ -39,7 +39,6 @@ group :development do
   gem "stackprof"
   gem "web-console", "~> 3.5"
 
-
   gem "capistrano", "~> 3.14"
   gem "capistrano-bundler"
   gem "capistrano-passenger"
@@ -50,9 +49,9 @@ group :development do
 end
 
 group :production do
-  gem "figaro", "~> 1.2"
   gem "barnes"
   gem "dalli"
+  gem "figaro", "~> 1.2"
   gem "fog-aws"
   gem "lograge"
   gem "rack-timeout"
