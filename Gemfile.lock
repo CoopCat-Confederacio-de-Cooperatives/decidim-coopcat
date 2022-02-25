@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/Platoniq/decidim-verifications-direct_verifications.git
-  revision: bf61da5fa0328f9c4b4abe72995e44bf51f8f726
-  branch: fix/csv-upload-and-parsing
+  revision: 7922aea71bb058b8fe3eb074dbd1733b1a05071a
+  branch: main
   specs:
     decidim-direct_verifications (1.0)
       decidim-admin (>= 0.23.0)
