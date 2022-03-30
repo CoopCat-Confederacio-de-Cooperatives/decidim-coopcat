@@ -16,7 +16,7 @@ gem "decidim-term_customizer", github: "Platoniq/decidim-module-term_customizer"
 
 gem "bootsnap", "~> 1.7"
 
-gem "puma", "~> 5.3.2"
+gem "puma", "~> 5.6.4"
 gem "uglifier", "~> 4.1"
 # bug in version 1.9
 gem "i18n", "~> 1.8.1"
