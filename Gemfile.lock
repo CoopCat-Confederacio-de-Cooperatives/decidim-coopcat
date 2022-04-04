@@ -395,7 +395,7 @@ GEM
       decidim-admin (>= 0.23.0, < 0.25)
       decidim-core (>= 0.23.0, < 0.25)
       sassc (~> 2.3)
-    decidim-direct_verifications (1.0.1)
+    decidim-direct_verifications (1.0.2)
       decidim-admin (>= 0.23.0)
       decidim-core (>= 0.23.0)
     declarative-builder (0.1.0)
@@ -976,7 +976,7 @@ DEPENDENCIES
   decidim-consultations!
   decidim-decidim_awesome (~> 0.7.2)
   decidim-dev!
-  decidim-direct_verifications (~> 1.0.1)
+  decidim-direct_verifications (~> 1.0.2)
   decidim-term_customizer!
   faker (~> 2.18)
   figaro (~> 1.2)
