@@ -30,7 +30,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "letter_opener_web", "~> 1.4"
+  gem "letter_opener_web", "~> 2.0"
   gem "listen", "~> 3.5"
   gem "memory_profiler"
   gem "rack-mini-profiler"
