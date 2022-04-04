@@ -19,7 +19,7 @@ gem "bootsnap", "~> 1.7"
 gem "puma", "~> 5.3.2"
 gem "uglifier", "~> 4.1"
 # bug in version 1.9
-gem "i18n", "~> 1.8.1"
+gem "i18n", "~> 1.10.0"
 
 group :development, :test do
   gem "byebug", "~> 11.1", platform: :mri
