@@ -9,9 +9,9 @@ DECIDIM_VERSION = { github: "Platoniq/decidim", branch: "temp/0.24" }.freeze
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 
-gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "master"
-gem "decidim-decidim_awesome", "~> 0.7.0"
-gem "decidim-direct_verifications", github: "Platoniq/decidim-verifications-direct_verifications", branch: "main"
+gem "decidim-action_delegator"
+gem "decidim-decidim_awesome", "~> 0.7.2"
+gem "decidim-direct_verifications"
 gem "decidim-term_customizer", github: "Platoniq/decidim-module-term_customizer", branch: "temp/0.24"
 
 gem "bootsnap", "~> 1.7"
