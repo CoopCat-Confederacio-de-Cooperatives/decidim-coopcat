@@ -1615,16 +1615,24 @@ ActiveRecord::Schema.define(version: 2022_06_17_151239) do
 
   create_table "weighted_consultation_votes", force: :cascade do |t|
     t.datetime "generated_at"
-    t.integer "consultation_id"
-    t.integer "question_id"
-    t.integer "response_id"
+    t.bigint "decidim_consultation_id"
+    t.bigint "decidim_consultation_question_id"
+    t.bigint "decidim_consultations_response_id"
     t.string "membership_type"
     t.integer "membership_weight"
     t.boolean "delegated"
-    t.integer "grantee_id"
-    t.integer "granter_id"
+    t.integer "export_number"
+    t.bigint "author_id"
+    t.bigint "grantee_id"
+    t.bigint "granter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_weighted_consultation_votes_on_author_id"
+    t.index ["decidim_consultation_id"], name: "index_weighted_consultation_votes_on_consultation"
+    t.index ["decidim_consultation_question_id"], name: "index_weighted_consultation_votes_on_question"
+    t.index ["decidim_consultations_response_id"], name: "index_weighted_consultation_votes_on_response"
+    t.index ["grantee_id"], name: "index_weighted_consultation_votes_on_grantee_id"
+    t.index ["granter_id"], name: "index_weighted_consultation_votes_on_granter_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

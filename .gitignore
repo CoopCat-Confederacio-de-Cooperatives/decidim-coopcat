@@ -38,3 +38,8 @@ spec/examples.txt
 coverage/
 decidim_dummy_app/
 .vscode
+
+
+Capfile
+config/deploy.rb
+config/deploy/*

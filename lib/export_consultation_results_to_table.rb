@@ -1,5 +1,5 @@
 class ExportConsultationResultsToTable
-  DEFAULT_METADATA = { membership_type: "none", membership_weight: "1" }
+  DEFAULT_METADATA = { membership_type: nil, membership_weight: nil }
 
   def initialize(consultation)
     @consultation = consultation
@@ -7,7 +7,7 @@ class ExportConsultationResultsToTable
     users_who_voted_ids = Decidim::Consultations::Vote.where(question: @question_ids).pluck(:decidim_author_id).uniq
 
     @users_who_voted_metadata = {}
-    @granters_by_vote_id = {}
+    @grantees_by_vote_id = {}
 
     # Store metadata for users who voted
     authorizations = Decidim::Authorization.where(name: "direct_verifications", decidim_user_id: users_who_voted_ids)
@@ -20,7 +20,7 @@ class ExportConsultationResultsToTable
     
     # Store delegation granter for each vote
     granted_votes_query.each do |record|
-      @granters_by_vote_id[record["item_id"]] = record["granter_id"]
+      @grantees_by_vote_id[record["item_id"]] = record["grantee_id"]
     end
   end
     
@@ -28,6 +28,8 @@ class ExportConsultationResultsToTable
     @records = []
 
     @generated_at = Time.now
+    @export_number = WeightedConsultationVote.pluck(:export_number).uniq.sort.last || 0
+    @export_number += 1
     
     Decidim::Consultations::Vote.where(question: @question_ids).find_each do |vote|
       delegated = false
@@ -35,21 +37,23 @@ class ExportConsultationResultsToTable
   
       author_id = vote.author.id
   
-      if @granters_by_vote_id[vote.id]
-        author_id = @granters_by_vote_id[vote.id]
+      if @grantees_by_vote_id[vote.id]
+        grantee_id = @grantees_by_vote_id[vote.id]
   
         delegated = true
-        user_metadata = metadata(author_id)
+        # user_metadata = metadata(author_id)
       end
       
       attributes = {
-        consultation_id: @consultation.id,
-        question_id: vote.question.id,
-        response_id: vote.response.id,
+        decidim_consultation_id: @consultation.id,
+        decidim_consultation_question_id: vote.question.id,
+        decidim_consultations_response_id: vote.response.id,
         delegated: delegated,
-        granter_id: author_id,
-        grantee_id: vote.author.id,
-        generated_at: @generated_at
+        author_id: vote.author.id,
+        # granter_id: author_id,
+        grantee_id: grantee_id,
+        generated_at: @generated_at,
+        export_number: @export_number
       }.merge(user_metadata)
       
       WeightedConsultationVote.create(attributes)
