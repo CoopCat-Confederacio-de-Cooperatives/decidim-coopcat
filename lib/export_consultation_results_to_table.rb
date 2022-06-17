@@ -41,7 +41,6 @@ class ExportConsultationResultsToTable
         grantee_id = @grantees_by_vote_id[vote.id]
   
         delegated = true
-        # user_metadata = metadata(author_id)
       end
       
       attributes = {
@@ -50,7 +49,7 @@ class ExportConsultationResultsToTable
         decidim_consultations_response_id: vote.response.id,
         delegated: delegated,
         author_id: vote.author.id,
-        # granter_id: author_id,
+        granter_id: vote.author.id,
         grantee_id: grantee_id,
         generated_at: @generated_at,
         export_number: @export_number
