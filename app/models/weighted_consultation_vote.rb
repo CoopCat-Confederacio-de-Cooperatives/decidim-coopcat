@@ -1,0 +1,2 @@
+class WeightedConsultationVote < ApplicationRecord
+end
