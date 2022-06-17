@@ -39,7 +39,5 @@ coverage/
 decidim_dummy_app/
 .vscode
 
-
+config/deploy*
 Capfile
-config/deploy.rb
-config/deploy/*
