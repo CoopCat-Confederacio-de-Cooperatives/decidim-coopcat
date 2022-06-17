@@ -6,7 +6,7 @@ module Decidim
   class ExportConsultationResultsToTableJob < ApplicationJob
     queue_as :default
 
-    def perform(_user, consultation_slug)
+    def perform(consultation_slug)
       @consultation_slug = consultation_slug
 
       ExportConsultationResultsToTable.new(consultation).export_results!
