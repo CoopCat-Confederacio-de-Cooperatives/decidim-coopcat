@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ExportConsultationResultsToTable
-  DEFAULT_METADATA = { membership_type: nil, membership_weight: nil }
+  DEFAULT_METADATA = { membership_type: nil, membership_weight: nil }.freeze
 
   def initialize(consultation)
     @consultation = consultation
@@ -17,32 +19,30 @@ class ExportConsultationResultsToTable
         membership_weight: authorization.metadata["membership_weight"] || "1"
       }
     end
-    
+
     # Store delegation granter for each vote
     granted_votes_query.each do |record|
       @grantees_by_vote_id[record["item_id"]] = record["grantee_id"]
     end
   end
-    
+
   def export_results!
     @records = []
 
-    @generated_at = Time.now
-    @export_number = WeightedConsultationVote.pluck(:export_number).uniq.sort.last || 0
+    @generated_at = Time.zone.now
+    @export_number = WeightedConsultationVote.distinct(:export_number).pluck(:export_number).max || 0
     @export_number += 1
-    
+
     Decidim::Consultations::Vote.where(question: @question_ids).find_each do |vote|
       delegated = false
       user_metadata = @users_who_voted_metadata[vote.author.id] || DEFAULT_METADATA
-  
-      author_id = vote.author.id
-  
+
       if @grantees_by_vote_id[vote.id]
         grantee_id = @grantees_by_vote_id[vote.id]
-  
+
         delegated = true
       end
-      
+
       attributes = {
         decidim_consultation_id: @consultation.id,
         decidim_consultation_question_id: vote.question.id,
@@ -54,13 +54,13 @@ class ExportConsultationResultsToTable
         generated_at: @generated_at,
         export_number: @export_number
       }.merge(user_metadata)
-      
+
       WeightedConsultationVote.create(attributes)
     end
 
     @records
   end
-  
+
   def metadata(decidim_user_id)
     authorization = Decidim::Authorization.find_by(name: "direct_verifications", decidim_user_id: decidim_user_id)
     user_metadata = authorization&.metadata || {}
