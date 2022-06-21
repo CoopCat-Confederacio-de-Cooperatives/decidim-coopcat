@@ -15,8 +15,8 @@ class ExportConsultationResultsToTable
     authorizations = Decidim::Authorization.where(name: "direct_verifications", decidim_user_id: users_who_voted_ids)
     authorizations.find_each do |authorization|
       @users_who_voted_metadata[authorization.decidim_user_id] = {
-        membership_type: authorization.metadata["membership_type"] || "none",
-        membership_weight: authorization.metadata["membership_weight"] || "1"
+        membership_type: authorization.metadata["membership_type"] || DEFAULT_METADATA[:membership_type],
+        membership_weight: authorization.metadata["membership_weight"] || DEFAULT_METADATA[:membership_weight]
       }
     end
 
@@ -55,7 +55,11 @@ class ExportConsultationResultsToTable
         export_number: @export_number
       }.merge(user_metadata)
 
-      WeightedConsultationVote.create(attributes)
+      begin
+        WeightedConsultationVote.create!(attributes)
+      rescue ActiveRecord::Error
+        Rails.logger.error "Error creating WeightedConsultationVote with attributes '#{attributes}'"
+      end
     end
 
     @records
