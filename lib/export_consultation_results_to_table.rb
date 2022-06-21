@@ -57,8 +57,8 @@ class ExportConsultationResultsToTable
 
       begin
         WeightedConsultationVote.create!(attributes)
-      rescue ActiveRecord::Error
-        Rails.logger.error "Error creating WeightedConsultationVote with attributes '#{attributes}'"
+      rescue ActiveRecord::RecordInvalid => e
+        Rails.logger.error "[!] Error creating WeightedConsultationVote with attributes '#{attributes}'\n\n[!] #{e}"
       end
     end
 
