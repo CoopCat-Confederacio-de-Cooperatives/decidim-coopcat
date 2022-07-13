@@ -525,7 +525,7 @@ GEM
     httpi (2.5.0)
       rack
       socksify
-    i18n (1.8.11)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.37)
       activesupport (>= 4.0.2)
@@ -981,7 +981,7 @@ DEPENDENCIES
   faker (~> 2.18)
   figaro (~> 1.2)
   fog-aws
-  i18n (~> 1.8.1)
+  i18n (~> 1.12.0)
   letter_opener_web (~> 1.4)
   listen (~> 3.5)
   lograge
