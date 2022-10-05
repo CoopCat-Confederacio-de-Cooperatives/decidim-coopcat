@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     if: "!startsWith(github.head_ref, 'chore/l10n')"
     steps:
-      - uses: actions/checkout@v2.0.0
+      - uses: actions/checkout@v3.1.0
         with:
           fetch-depth: 1
 
