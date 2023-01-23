@@ -25,7 +25,7 @@ group :development, :test do
   gem "byebug", "~> 11.1", platform: :mri
 
   gem "decidim-dev", DECIDIM_VERSION
-  gem "faker", "~> 2.18"
+  gem "faker", "~> 3.1"
   gem "rubocop-faker", "~> 1.0"
 end
 
