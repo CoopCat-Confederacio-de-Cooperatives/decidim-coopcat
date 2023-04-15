@@ -370,7 +370,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.10)
+    concurrent-ruby (1.2.2)
     connection_pool (2.2.5)
     cookiejar (0.3.3)
     crack (0.4.5)
@@ -460,7 +460,7 @@ GEM
     factory_bot_rails (4.11.1)
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
-    faker (2.20.0)
+    faker (3.2.0)
       i18n (>= 1.8.11, < 2)
     faraday (2.2.0)
       faraday-net_http (~> 2.0)
@@ -978,7 +978,7 @@ DEPENDENCIES
   decidim-dev!
   decidim-direct_verifications (~> 1.0.2)
   decidim-term_customizer!
-  faker (~> 2.18)
+  faker (~> 3.2)
   figaro (~> 1.2)
   fog-aws
   i18n (~> 1.8.1)
