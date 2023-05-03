@@ -14,7 +14,7 @@ env:
 jobs:
   lint:
     name: Lint code
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     if: "!startsWith(github.head_ref, 'chore/l10n')"
     steps:
       - uses: actions/checkout@v2.0.0
@@ -38,4 +38,3 @@ jobs:
 
       - run: bundle exec erblint app/views/**/*.erb
         name: Lint ERB files
-
