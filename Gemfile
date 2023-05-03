@@ -4,15 +4,15 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "Platoniq/decidim", branch: "temp/0.24" }.freeze
+DECIDIM_VERSION = "0.26.4".freeze
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 
 gem "decidim-action_delegator"
-gem "decidim-decidim_awesome", "~> 0.7.2"
+gem "decidim-decidim_awesome"
 gem "decidim-direct_verifications", "~> 1.0.2"
-gem "decidim-term_customizer", github: "Platoniq/decidim-module-term_customizer", branch: "temp/0.24"
+gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "release/0.26-stable"
 
 gem "bootsnap", "~> 1.7"
 
