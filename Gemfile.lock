@@ -1,4 +1,17 @@
 GIT
+  remote: https://github.com/coopdevs/decidim-module-action_delegator.git
+  revision: fe09343cb48db4bb230a952b07b10697b88fdcfe
+  branch: develop
+  specs:
+    decidim-action_delegator (0.7.0)
+      decidim-admin (>= 0.26.0, < 0.27)
+      decidim-consultations (>= 0.26.0, < 0.27)
+      decidim-core (>= 0.26.0, < 0.27)
+      deface (>= 1.9)
+      savon
+      twilio-ruby
+
+GIT
   remote: https://github.com/mainio/decidim-module-term_customizer.git
   revision: f0d720710822f1231ea249dd71f978143d38a6c4
   branch: release/0.26-stable
@@ -210,12 +223,6 @@ GEM
     decidim-accountability (0.26.4)
       decidim-comments (= 0.26.4)
       decidim-core (= 0.26.4)
-    decidim-action_delegator (0.6.0)
-      decidim-admin (>= 0.26.0, < 0.27.0)
-      decidim-consultations (>= 0.26.0, < 0.27.0)
-      decidim-core (>= 0.26.0, < 0.27.0)
-      savon
-      twilio-ruby
     decidim-admin (0.26.4)
       active_link_to (~> 1.0)
       decidim-core (= 0.26.4)
@@ -329,9 +336,6 @@ GEM
       w3c_rspec_validators (~> 0.3.0)
       webmock (~> 3.6)
       wisper-rspec (~> 1.0)
-    decidim-direct_verifications (1.0.2)
-      decidim-admin (>= 0.23.0)
-      decidim-core (>= 0.23.0)
     decidim-forms (0.26.4)
       decidim-core (= 0.26.4)
       wicked_pdf (~> 2.1)
@@ -374,6 +378,12 @@ GEM
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
+    deface (1.9.0)
+      actionview (>= 5.2)
+      nokogiri (>= 1.6)
+      polyglot
+      railties (>= 5.2)
+      rainbow (>= 2.1.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.9.2)
@@ -623,6 +633,7 @@ GEM
     pg_search (2.3.6)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
+    polyglot (0.3.5)
     premailer (1.21.0)
       addressable
       css_parser (>= 1.12.0)
@@ -816,10 +827,10 @@ GEM
       version_gem (~> 1.1, >= 1.1.1)
     social-share-button (1.2.4)
       coffee-rails
-    spring (2.1.1)
-    spring-watcher-listen (2.0.1)
+    spring (4.1.1)
+    spring-watcher-listen (2.1.0)
       listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
+      spring (>= 4)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -878,11 +889,11 @@ GEM
       addressable
       httpi (~> 3.0)
       nokogiri (>= 1.4.2)
-    web-console (3.7.0)
-      actionview (>= 5.0)
-      activemodel (>= 5.0)
+    web-console (4.2.0)
+      actionview (>= 6.0.0)
+      activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
-      railties (>= 5.0)
+      railties (>= 6.0.0)
     webmock (3.18.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -920,17 +931,16 @@ DEPENDENCIES
   capistrano-sidekiq
   dalli
   decidim (= 0.26.4)
-  decidim-action_delegator
+  decidim-action_delegator!
   decidim-consultations (= 0.26.4)
   decidim-decidim_awesome
   decidim-dev (= 0.26.4)
-  decidim-direct_verifications (~> 1.0.2)
   decidim-term_customizer!
   faker (~> 2.18)
   figaro (~> 1.2)
   fog-aws
   i18n (~> 1.8.1)
-  letter_opener_web (~> 1.4)
+  letter_opener_web
   listen (~> 3.5)
   lograge
   memory_profiler
@@ -944,11 +954,11 @@ DEPENDENCIES
   sentry-sidekiq
   sidekiq
   sidekiq-cron
-  spring (~> 2.1)
-  spring-watcher-listen (~> 2.0)
+  spring (>= 4.0.0)
+  spring-watcher-listen (~> 2.1)
   stackprof
   uglifier (~> 4.1)
-  web-console (~> 3.5)
+  web-console (~> 4.2)
 
 RUBY VERSION
    ruby 2.7.7p221
