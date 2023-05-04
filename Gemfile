@@ -4,15 +4,14 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "Platoniq/decidim", branch: "temp/0.24" }.freeze
+DECIDIM_VERSION = "0.26.4"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 
-gem "decidim-action_delegator"
-gem "decidim-decidim_awesome", "~> 0.7.2"
-gem "decidim-direct_verifications", "~> 1.0.2"
-gem "decidim-term_customizer", github: "Platoniq/decidim-module-term_customizer", branch: "temp/0.24"
+gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "develop"
+gem "decidim-decidim_awesome"
+gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "release/0.26-stable"
 
 gem "bootsnap", "~> 1.7"
 
@@ -30,14 +29,14 @@ group :development, :test do
 end
 
 group :development do
-  gem "letter_opener_web", "~> 1.4"
+  gem "letter_opener_web"
   gem "listen", "~> 3.5"
   gem "memory_profiler"
   gem "rack-mini-profiler"
-  gem "spring", "~> 2.1"
-  gem "spring-watcher-listen", "~> 2.0"
+  gem "spring", ">= 4.0.0"
+  gem "spring-watcher-listen", "~> 2.1"
   gem "stackprof"
-  gem "web-console", "~> 3.5"
+  gem "web-console", "~> 4.2"
 
   gem "capistrano", "~> 3.14"
   gem "capistrano-bundler"
