@@ -1,3 +1,7 @@
+<% if plausible_url %>
+  <script defer data-domain="<%= current_organization.host %>" src="<%= plausible_url %>/js/plausible.js"></script>
+<% end %>
+
 <% if current_organization.favicon.blank? %>
   <%= favicon_link_tag asset_path("default_favicon.ico") %>
 <% end %>
