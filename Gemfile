@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = "0.26.4"
+DECIDIM_VERSION = "0.26.5"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
@@ -35,27 +35,10 @@ group :development do
   gem "spring-watcher-listen", "~> 2.1"
   gem "stackprof"
   gem "web-console", "~> 4.2"
-
-  gem "capistrano", "~> 3.14"
-  gem "capistrano-bundler"
-  gem "capistrano-passenger"
-  gem "capistrano-rails"
-  gem "capistrano-rails-console"
-  gem "capistrano-rbenv"
-  gem "capistrano-sidekiq"
 end
 
 group :production do
-  gem "barnes"
-  gem "dalli"
-  gem "figaro", "~> 1.2"
   gem "fog-aws"
-  gem "lograge"
-  gem "rack-timeout"
-  gem "scout_apm"
-  gem "sentry-rails"
-  gem "sentry-ruby"
-  gem "sentry-sidekiq"
   gem "sidekiq"
   gem "sidekiq-cron"
 end

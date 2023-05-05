@@ -23,11 +23,7 @@ You're good to go!
 
 ### How to deploy
 
-This app has Heroku [automatic deploys](https://devcenter.heroku.com/articles/github-integration#automatic-deploys) enabled on `master` so any push there will trigger a deploy.
-
-Alternatively, you can trigger one from the `Manual deploy` section in the Heroku dashboard. There you can choose any branch.
-
-## Development
+Deployment is prepared for docker.
 
 ### Project management
 
@@ -47,15 +43,12 @@ irb(main):001:0> Decidim::ActionDelegator::Engine.load_seed
 
 ### Upgrading Decidim
 
-This entails updating the non-core Decidim modules we rely on, decidim-action_delegator
-and decidim-direct_verifications, to support the Decidim version we want to
+This entails updating the non-core Decidim modules we rely on, decidim-action_delegator, to support the Decidim version we want to
 upgrade to. See
-https://github.com/coopdevs/decidim-module-action_delegator/pull/80 for
-reference.
+https://github.com/coopdevs/decidim-module-action_delegator/ for reference.
 
 Once that's done, we need to update `DECIDIM_VERSION` in the Gemfile to point to the target
-version and possibly update the `gem "decidim-action_delegator"` and `gem
-"decidim-direct_verifications"` to point to their upgrade branches. Don't forget
+version and possibly update the `gem "decidim-action_delegator"` to point to their upgrade branches. Don't forget
 to get those merged and released so they get updated in our Gemfile later on.
 
 Then, to update run:

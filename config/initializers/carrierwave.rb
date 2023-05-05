@@ -11,7 +11,7 @@ end
 
 # Although we use Backblaze's B2 as object storage for assets, we use its S3's compatible API. We
 # briefly tried the `fog-backblaze` gem but things didn't seem to work at first.
-if Rails.application.secrets.dig(:backblaze, :access_key_id).present?
+if Rails.application.secrets.dig(:storage, :s3, :access_key_id)
   require "carrierwave/storage/fog"
 
   CarrierWave.configure do |config|
@@ -19,11 +19,11 @@ if Rails.application.secrets.dig(:backblaze, :access_key_id).present?
     config.fog_provider = "fog/aws"
     config.fog_credentials = {
       provider: "AWS",
-      aws_access_key_id: Rails.application.secrets.backblaze[:access_key_id],
-      aws_secret_access_key: Rails.application.secrets.backblaze[:secret_access_key],
-      endpoint: "https://s3.us-west-001.backblazeb2.com"
+      aws_access_key_id: Rails.application.secrets.dig(:storage, :s3, :access_key_id),
+      aws_secret_access_key: Rails.application.secrets.dig(:storage, :s3, :secret_access_key),
+      endpoint: Rails.application.secrets.dig(:storage, :s3, :endpoint)
     }
-    config.fog_directory = Rails.application.secrets.backblaze[:bucket_name]
+    config.fog_directory = Rails.application.secrets.dig(:storage, :s3, :bucket)
     config.fog_public = true
     config.fog_attributes = {
       "Cache-Control" => "max-age=#{365.days.to_i}",
