@@ -14,11 +14,9 @@ gem "decidim-decidim_awesome"
 gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "release/0.26-stable"
 
 gem "bootsnap", "~> 1.7"
+gem "puma", ">= 5.0.0"
 
-gem "puma", "~> 5.3.2"
-gem "uglifier", "~> 4.1"
-# bug in version 1.9
-gem "i18n", "~> 1.8.1"
+gem "wicked_pdf", "~> 2.1"
 
 group :development, :test do
   gem "byebug", "~> 11.1", platform: :mri

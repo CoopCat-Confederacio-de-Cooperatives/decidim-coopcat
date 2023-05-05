@@ -863,8 +863,6 @@ GEM
     tzinfo (1.2.11)
       thread_safe (~> 0.1)
     uber (0.1.0)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     unicode-display_width (1.8.0)
     valid_email2 (2.3.1)
       activemodel (>= 3.2)
@@ -939,12 +937,11 @@ DEPENDENCIES
   faker (~> 2.18)
   figaro (~> 1.2)
   fog-aws
-  i18n (~> 1.8.1)
   letter_opener_web
   listen (~> 3.5)
   lograge
   memory_profiler
-  puma (~> 5.3.2)
+  puma (>= 5.0.0)
   rack-mini-profiler
   rack-timeout
   rubocop-faker (~> 1.0)
@@ -957,8 +954,8 @@ DEPENDENCIES
   spring (>= 4.0.0)
   spring-watcher-listen (~> 2.1)
   stackprof
-  uglifier (~> 4.1)
   web-console (~> 4.2)
+  wicked_pdf (~> 2.1)
 
 RUBY VERSION
    ruby 2.7.7p221

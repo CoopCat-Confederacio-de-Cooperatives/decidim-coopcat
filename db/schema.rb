@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2023_05_04_054959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
+  enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
@@ -1602,20 +1603,6 @@ ActiveRecord::Schema.define(version: 2023_05_04_054959) do
     t.index ["role", "decidim_user_group_id"], name: "decidim_group_membership_one_creator_per_group", unique: true, where: "((role)::text = 'creator'::text)"
   end
 
-  create_table "decidim_user_groups", id: :serial, force: :cascade do |t|
-    t.string "name", null: false
-    t.string "document_number", null: false
-    t.string "phone", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "avatar"
-    t.datetime "verified_at"
-    t.datetime "rejected_at"
-    t.integer "decidim_organization_id", null: false
-    t.index ["decidim_organization_id", "document_number"], name: "index_decidim_user_groups_document_number_on_organization_id", unique: true
-    t.index ["decidim_organization_id", "name"], name: "index_decidim_user_groups_names_on_organization_id", unique: true
-  end
-
   create_table "decidim_user_moderations", force: :cascade do |t|
     t.bigint "decidim_user_id"
     t.integer "report_count", default: 0, null: false
@@ -1863,4 +1850,7 @@ ActiveRecord::Schema.define(version: 2023_05_04_054959) do
   add_foreign_key "oauth_access_tokens", "decidim_users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_applications", "decidim_organizations"
+  add_foreign_key "weighted_consultation_votes", "decidim_users", column: "author_id"
+  add_foreign_key "weighted_consultation_votes", "decidim_users", column: "grantee_id"
+  add_foreign_key "weighted_consultation_votes", "decidim_users", column: "granter_id"
 end
