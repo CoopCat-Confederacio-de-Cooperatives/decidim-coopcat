@@ -21,10 +21,6 @@
 /storage/*
 !/storage/.keep
 
-/node_modules
-/yarn-error.log
-
-/public/assets
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
@@ -33,14 +29,35 @@
 # Ignore public uploads
 public/uploads
 
-.rspec-failures
-spec/examples.txt
-coverage/
-decidim_dummy_app/
-.vscode
+# Do not track secrets in GIT
+/config/application.yml
 
-config/deploy*
-Capfile
+# Ignore deploy secrets
+/config/deploy*
+/Capfile
+
+# Ignore .rspec-failures
+.rspec-failures
+
+# Ignore .rbenv-vars
+.rbenv-vars
+.vscode
+spec/decidim_dummy_app
+
+# Ignore sass cache
+.sass-cache
+
+/public/sw.js*
+/public/assets
+/public/packs
+/public/packs-test
+/public/decidim-packs
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+coverage/
 
 /public/packs
 /public/packs-test

@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = "0.26.4"
+DECIDIM_VERSION = "0.26.5"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
@@ -14,11 +14,9 @@ gem "decidim-decidim_awesome"
 gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "release/0.26-stable"
 
 gem "bootsnap", "~> 1.7"
+gem "puma", ">= 5.0.0"
 
-gem "puma", "~> 5.3.2"
-gem "uglifier", "~> 4.1"
-# bug in version 1.9
-gem "i18n", "~> 1.8.1"
+gem "wicked_pdf", "~> 2.1"
 
 group :development, :test do
   gem "byebug", "~> 11.1", platform: :mri
@@ -37,27 +35,10 @@ group :development do
   gem "spring-watcher-listen", "~> 2.1"
   gem "stackprof"
   gem "web-console", "~> 4.2"
-
-  gem "capistrano", "~> 3.14"
-  gem "capistrano-bundler"
-  gem "capistrano-passenger"
-  gem "capistrano-rails"
-  gem "capistrano-rails-console"
-  gem "capistrano-rbenv"
-  gem "capistrano-sidekiq"
 end
 
 group :production do
-  gem "barnes"
-  gem "dalli"
-  gem "figaro", "~> 1.2"
   gem "fog-aws"
-  gem "lograge"
-  gem "rack-timeout"
-  gem "scout_apm"
-  gem "sentry-rails"
-  gem "sentry-ruby"
-  gem "sentry-sidekiq"
   gem "sidekiq"
   gem "sidekiq-cron"
 end
