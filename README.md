@@ -23,17 +23,24 @@ You're good to go!
 
 ### How to deploy
 
-This app has Heroku [automatic deploys](https://devcenter.heroku.com/articles/github-integration#automatic-deploys) enabled on `master` so any push there will trigger a deploy.
-
-Alternatively, you can trigger one from the `Manual deploy` section in the Heroku dashboard. There you can choose any branch.
-
-## Development
+Deployment is prepared for docker.
 
 ### Project management
 
 In this repo you'll find all the issues needed to fulfill CoopCat's requirements. These are epics that represent the development that needs to happen to implement the features that CoopCat needs. Among these, you'll also find other regular issues that are simply things we need to do to maintain the Rails app.
 
 Most of the implementation for these epics is happening in the separate module [decidim-module-action_delegator](https://github.com/coopdevs/decidim-module-action_delegator/). So expect to see non-epic issues and pull requests there.
+
+## Embeded Plausible analytics
+
+Plausible analytics are embeded in the admin panel. To enable them you need to set the following environment variables:
+
+```bash
+PLAUSIBLE_URL=https://analytics.plausible.io
+PLAUSIBLE_YOURDOMAIN_COM=auth-code
+```
+
+Where `auth-code` is the "`auth`" parameter shown in a created shared link in the Plausible dashboard. Note that you must make the share link public (without a password).
 
 ### Run action delegator's seed data
 
@@ -47,15 +54,12 @@ irb(main):001:0> Decidim::ActionDelegator::Engine.load_seed
 
 ### Upgrading Decidim
 
-This entails updating the non-core Decidim modules we rely on, decidim-action_delegator
-and decidim-direct_verifications, to support the Decidim version we want to
+This entails updating the non-core Decidim modules we rely on, decidim-action_delegator, to support the Decidim version we want to
 upgrade to. See
-https://github.com/coopdevs/decidim-module-action_delegator/pull/80 for
-reference.
+https://github.com/coopdevs/decidim-module-action_delegator/ for reference.
 
 Once that's done, we need to update `DECIDIM_VERSION` in the Gemfile to point to the target
-version and possibly update the `gem "decidim-action_delegator"` and `gem
-"decidim-direct_verifications"` to point to their upgrade branches. Don't forget
+version and possibly update the `gem "decidim-action_delegator"` to point to their upgrade branches. Don't forget
 to get those merged and released so they get updated in our Gemfile later on.
 
 Then, to update run:
