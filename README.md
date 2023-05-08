@@ -31,11 +31,10 @@ In this repo you'll find all the issues needed to fulfill CoopCat's requirements
 
 Most of the implementation for these epics is happening in the separate module [decidim-module-action_delegator](https://github.com/coopdevs/decidim-module-action_delegator/). So expect to see non-epic issues and pull requests there.
 
-
 ## Embeded Plausible analytics
 
 Plausible analytics are embeded in the admin panel. To enable them you need to set the following environment variables:
-	
+
 ```bash
 PLAUSIBLE_URL=https://analytics.plausible.io
 PLAUSIBLE_YOURDOMAIN_COM=auth-code
