@@ -900,6 +900,7 @@ DEPENDENCIES
   decidim-decidim_awesome!
   decidim-dev!
   decidim-term_customizer!
+  deface
   faker (~> 2.18)
   fog-aws
   letter_opener_web

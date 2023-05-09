@@ -1,0 +1,3 @@
+<!-- insert_before 'td.actions' -->
+
+<td class="caprover" data-host="<%= organization.host %>"><span style="color:#999">Checking...</span></td>

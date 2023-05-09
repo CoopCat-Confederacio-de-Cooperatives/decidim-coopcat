@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "open3"
+
 class Caprover
   def initialize
     (@url = ENV["CAPROVER_URL"].presence) || abort("Please define CAPROVER_URL envs")
@@ -10,14 +12,18 @@ class Caprover
   end
 
   def api(path, method = "GET")
-    system("#{envs_serialized(path: path, method: method)} npm run caprover api")
+    @out, @err, @status = Open3.capture3(envs(path: path, method: method), "npm run caprover api -- -o #{tmpfile}")
+    return @json = JSON.parse(File.read(tmpfile)) if status.success?
+
+    @out
   end
 
   def envs(path: nil, method: "GET")
     {
-      "CAPROVER_API_METHOD": method,
-      "CAPROVER_API_DATA": "'#{data.to_json}'",
-      "CAPROVER_API_PATH": path
+      "CAPROVER_API_OUTPUT" => tmpfile,
+      "CAPROVER_API_METHOD" => method,
+      "CAPROVER_API_DATA" => data.to_json,
+      "CAPROVER_API_PATH" => path
     }
   end
 
@@ -30,17 +36,49 @@ class Caprover
     @data.merge!(attributes)
   end
 
-  attr_reader :data, :app_name
+  def tmpfile
+    Rails.root.join("tmp/caprover-#{app_name}.json").to_s
+  end
+
+  delegate :success?, to: :status
+  attr_reader :data, :app_name, :json, :out, :err, :status
 
   class << self
     def info
-      app = new
-      app.api("/user/system/info")
+      @info ||= new.api("/user/system/info")
     end
 
     def app_data
+      @app_data ||= begin
+        app = new
+        app.api("/user/apps/appData/#{app.app_name}")
+      end
+    end
+
+    def app_info
+      @app_info ||= begin
+        app = new
+        app.api("/user/apps/appDefinitions")
+        app.json["appDefinitions"].find { |item| item["appName"] == app.app_name }
+      end
+    end
+
+    def app_domains
+      app_info["customDomain"]
+    end
+
+    def app_env
+      app_info["envVars"]
+    end
+
+    def add_env(key, value)
+      abort "Var key is not valid (#{key})" unless key.respond_to? :upcase
+
+      clean = app_env.reject { |item| item["key"] == key }
+      clean << { "key" => key.upcase, "value" => value.to_s }
       app = new
-      app.api("/user/apps/appData/#{app.app_name}")
+      app.data = app_info.merge(envVars: clean)
+      app.api("/user/apps/appDefinitions/update", "POST")
     end
 
     def add_domain(domain)
@@ -48,12 +86,14 @@ class Caprover
       app.data = { customDomain: domain }
       app.api("/user/apps/appDefinitions/customdomain", "POST")
       app.api("/user/apps/appDefinitions/enablecustomdomainssl", "POST")
+      abort app.out unless app.success?
     end
 
     def remove_domain(domain)
       app = new
       app.data = { customDomain: domain }
       app.api("/user/apps/appDefinitions/removecustomdomain", "POST")
+      abort app.out unless app.success?
     end
   end
 end
