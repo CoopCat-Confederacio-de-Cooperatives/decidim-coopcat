@@ -78,7 +78,19 @@ RUN rm -rf node_modules tmp/cache vendor/bundle test spec app/packs .git
 # This image is for production env only
 FROM ruby:2.7-slim AS final
 
-RUN apt-get update && \
+RUN apt-get update && apt-get upgrade -y && apt-get install gnupg2 && \
+    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && apt-get install -y nodejs yarn \
+    build-essential \
+    postgresql-client \
+    libpq-dev && \
+    apt-get clean
+
+RUN apt-get update && apt-get install gnupg2 && \
+    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get update && apt-get install nodejs \
     apt-get install -y postgresql-client \
     imagemagick \
     curl \
@@ -112,6 +124,9 @@ COPY --from=builder --chown=app:app /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder --chown=app:app /app /app
 
 USER app
+# cercles uses npm & caprover cli
+RUN npm ci
+
 HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \
     CMD (curl -sSH "Content-Type: application/json" -d '{"query": "{ decidim { version } }"}' http://localhost:3000/api) || exit 1
 
