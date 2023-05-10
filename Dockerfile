@@ -78,20 +78,9 @@ RUN rm -rf node_modules tmp/cache vendor/bundle test spec app/packs .git
 # This image is for production env only
 FROM ruby:2.7-slim AS final
 
-RUN apt-get update && apt-get upgrade -y && apt-get install gnupg2 && \
+RUN apt-get update && apt-get upgrade -y && apt-get install -y gnupg2 && \
     curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
-    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update && apt-get install -y nodejs yarn \
-    build-essential \
-    postgresql-client \
-    libpq-dev && \
-    apt-get clean
-
-RUN apt-get update && apt-get install gnupg2 && \
-    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt-get update && apt-get install nodejs \
-    apt-get install -y postgresql-client \
+    apt-get install -y nodejs postgresql-client \
     imagemagick \
     curl \
     supervisor && \
