@@ -1,0 +1,4 @@
+<!-- insert_after 'td:first-child' -->
+
+<td class="caprover" data-host="<%= organization.host %>"><span style="color:#999">Checking...</span></td>
+<td class="plausible" data-host="<%= organization.host %>"><span style="color:#999">Checking...</span></td>

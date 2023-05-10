@@ -1,0 +1,4 @@
+<!-- insert_after 'th:first-child' -->
+
+<th>Actiu</th>
+<th>Stats</th>

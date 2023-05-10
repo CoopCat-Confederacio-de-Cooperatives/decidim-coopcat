@@ -78,10 +78,10 @@ RUN rm -rf node_modules tmp/cache vendor/bundle test spec app/packs .git
 # This image is for production env only
 FROM ruby:2.7-slim AS final
 
-RUN apt-get update && \
-    apt-get install -y postgresql-client \
+RUN apt-get update && apt-get upgrade -y && apt-get install -y gnupg2 curl && \
+    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get install -y nodejs postgresql-client \
     imagemagick \
-    curl \
     supervisor && \
     apt-get clean
 
@@ -110,8 +110,13 @@ COPY ./entrypoint.sh /app/entrypoint.sh
 COPY ./supervisord.conf /etc/supervisord.conf 
 COPY --from=builder --chown=app:app /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder --chown=app:app /app /app
+RUN rm package-lock.json
+COPY ./package-caprover.json /app/package.json
 
 USER app
+# cercles uses npm & caprover cli only
+RUN npm i caprover
+
 HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \
     CMD (curl -sSH "Content-Type: application/json" -d '{"query": "{ decidim { version } }"}' http://localhost:3000/api) || exit 1
 
