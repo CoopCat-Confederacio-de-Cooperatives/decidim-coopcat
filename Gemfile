@@ -19,6 +19,7 @@ gem "puma", ">= 5.0.0"
 gem "wicked_pdf", "~> 2.1"
 
 gem "deface"
+gem "faraday"
 
 group :development, :test do
   gem "byebug", "~> 11.1", platform: :mri

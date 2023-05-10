@@ -44,6 +44,12 @@ class Caprover
   attr_reader :data, :app_name, :json, :out, :err, :status
 
   class << self
+    def reset
+      @info = nil
+      @app_data = nil
+      @app_info = nil
+    end
+
     def info
       @info ||= new.api("/user/system/info")
     end
@@ -64,7 +70,19 @@ class Caprover
     end
 
     def app_domains
-      app_info["customDomain"]
+      app_info["customDomain"].map do |item|
+        found = app_env.find { |env| env["key"] == "PLAUSIBLE_#{item["publicDomain"].upcase.gsub(".", "_")}" } || {}
+        item.merge(plausible: plausible_url(item["publicDomain"], found["value"]))
+      end
+    end
+
+    def plausible_url(domain, code)
+      return unless domain.present? && code.present?
+
+      url = app_env.find { |item| item["key"] == "PLAUSIBLE_URL" }
+      return if url.blank?
+
+      "#{url["value"]}/share/#{domain}?auth=#{code}"
     end
 
     def app_env

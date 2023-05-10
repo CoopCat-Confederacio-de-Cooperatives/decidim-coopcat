@@ -20,6 +20,9 @@ Rails.application.routes.draw do
         get :enable, on: :collection
         get :disable, on: :collection
       end
+      scope :plausible do
+        get :enable, to: "plausible#enable"
+      end
     end
   end
 
