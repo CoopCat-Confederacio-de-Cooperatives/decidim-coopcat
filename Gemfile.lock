@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: fe09343cb48db4bb230a952b07b10697b88fdcfe
+  revision: 33615850e164e0254046031c26bd8cb6ffe44d00
   branch: develop
   specs:
     decidim-action_delegator (0.7.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: 323b3a82f57af5f271db24f2527d035b9fb72212
+  revision: 593e9403322b93bb6be7c033c19fb9a24ec9a7c2
   ref: release/0.26-stable
   specs:
     decidim (0.26.6)
@@ -277,7 +277,7 @@ GEM
       nokogiri
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.761.0)
+    aws-partitions (1.762.0)
     aws-sdk-core (3.172.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -791,7 +791,7 @@ GEM
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
       redis-client (>= 0.14.0)
-    sidekiq-cron (1.10.0)
+    sidekiq-cron (1.10.1)
       fugit (~> 1.8)
       globalid (>= 1.0.1)
       sidekiq (>= 6)
