@@ -361,7 +361,7 @@ GEM
     db-query-matchers (0.10.0)
       activesupport (>= 4.0, < 7)
       rspec (~> 3.0)
-    decidim-action_delegator (0.7.0)
+    decidim-action_delegator (0.7.1)
       decidim-admin (>= 0.26.0, < 0.27)
       decidim-consultations (>= 0.26.0, < 0.27)
       decidim-core (>= 0.26.0, < 0.27)
