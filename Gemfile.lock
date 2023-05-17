@@ -1,17 +1,4 @@
 GIT
-  remote: https://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: 02220a04fc75043b397780094c73a4b436ec19af
-  branch: develop
-  specs:
-    decidim-action_delegator (0.7.0)
-      decidim-admin (>= 0.26.0, < 0.27)
-      decidim-consultations (>= 0.26.0, < 0.27)
-      decidim-core (>= 0.26.0, < 0.27)
-      deface (>= 1.9)
-      savon
-      twilio-ruby
-
-GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
   revision: 016ab767f6b60eef1632c1a9839e2b1e25924115
   specs:
@@ -277,7 +264,7 @@ GEM
       nokogiri
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.763.0)
+    aws-partitions (1.765.0)
     aws-sdk-core (3.172.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -319,7 +306,7 @@ GEM
     browser (2.7.1)
     builder (3.2.4)
     byebug (11.1.3)
-    capybara (3.39.0)
+    capybara (3.39.1)
       addressable
       matrix
       mini_mime (>= 0.1.3)
@@ -374,6 +361,13 @@ GEM
     db-query-matchers (0.10.0)
       activesupport (>= 4.0, < 7)
       rspec (~> 3.0)
+    decidim-action_delegator (0.7.0)
+      decidim-admin (>= 0.26.0, < 0.27)
+      decidim-consultations (>= 0.26.0, < 0.27)
+      decidim-core (>= 0.26.0, < 0.27)
+      deface (>= 1.9)
+      savon
+      twilio-ruby
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
@@ -822,7 +816,7 @@ GEM
     stackprof (0.2.25)
     system_test_html_screenshots (0.2.0)
       actionpack (>= 5.2, < 6.1.a)
-    temple (0.10.0)
+    temple (0.10.1)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
     thor (1.2.2)
@@ -895,7 +889,7 @@ DEPENDENCIES
   bootsnap (~> 1.7)
   byebug (~> 11.1)
   decidim!
-  decidim-action_delegator!
+  decidim-action_delegator (~> 0.7.0)
   decidim-consultations!
   decidim-decidim_awesome!
   decidim-dev!
