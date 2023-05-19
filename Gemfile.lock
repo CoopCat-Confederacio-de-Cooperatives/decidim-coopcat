@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 016ab767f6b60eef1632c1a9839e2b1e25924115
+  revision: 78cc71a447ca04f71a577f3a2e62c33be045f6bd
   specs:
     decidim-decidim_awesome (0.9.1)
       decidim-admin (>= 0.26.0, < 0.28)
@@ -264,8 +264,8 @@ GEM
       nokogiri
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.765.0)
-    aws-sdk-core (3.172.0)
+    aws-partitions (1.766.0)
+    aws-sdk-core (3.173.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
       aws-sigv4 (~> 1.5)
@@ -361,7 +361,7 @@ GEM
     db-query-matchers (0.10.0)
       activesupport (>= 4.0, < 7)
       rspec (~> 3.0)
-    decidim-action_delegator (0.7.1)
+    decidim-action_delegator (0.7.2)
       decidim-admin (>= 0.26.0, < 0.27)
       decidim-consultations (>= 0.26.0, < 0.27)
       decidim-core (>= 0.26.0, < 0.27)
@@ -431,7 +431,7 @@ GEM
     file_validators (2.3.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
-    fog-aws (3.18.0)
+    fog-aws (3.19.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
       fog-xml (~> 0.1)
@@ -553,7 +553,7 @@ GEM
       tomlrb
     mixlib-shellout (3.2.7)
       chef-utils
-    msgpack (1.7.0)
+    msgpack (1.7.1)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     mustache (1.1.1)
@@ -824,7 +824,7 @@ GEM
     tilt (2.1.0)
     timeout (0.3.2)
     tomlrb (2.0.3)
-    twilio-ruby (6.0.0)
+    twilio-ruby (6.0.1)
       faraday (>= 0.9, < 3.0)
       jwt (>= 1.5, < 3.0)
       nokogiri (>= 1.6, < 2.0)
