@@ -1,6 +1,7 @@
 :concurrency: <%= ENV.fetch("SIDEKIQ_CONCURRENCY", "5").to_i %>
 :queues:
   - [mailers, 4]
+  - [invite_participants, 4]
   - [vote_reminder, 2]
   - [reminders, 2]
   - [default, 2]
