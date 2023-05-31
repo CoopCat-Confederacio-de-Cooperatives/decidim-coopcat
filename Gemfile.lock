@@ -1,4 +1,17 @@
 GIT
+  remote: https://github.com/coopdevs/decidim-module-action_delegator.git
+  revision: 01978255c46a8510608a5060c3bc7ce3e88bcc76
+  ref: 0197825
+  specs:
+    decidim-action_delegator (0.7.2)
+      decidim-admin (>= 0.26.0, < 0.27)
+      decidim-consultations (>= 0.26.0, < 0.27)
+      decidim-core (>= 0.26.0, < 0.27)
+      deface (>= 1.9)
+      savon
+      twilio-ruby
+
+GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
   revision: aa01fdab225ae7a5e7de6fc5d529f7c236376c0c
   specs:
@@ -361,13 +374,6 @@ GEM
     db-query-matchers (0.10.0)
       activesupport (>= 4.0, < 7)
       rspec (~> 3.0)
-    decidim-action_delegator (0.7.2)
-      decidim-admin (>= 0.26.0, < 0.27)
-      decidim-consultations (>= 0.26.0, < 0.27)
-      decidim-core (>= 0.26.0, < 0.27)
-      deface (>= 1.9)
-      savon
-      twilio-ruby
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
@@ -889,7 +895,7 @@ DEPENDENCIES
   bootsnap (~> 1.7)
   byebug (~> 11.1)
   decidim!
-  decidim-action_delegator (~> 0.7.0)
+  decidim-action_delegator!
   decidim-consultations!
   decidim-decidim_awesome!
   decidim-dev!
