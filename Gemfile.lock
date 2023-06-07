@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: 01978255c46a8510608a5060c3bc7ce3e88bcc76
-  ref: 0197825
+  revision: 0e092424def1b52ec1d2bb0a4faf0995effda46b
+  branch: main
   specs:
     decidim-action_delegator (0.7.2)
       decidim-admin (>= 0.26.0, < 0.27)
@@ -830,7 +830,7 @@ GEM
     tilt (2.1.0)
     timeout (0.3.2)
     tomlrb (2.0.3)
-    twilio-ruby (6.0.1)
+    twilio-ruby (6.0.2)
       faraday (>= 0.9, < 3.0)
       jwt (>= 1.5, < 3.0)
       nokogiri (>= 1.6, < 2.0)
