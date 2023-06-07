@@ -9,7 +9,7 @@ DECIDIM_VERSION = { github: "decidim/decidim", ref: "release/0.26-stable" }.free
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 
-gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", ref: "0197825"
+gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "auto-verification"
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome"
 gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "release/0.26-stable"
 
