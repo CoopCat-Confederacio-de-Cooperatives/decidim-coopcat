@@ -13,8 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 1481437863f77a50b48c6fad81e1b303fe173b8d
-  branch: bugfixing/admin-accountability-multi-tenant
+  revision: 457b9f1327896ed190d2cf90fa5db1d750e30641
   specs:
     decidim-decidim_awesome (0.9.3)
       decidim-admin (>= 0.26.0, < 0.28)
