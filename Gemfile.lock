@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 457b9f1327896ed190d2cf90fa5db1d750e30641
+  revision: 8ac8c2c2295cf753df775274673755a23c8e948a
   specs:
     decidim-decidim_awesome (0.9.3)
       decidim-admin (>= 0.26.0, < 0.28)
