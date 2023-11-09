@@ -10,7 +10,7 @@ gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 
 gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "main"
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "develop"
 gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "master"
 
 gem "bootsnap", "~> 1.7"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_11_084072) do
+ActiveRecord::Schema.define(version: 2023_11_09_160353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -368,6 +368,23 @@ ActiveRecord::Schema.define(version: 2023_10_11_084072) do
     t.index ["decidim_organization_id"], name: "decidim_awesome_editor_images_constraint_organization"
   end
 
+  create_table "decidim_awesome_proposal_extra_fields", force: :cascade do |t|
+    t.bigint "decidim_proposal_id", null: false
+    t.jsonb "vote_weight_totals"
+    t.integer "weight_total", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["decidim_proposal_id"], name: "decidim_awesome_extra_fields_on_proposal"
+  end
+
+  create_table "decidim_awesome_vote_weights", force: :cascade do |t|
+    t.bigint "proposal_vote_id", null: false
+    t.integer "weight", default: 1, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["proposal_vote_id"], name: "decidim_awesome_proposals_weights_vote"
+  end
+
   create_table "decidim_blogs_posts", id: :serial, force: :cascade do |t|
     t.jsonb "title"
     t.jsonb "body"
@@ -700,7 +717,7 @@ ActiveRecord::Schema.define(version: 2023_10_11_084072) do
     t.bigint "resource_id"
     t.string "decidim_author_type"
     t.bigint "decidim_author_id"
-    t.integer "decidim_user_group_id"
+    t.integer "decidim_user_group_id", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["decidim_author_type", "decidim_author_id"], name: "idx_endorsements_authors"
