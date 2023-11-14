@@ -8,7 +8,7 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 2.7.7
+  RUBY_VERSION: 3.0.6
   NODE_VERSION: 16.9.0
   RAILS_ENV: test
   DATABASE_USERNAME: postgres
@@ -17,7 +17,7 @@ env:
 jobs:
   test:
     name: RSpec
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     services:
       postgres:
         image: postgres:11

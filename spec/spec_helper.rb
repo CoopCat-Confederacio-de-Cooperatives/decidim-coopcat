@@ -102,8 +102,11 @@ RSpec.configure do |config|
   config.before do
     I18n.available_locales = [:en, :ca, :es]
     I18n.default_locale = :en
-    I18n.locale = :en
     Decidim.available_locales = [:en, :ca, :es]
     Decidim.default_locale = :en
+  end
+
+  config.around do |example|
+    I18n.with_locale(:en) { example.run }
   end
 end
