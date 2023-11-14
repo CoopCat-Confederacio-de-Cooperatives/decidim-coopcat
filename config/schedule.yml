@@ -14,7 +14,7 @@ daily_open_data_job:
   args:
     task: decidim:open_data:export
 
-daily_clean_delete_download_your_data_files_job:
+daily_delete_download_your_data_files_job:
   cron: "33 3 * * *"
   class: "InvokeRakeTaskJob"
   queue: default

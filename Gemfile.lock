@@ -13,8 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 4e6db5717752c2031273cd77518730a76b5aa411
-  branch: develop
+  revision: 4f1b2eb8a9db544e3f781a248cc5b3659e808a36
   specs:
     decidim-decidim_awesome (0.10.0)
       decidim-admin (>= 0.26.0, < 0.28)
@@ -24,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: 6271ef2fd11632e4dd340935ea0e4b0a2d70547b
+  revision: d3df678a92807f7de87cea33d3b0a89251069b9f
   ref: release/0.27-stable
   specs:
     decidim (0.27.4)
@@ -282,7 +281,7 @@ GEM
       nokogiri
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.848.0)
+    aws-partitions (1.849.0)
     aws-sdk-core (3.186.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -447,23 +446,13 @@ GEM
     file_validators (3.0.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
-    fog-aws (3.21.0)
-      fog-core (~> 2.1)
-      fog-json (~> 1.1)
-      fog-xml (~> 0.1)
     fog-core (2.3.0)
       builder
       excon (~> 0.71)
       formatador (>= 0.2, < 2.0)
       mime-types
-    fog-json (1.2.0)
-      fog-core
-      multi_json (~> 1.10)
     fog-local (0.8.0)
       fog-core (>= 1.27, < 3.0)
-    fog-xml (0.1.4)
-      fog-core
-      nokogiri (>= 1.5.11, < 2.0.0)
     formatador (1.1.0)
     foundation_rails_helper (4.0.1)
       actionpack (>= 4.1, < 7.1)
@@ -583,10 +572,9 @@ GEM
     mixlib-shellout (3.2.7)
       chef-utils
     msgpack (1.7.2)
-    multi_json (1.15.0)
     multi_xml (0.6.0)
     mustache (1.1.1)
-    net-imap (0.4.4)
+    net-imap (0.4.5)
       date
       net-protocol
     net-pop (0.1.2)
@@ -932,7 +920,6 @@ DEPENDENCIES
   deface
   faker (~> 2.18)
   faraday
-  fog-aws
   letter_opener_web
   listen (~> 3.5)
   memory_profiler
