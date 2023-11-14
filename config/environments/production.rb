@@ -25,7 +25,7 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.asset_host = ENV.fetch("RAILS_ASSET_HOST") if ENV["RAILS_ASSET_HOST"].present?
+  config.asset_host = ENV.fetch("RAILS_ASSET_HOST", nil) if ENV["RAILS_ASSET_HOST"].present?
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -47,7 +47,7 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = %w(debug info warn error fatal).include?(ENV.fetch("RAILS_LOG_LEVEL")) ? ENV["RAILS_LOG_LEVEL"] : :info
+  config.log_level = %w(debug info warn error fatal).include?(ENV.fetch("RAILS_LOG_LEVEL", nil)) ? ENV["RAILS_LOG_LEVEL"].present? : :info
 
   # Prepend all log lines with the following tags.
   config.log_tags = [:request_id]
