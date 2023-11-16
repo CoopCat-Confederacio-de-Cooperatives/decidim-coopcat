@@ -13,10 +13,9 @@ GIT
 
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: c7bd689ffa8efe653d7e80036bec4b59a2f5ec6a
-  branch: deface-fixes
+  revision: af40e0ce83f8db0a2a373b19ace3146dfd489465
   specs:
-    decidim-decidim_awesome (0.10.0)
+    decidim-decidim_awesome (0.10.1)
       decidim-admin (>= 0.26.0, < 0.28)
       decidim-core (>= 0.26.0, < 0.28)
       deface (>= 1.5)
@@ -24,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: d3df678a92807f7de87cea33d3b0a89251069b9f
+  revision: bf42a655f8f8a64e5030ca3c9a0c8a8909b70c93
   ref: release/0.27-stable
   specs:
     decidim (0.27.4)
@@ -282,7 +281,7 @@ GEM
       nokogiri
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.849.0)
+    aws-partitions (1.850.0)
     aws-sdk-core (3.186.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -825,7 +824,7 @@ GEM
       version_gem (~> 1.1, >= 1.1.1)
     social-share-button (1.2.4)
       coffee-rails
-    spring (4.1.1)
+    spring (4.1.2)
     spring-watcher-listen (2.1.0)
       listen (>= 2.7, < 4.0)
       spring (>= 4)
