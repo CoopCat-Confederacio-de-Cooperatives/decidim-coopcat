@@ -434,7 +434,7 @@ GEM
     factory_bot_rails (4.11.1)
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
-    faker (2.23.0)
+    faker (3.2.2)
       i18n (>= 1.8.11, < 2)
     faraday (2.8.1)
       base64
@@ -919,7 +919,7 @@ DEPENDENCIES
   decidim-dev!
   decidim-term_customizer!
   deface
-  faker (~> 2.18)
+  faker (~> 3.2)
   faraday
   letter_opener_web
   listen (~> 3.5)
