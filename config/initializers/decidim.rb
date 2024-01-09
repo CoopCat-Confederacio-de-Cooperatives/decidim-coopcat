@@ -21,7 +21,7 @@ Decidim.configure do |config|
   # this value for that specific organization.
   config.default_locale = Rails.application.secrets.decidim[:default_locale].presence || :en
 
-  config.base_uploads_path = "#{ENV["BASE_UPLOADS_PATH"]}/" if ENV["BASE_UPLOADS_PATH"].present?
+  config.base_uploads_path = "#{ENV.fetch("BASE_UPLOADS_PATH")}/" if ENV["BASE_UPLOADS_PATH"].present?
 
   # Restrict access to the system part with an authorized ip list.
   # You can use a single ip like ("1.2.3.4"), or an ip subnet like ("1.2.3.4/24")

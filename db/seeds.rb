@@ -9,7 +9,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # You can remove the 'faker' gem if you don't want Decidim seeds.
 if ENV["HEROKU_APP_NAME"].present?
-  ENV["DECIDIM_HOST"] = "#{ENV["HEROKU_APP_NAME"]}.herokuapp.com"
+  ENV["DECIDIM_HOST"] = "#{ENV.fetch("HEROKU_APP_NAME")}.herokuapp.com"
   ENV["SEED"] = "true"
 end
 
@@ -23,15 +23,15 @@ Decidim::Organization.first || Decidim::Organization.create!(
   youtube_handler: Faker::Hipster.word,
   github_handler: Faker::Hipster.word,
   smtp_settings: {
-    from: ENV["EMAIL"],
-    user_name: ENV["SENDGRID_USERNAME"],
-    encrypted_password: Decidim::AttributeEncryptor.encrypt(ENV["SENDGRID_PASSWORD"]),
+    from: ENV.fetch("EMAIL"),
+    user_name: ENV.fetch("SENDGRID_USERNAME"),
+    encrypted_password: Decidim::AttributeEncryptor.encrypt(ENV.fetch("SENDGRID_PASSWORD")),
     address: "smtp.sendgrid.net",
     port: 587,
     authentication: :plain,
     enable_starttls_auto: true
   },
-  host: ENV["DECIDIM_HOST"] || "localhost",
+  host: ENV.fetch("DECIDIM_HOST") || "localhost",
   description: Decidim::Faker::Localized.wrapped("<p>", "</p>") do
     Decidim::Faker::Localized.sentence(word_count: 15)
   end,

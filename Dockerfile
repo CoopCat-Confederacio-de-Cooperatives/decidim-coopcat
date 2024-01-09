@@ -1,7 +1,10 @@
-FROM ruby:2.7 AS builder
+FROM ruby:3.0 AS builder
 
-RUN apt-get update && apt-get upgrade -y && apt-get install gnupg2 && \
-    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+RUN NODE_MAJOR=16 && \
+    apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates curl gnupg && \
+    mkdir -p /etc/apt/keyrings && \
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
     curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt-get update && apt-get install -y nodejs yarn \
@@ -76,11 +79,15 @@ RUN mv config/credentials.bak config/credentials 2>/dev/null || true
 RUN rm -rf node_modules tmp/cache vendor/bundle test spec app/packs .git
 
 # This image is for production env only
-FROM ruby:2.7-slim AS final
+FROM ruby:3.0-slim AS final
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y gnupg2 curl && \
-    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt-get install -y nodejs postgresql-client \
+RUN NODE_MAJOR=16 && \
+    apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates curl gnupg && \
+    mkdir -p /etc/apt/keyrings && \
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
+    apt-get update && apt-get install -y nodejs \
+    postgresql-client \
     imagemagick \
     supervisor && \
     apt-get clean
@@ -105,17 +112,20 @@ ENV COMMIT_VERSION ${COMMIT_VERSION}
 RUN addgroup --system --gid 1000 app && \
     adduser --system --uid 1000 --home /app --group app
 
+USER app
 WORKDIR /app
 COPY ./entrypoint.sh /app/entrypoint.sh
-COPY ./supervisord.conf /etc/supervisord.conf 
+COPY ./supervisord.conf /etc/supervisord.conf
+COPY ./package-caprover.json /app/package-caprover.json
+COPY ./package-caprover-lock.json /app/package-caprover-lock.json
 COPY --from=builder --chown=app:app /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder --chown=app:app /app /app
-RUN rm package-lock.json
-COPY ./package-caprover.json /app/package.json
-
-USER app
 # cercles uses npm & caprover cli only
-RUN npm i caprover
+RUN mv package.json package-app.json && \
+    mv package-lock.json package-app-lock.json  && \
+    mv package-caprover.json package.json && \
+    mv package-caprover-lock.json package-lock.json && \
+    npm ci
 
 HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \
     CMD (curl -sSH "Content-Type: application/json" -d '{"query": "{ decidim { version } }"}' http://localhost:3000/api) || exit 1
