@@ -1977,13 +1977,13 @@
     },
     "packages/browserslist-config": {
       "name": "@decidim/browserslist-config",
-      "version": "0.27.4",
+      "version": "0.27.5",
       "extraneous": true,
       "license": "AGPL-3.0"
     },
     "packages/core": {
       "name": "@decidim/core",
-      "version": "0.27.4",
+      "version": "0.27.5",
       "extraneous": true,
       "license": "AGPL-3.0",
       "dependencies": {
@@ -2024,7 +2024,7 @@
     },
     "packages/elections": {
       "name": "@decidim/elections",
-      "version": "0.27.4",
+      "version": "0.27.5",
       "extraneous": true,
       "license": "AGPL-3.0",
       "dependencies": {
@@ -2035,7 +2035,7 @@
     },
     "packages/webpacker": {
       "name": "@decidim/webpacker",
-      "version": "0.27.4",
+      "version": "0.27.5",
       "extraneous": true,
       "license": "AGPL-3.0",
       "dependencies": {
