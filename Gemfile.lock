@@ -318,7 +318,7 @@ GEM
       parser (>= 2.4)
       smart_properties
     bindex (0.8.1)
-    bootsnap (1.17.0)
+    bootsnap (1.18.3)
       msgpack (~> 1.2)
     browser (2.7.1)
     builder (3.2.4)
@@ -910,7 +910,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-s3
-  bootsnap (~> 1.7)
+  bootsnap (~> 1.18)
   byebug (~> 11.1)
   decidim!
   decidim-action_delegator!
