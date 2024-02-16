@@ -366,7 +366,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     commonmarker (0.23.10)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crack (0.4.5)
       rexml
@@ -717,7 +717,7 @@ GEM
       ffi (~> 1.0)
     redcarpet (3.6.0)
     redis (4.8.1)
-    redis-client (0.19.1)
+    redis-client (0.20.0)
       connection_pool
     regexp_parser (2.9.0)
     request_store (1.5.1)
@@ -807,11 +807,11 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     seven_zip_ruby (1.3.0)
-    sidekiq (7.2.0)
+    sidekiq (7.2.2)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
-      redis-client (>= 0.14.0)
+      redis-client (>= 0.19.0)
     sidekiq-cron (1.12.0)
       fugit (~> 1.8)
       globalid (>= 1.0.1)
