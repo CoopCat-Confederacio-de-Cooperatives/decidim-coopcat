@@ -920,7 +920,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-s3
-  bootsnap (~> 1.7)
+  bootsnap (~> 1.18)
   byebug (~> 11.1)
   decidim!
   decidim-action_delegator!
