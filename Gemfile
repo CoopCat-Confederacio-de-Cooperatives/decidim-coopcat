@@ -9,9 +9,9 @@ DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.27-stable" }.f
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 
-gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "fix-27-ajax"
+gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome"
-gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer"
+gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "release/0.27-stable"
 
 gem "bootsnap", "~> 1.7"
 gem "puma", ">= 5.0.0"
