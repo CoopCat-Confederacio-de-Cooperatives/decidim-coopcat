@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.28-stable" }.freeze
+DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.29-stable" }.freeze
 
 gem "decidim", DECIDIM_VERSION
 # gem "decidim-consultations", DECIDIM_VERSION
@@ -12,13 +12,12 @@ gem "decidim", DECIDIM_VERSION
 gem "nokogiri", "< 1.18.2"
 
 # gem "decidim-action_delegator", github: "openpoke/decidim-module-action_delegator", branch: "release/0.28-stable"
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.28-stable"
-gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "main"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.29-stable"
+gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "release/0.29-stable"
 
 gem "bootsnap", "~> 1.7"
 gem "puma", ">= 5.0.0"
-
-gem "wicked_pdf", "~> 2.1"
+gem "grover", "~> 1.1"
 
 gem "deface"
 gem "faraday"
