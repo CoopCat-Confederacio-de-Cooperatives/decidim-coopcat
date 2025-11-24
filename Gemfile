@@ -4,14 +4,16 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.27-stable" }.freeze
+DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.28-stable" }.freeze
 
 gem "decidim", DECIDIM_VERSION
-gem "decidim-consultations", DECIDIM_VERSION
+# gem "decidim-consultations", DECIDIM_VERSION
 
-gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "fix-currentcuestion"
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome"
-gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "release/0.27-stable"
+gem "nokogiri", "< 1.18.2"
+
+# gem "decidim-action_delegator", github: "openpoke/decidim-module-action_delegator", branch: "release/0.28-stable"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.28-stable"
+gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "main"
 
 gem "bootsnap", "~> 1.7"
 gem "puma", ">= 5.0.0"
@@ -25,7 +27,7 @@ group :development, :test do
   gem "byebug", "~> 11.1", platform: :mri
 
   gem "decidim-dev", DECIDIM_VERSION
-  gem "faker", "~> 2.18"
+  gem "faker", "~> 3.2"
   gem "rubocop-faker", "~> 1.0"
 end
 
@@ -34,8 +36,6 @@ group :development do
   gem "listen", "~> 3.5"
   gem "memory_profiler"
   gem "rack-mini-profiler"
-  gem "spring", ">= 4.0.0"
-  gem "spring-watcher-listen", "~> 2.1"
   gem "stackprof"
   gem "web-console", "~> 4.2"
 end
