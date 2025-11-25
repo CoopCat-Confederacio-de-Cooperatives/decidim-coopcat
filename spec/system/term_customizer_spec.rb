@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Term customizer", type: :system do
+describe "Term customizer" do # rubocop:disable RSpec/DescribeClass do
   let(:organization) { create(:organization) }
   let!(:user) do
     create(:user, :admin, :confirmed,

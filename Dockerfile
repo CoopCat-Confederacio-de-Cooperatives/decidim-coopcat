@@ -1,4 +1,4 @@
-FROM ruby:3.0 AS builder
+FROM ruby:3.3 AS builder
 
 RUN NODE_MAJOR=16 && \
     apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates curl gnupg && \
