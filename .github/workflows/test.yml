@@ -1,4 +1,4 @@
-name: "[CI] Decidim OpenEU"
+name: "[CI] Tests"
 on:
   push:
     branches:
