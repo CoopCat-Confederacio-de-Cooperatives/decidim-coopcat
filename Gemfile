@@ -4,19 +4,15 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.30-stable" }.freeze
+DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.31-stable" }.freeze
 
 gem "decidim", DECIDIM_VERSION
-# gem "decidim-consultations", DECIDIM_VERSION
-
-gem "nokogiri", "< 1.18.2"
-
-# gem "decidim-action_delegator", github: "openpoke/decidim-module-action_delegator", branch: "release/0.28-stable"
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
-gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "release/0.30-stable"
+gem "decidim-action_delegator", github: "openpoke/decidim-module-action_delegator", branch: "main"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.31-stable"
+gem "decidim-elections", DECIDIM_VERSION
+gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "release/0.31-stable"
 
 gem "bootsnap", "~> 1.7"
-gem "grover", "~> 1.1"
 gem "puma", ">= 6.3.1"
 
 gem "deface"
