@@ -9,7 +9,7 @@ class DecidimController < ApplicationController
   private
 
   def set_raven_context
-    return unless ENV["SENTRY_ENABLED"].present?
+    return if ENV["SENTRY_ENABLED"].blank?
 
     Sentry.set_user({ id: try(:current_user).try(:id) }.merge(session))
     Sentry.set_extras(params: params.to_unsafe_h, url: request.url)
