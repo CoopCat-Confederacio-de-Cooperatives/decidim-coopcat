@@ -3,5 +3,5 @@
 <% end %>
 
 <% if current_organization.favicon.blank? %>
-  <%= favicon_link_tag asset_path("default_favicon.ico") %>
+  <%= favicon_link_tag asset_pack_path("media/images/default_favicon.ico") %>
 <% end %>
