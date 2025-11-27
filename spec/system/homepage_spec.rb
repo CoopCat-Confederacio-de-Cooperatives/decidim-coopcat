@@ -2,8 +2,8 @@
 
 require "rails_helper"
 
-describe "Visit the home page", type: :system, perform_enqueued: true do
-  let(:organization) { create :organization }
+describe "Visit the home page", perform_enqueued: true do # rubocop:disable RSpec/DescribeClass do
+  let(:organization) { create(:organization) }
 
   before do
     switch_to_host(organization.host)

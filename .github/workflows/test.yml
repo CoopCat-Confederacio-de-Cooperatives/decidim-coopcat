@@ -1,50 +1,72 @@
-name: Test
-
+name: "[CI] Tests"
 on:
   push:
     branches:
       - main
-      - staging
   pull_request:
 
 env:
-  RUBY_VERSION: 3.0.6
-  NODE_VERSION: 16.9.0
+  RUBY_VERSION: 3.3.4
+  NODE_VERSION: 22.20.0
   RAILS_ENV: test
   DATABASE_USERNAME: postgres
   DATABASE_PASSWORD: postgres
-    
+  DATABASE_HOST: localhost
+  RUBYOPT: '-W:no-deprecated'
+  CHROME_VERSION: 126.0.6478.182
+  DISABLE_SPRING: 1
+
 jobs:
-  test:
-    name: RSpec
+  tests:
+    name: Tests
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:11
-        ports:
-          - 5432:5432
+        image: postgres:17
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
         env:
-          RAILS_ENV: test
-          POSTGRES_HOST_AUTH_METHOD: trust
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+          POSTGRES_PASSWORD: postgres
+      redis:
+        image: redis:7.2-alpine
+        ports: ["6379:6379"]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 1
 
+      - run: |
+          sudo apt-get update; sudo apt-get -f install wkhtmltopdf imagemagick p7zip
+
       - uses: nanasess/setup-chromedriver@v2
         with:
-          chromedriver-version: 119.0.6045.105
+          chromedriver-version: ${{ env.CHROME_VERSION }}
+
+      - name: List Chrome
+        run: apt list --installed | grep chrome
+
+      - name: Remove Chrome
+        run: sudo apt remove google-chrome-stable
+
+      - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: ${{ env.CHROME_VERSION }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: ./package-lock.json
 
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
-
-      - uses: actions/setup-node@master
-        with:
-          node-version: ${{ env.NODE_VERSION }}
 
       - name: Setup & create Database
         run: |
@@ -56,4 +78,4 @@ jobs:
           bundle exec rake assets:precompile
 
       - name: Run RSpec
-        run: CODECOV=1 SIMPLECOV=1 COBERTURA=1 bundle exec rspec
+        run: SIMPLECOV=1 CODECOV=1 bundle exec rspec spec/

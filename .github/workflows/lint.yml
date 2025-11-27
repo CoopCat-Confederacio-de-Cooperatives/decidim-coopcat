@@ -8,8 +8,8 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.0.6
-  NODE_VERSION: 12.9.1
+  RUBY_VERSION: 3.3.4
+  NODE_VERSION: 22.14.0
     
 jobs:
   lint:
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     if: "!startsWith(github.head_ref, 'chore/l10n')"
     steps:
-      - uses: actions/checkout@v2.0.0
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
@@ -32,9 +32,6 @@ jobs:
 
       - run: bundle exec rubocop -P
         name: Lint Ruby files
-
-      - run: bundle exec mdl *.md
-        name: Lint Markdown files
 
       - run: bundle exec erblint app/views/**/*.erb
         name: Lint ERB files

@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Favicon", type: :system do
+describe "Favicon" do
   context "when the organization has no favicon" do
     let(:organization) { create(:organization, favicon: nil) }
 
