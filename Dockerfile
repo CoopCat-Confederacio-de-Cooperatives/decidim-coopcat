@@ -116,15 +116,10 @@ USER app
 WORKDIR /app
 COPY ./entrypoint.sh /app/entrypoint.sh
 COPY ./supervisord.conf /etc/supervisord.conf
-COPY ./package-caprover.json /app/package-caprover.json
-COPY ./package-caprover-lock.json /app/package-caprover-lock.json
 COPY --from=builder --chown=app:app /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder --chown=app:app /app /app
-# cercles uses npm & caprover cli only
 RUN mv package.json package-app.json && \
     mv package-lock.json package-app-lock.json  && \
-    mv package-caprover.json package.json && \
-    mv package-caprover-lock.json package-lock.json && \
     npm ci
 
 HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \
