@@ -1,3 +1,0 @@
-<!-- insert_after 'table' -->
-
-<%= javascript_pack_tag "caprover_system" %>
