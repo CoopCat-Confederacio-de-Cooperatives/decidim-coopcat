@@ -553,6 +553,8 @@ GEM
       rexml (~> 3.0)
     hashdiff (1.2.1)
     hashie (5.0.0)
+    health_check (3.1.0)
+      railties (>= 5.0)
     hexapdf (1.1.1)
       cmdparse (~> 3.0, >= 3.0.3)
       geom2d (~> 0.4, >= 0.4.1)
@@ -1103,7 +1105,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-s3
-  bootsnap (~> 1.7)
+  bootsnap
   byebug (~> 11.1)
   decidim!
   decidim-action_delegator!
@@ -1112,15 +1114,16 @@ DEPENDENCIES
   decidim-elections!
   decidim-term_customizer!
   deface
+  health_check
   letter_opener_web
-  listen (~> 3.5)
+  listen
   memory_profiler
-  puma (>= 6.3.1)
+  puma
   rack-mini-profiler
   sidekiq
   sidekiq-cron
   stackprof
-  web-console (~> 4.2)
+  web-console
 
 RUBY VERSION
    ruby 3.3.4p94
