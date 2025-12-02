@@ -54,6 +54,7 @@ Rails.application.configure do
 
   # Skip http-to-https redirect for the default health check endpoint.
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
+  config.ssl_options = { redirect: { exclude: ->(request) { request.path =~ /health_check/ } } }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     config.logger = ActiveSupport::Logger.new($stdout)
