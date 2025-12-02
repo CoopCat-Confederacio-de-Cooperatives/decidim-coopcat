@@ -48,7 +48,6 @@ COPY ./app /app/app
 COPY ./bin /app/bin
 COPY ./config /app/config
 COPY ./db /app/db
-COPY ./lib /app/lib
 COPY ./packages /app/packages
 COPY ./public/*.* /app/public/
 COPY ./config.ru /app/config.ru
