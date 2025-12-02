@@ -10,7 +10,7 @@ services:
     #   - bundle:/usr/local/bundle
     #   - node_modules:/app/node_modules
     environment:
-      - DATABASE_URL=postgres://postgres:decidim@db/decidim_staging
+      - DATABASE_URL=postgres://postgres:decidim@db/decidim_coopcat
       - SECRET_KEY_BASE=942a6ee88fe7cbc9bfd8f6dfeda5c3ef6503d0278e16dd40ec199109acde7fdda524d495a013d20e2b962dbafb6ddf1136278ea6d6ac2c134776bd445da9671e
       - DECIDIM_FORCE_SSL=false
       - QUEUE_ADAPTER=sidekiq
@@ -28,7 +28,7 @@ services:
     #   - bundle:/usr/local/bundle
     #   - node_modules:/app/node_modules
     environment:
-      - DATABASE_URL=postgres://postgres:decidim@db/decidim_staging
+      - DATABASE_URL=postgres://postgres:decidim@db/decidim_coopcat
       - SECRET_KEY_BASE=942a6ee88fe7cbc9bfd8f6dfeda5c3ef6503d0278e16dd40ec199109acde7fdda524d495a013d20e2b962dbafb6ddf1136278ea6d6ac2c134776bd445da9671e
       - DECIDIM_FORCE_SSL=false
       - QUEUE_ADAPTER=sidekiq
@@ -37,7 +37,7 @@ services:
     depends_on:
       - redis
   db:
-    image: postgres:13
+    image: postgres:17-alpine
     ports:
       - "54321:5432"
     environment:
