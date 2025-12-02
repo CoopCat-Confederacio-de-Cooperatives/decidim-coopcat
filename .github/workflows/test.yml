@@ -41,7 +41,7 @@ jobs:
           fetch-depth: 1
 
       - run: |
-          sudo apt-get update; sudo apt-get -f install wkhtmltopdf imagemagick p7zip
+          sudo apt-get update; sudo apt-get -f install imagemagick p7zip
 
       - uses: nanasess/setup-chromedriver@v2
         with:
