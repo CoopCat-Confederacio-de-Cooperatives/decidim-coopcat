@@ -12,10 +12,11 @@ gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_aweso
 gem "decidim-elections", DECIDIM_VERSION
 gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "release/0.31-stable"
 
-gem "bootsnap", "~> 1.7"
-gem "puma", ">= 6.3.1"
+gem "bootsnap"
+gem "puma"
 
 gem "deface"
+gem "health_check"
 
 group :development, :test do
   gem "byebug", "~> 11.1", platform: :mri
@@ -25,11 +26,11 @@ end
 
 group :development do
   gem "letter_opener_web"
-  gem "listen", "~> 3.5"
+  gem "listen"
   gem "memory_profiler"
   gem "rack-mini-profiler"
   gem "stackprof"
-  gem "web-console", "~> 4.2"
+  gem "web-console"
 end
 
 group :production do
