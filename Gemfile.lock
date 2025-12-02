@@ -819,6 +819,10 @@ GEM
     rails-i18n (7.0.10)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
+    rails_semantic_logger (4.18.0)
+      rack
+      railties (>= 5.1)
+      semantic_logger (~> 4.16)
     railties (7.2.3)
       actionpack (= 7.2.3)
       activesupport (= 7.2.3)
@@ -982,7 +986,15 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
+    semantic_logger (4.17.0)
+      concurrent-ruby (~> 1.0)
     semantic_range (3.1.0)
+    sentry-rails (6.2.0)
+      railties (>= 5.2.0)
+      sentry-ruby (~> 6.2.0)
+    sentry-ruby (6.2.0)
+      bigdecimal
+      concurrent-ruby (~> 1.0, >= 1.0.2)
     shakapacker (8.3.0)
       activesupport (>= 5.2)
       package_json
@@ -1120,6 +1132,9 @@ DEPENDENCIES
   memory_profiler
   puma
   rack-mini-profiler
+  rails_semantic_logger
+  sentry-rails
+  sentry-ruby
   sidekiq
   sidekiq-cron
   stackprof
