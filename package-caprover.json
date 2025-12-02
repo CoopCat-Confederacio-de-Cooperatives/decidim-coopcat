@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "caprover": "^2.3.0"
-  },
-  "scripts": {
-    "caprover": "caprover"
-  }
-}

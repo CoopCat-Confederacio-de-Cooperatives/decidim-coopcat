@@ -1,15 +1,11 @@
 {
   "name": "app",
   "private": true,
-  "scripts": {
-    "caprover": "caprover"
-  },
   "dependencies": {
     "@decidim/browserslist-config": "file:packages/browserslist-config",
     "@decidim/core": "file:packages/core",
     "@decidim/webpacker": "file:packages/webpacker",
     "@tarekraafat/autocomplete.js": "^10.2.7",
-    "caprover": "^2.3.0",
     "codemirror": "^5.65.20",
     "core-js": "^3.47.0",
     "europa": "^4.0.0",
