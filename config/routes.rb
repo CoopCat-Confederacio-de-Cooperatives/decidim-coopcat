@@ -14,18 +14,6 @@ Rails.application.routes.draw do
     resources :iframe, only: [:index]
   end
 
-  authenticate(:admin) do
-    namespace :system do
-      resources :caprover, only: [:index] do
-        get :enable, on: :collection
-        get :disable, on: :collection
-      end
-      scope :plausible do
-        get :enable, to: "plausible#enable"
-      end
-    end
-  end
-
   mount Decidim::Core::Engine => "/"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
