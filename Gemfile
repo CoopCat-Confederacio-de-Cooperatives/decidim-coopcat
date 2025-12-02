@@ -17,6 +17,9 @@ gem "puma"
 
 gem "deface"
 gem "health_check"
+gem "rails_semantic_logger"
+gem "sentry-rails"
+gem "sentry-ruby"
 
 group :development, :test do
   gem "byebug", "~> 11.1", platform: :mri
