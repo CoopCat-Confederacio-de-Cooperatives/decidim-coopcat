@@ -1,32 +1,44 @@
 {
   "name": "app",
   "private": true,
+  "engines": {
+    "node": ">=18.17.1",
+    "npm": ">=9.6.7"
+  },
   "scripts": {
-    "caprover": "caprover"
+    "markdownlint": "markdownlint '*.md'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint --no-error-on-unmatched-pattern --ignore-pattern app/packs/vendor --ext .js app/packs",
+    "lint-fix": "eslint -c .eslintrc.json --ext .js app/packs/ --fix",
+    "stylelint": "stylelint app/packs/**/*.scss",
+    "stylelint-fix": "stylelint **/*.scss --fix"
+  },
+  "stylelint": {
+    "extends": "@decidim/stylelint-config"
+  },
+  "eslintConfig": {
+    "extends": "@decidim/eslint-config",
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
   },
   "dependencies": {
     "@decidim/browserslist-config": "file:packages/browserslist-config",
     "@decidim/core": "file:packages/core",
     "@decidim/webpacker": "file:packages/webpacker",
-    "@tarekraafat/autocomplete.js": "^10.2.7",
-    "caprover": "^2.3.0",
-    "codemirror": "^5.65.20",
-    "core-js": "^3.47.0",
-    "europa": "^4.0.0",
+    "codemirror": "^5.65.18",
+    "core-js": "^3.46.0",
     "form-storage": "^1.3.5",
-    "formBuilder": "^3.21.1",
-    "inline-attacher": "^0.0.7",
-    "jsrender": "^1.0.16",
+    "formBuilder": "^3.19.13",
+    "highlight.js": "^11.11.1",
+    "inline-attacher": "^0.0.8",
+    "jsrender": "^1.0.15",
     "leaflet.featuregroup.subgroup": "^1.0.2",
-    "postcss-preset-env": "^8.3.2",
-    "regenerator-runtime": "^0.14.1",
-    "tom-select": "^2.2.2"
+    "tom-select": "^2.4.3"
   },
   "version": "0.1.0",
-  "engines": {
-    "node": "22.20.0",
-    "npm": ">=9.6.7"
-  },
   "browserslist": [
     "extends @decidim/browserslist-config"
   ],
@@ -35,8 +47,7 @@
     "@decidim/eslint-config": "file:packages/eslint-config",
     "@decidim/prettier-config": "file:packages/prettier-config",
     "@decidim/stylelint-config": "file:packages/stylelint-config",
-    "postcss-scss": "^4.0.9",
-    "sass-embedded": "~1.57.1",
-    "webpack-dev-server": "^4.15.2"
+    "@tarekraafat/autocomplete.js": "^10.2.7",
+    "shakapacker": "^8.3.0"
   }
 }

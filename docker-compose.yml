@@ -1,55 +1,62 @@
-version: '3'
+networks:
+  frontend:
+    ipam:
+      config:
+        - subnet: 172.24.0.0/24
+
 services:
-  app:
-    build: .
-    volumes:
-      - ./entrypoint.sh:/app/entrypoint.sh
-      - ./db/seeds.rb:/app/db/seeds.rb
-      - ./tmp/pids:/app/tmp/pids
-    #   - .:/app
-    #   - bundle:/usr/local/bundle
-    #   - node_modules:/app/node_modules
-    environment:
-      - DATABASE_URL=postgres://postgres:decidim@db/decidim_staging
-      - SECRET_KEY_BASE=942a6ee88fe7cbc9bfd8f6dfeda5c3ef6503d0278e16dd40ec199109acde7fdda524d495a013d20e2b962dbafb6ddf1136278ea6d6ac2c134776bd445da9671e
-      - DECIDIM_FORCE_SSL=false
-      - QUEUE_ADAPTER=sidekiq
-      - REDIS_URL=redis://redis:6379/1
+  decidim:
+    container_name: rurbanive-decidim
+    image:  ghcr.io/CoopCat-Confederacio-de-Cooperatives/decidim-coopcat:${GIT_REF:-main}
+    pull_policy: always
     ports:
-      - 3000:3000
-    depends_on:
-      - db
-      - redis
-  sidekiq:
-    build: .
+      - 3015:3000
     volumes:
-      - ./entrypoint.sh:/app/entrypoint.sh
-    #   - .:/app
-    #   - bundle:/usr/local/bundle
-    #   - node_modules:/app/node_modules
+      - ./storage:/app/storage
+    restart: ${RESTART_POLICY:-unless-stopped}
+    env_file:
+      - .env
     environment:
-      - DATABASE_URL=postgres://postgres:decidim@db/decidim_staging
-      - SECRET_KEY_BASE=942a6ee88fe7cbc9bfd8f6dfeda5c3ef6503d0278e16dd40ec199109acde7fdda524d495a013d20e2b962dbafb6ddf1136278ea6d6ac2c134776bd445da9671e
-      - DECIDIM_FORCE_SSL=false
-      - QUEUE_ADAPTER=sidekiq
-      - REDIS_URL=redis://redis:6379/1
+      - RUN_RAILS=true
       - RUN_SIDEKIQ=true
-    depends_on:
+      - DATABASE_URL=${DATABASE_URL:-postgres://${POSTGRES_USER:-rurbanive}:${POSTGRES_PASSWORD:-decidim}@${DB_HOST:-192.168.100.2}/${POSTGRES_DB:-rurbanive-decidim}}
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE:-86ffb3c0f1de06a6d46776d3fa7c5631c3b49344a23e7f3d8d3ff437a29cea42ea30f20f95955c40121a4dbd0866e1bd1207d4a924236e8a440335262c615722}
+      - DECIDIM_FORCE_SSL=${DECIDIM_FORCE_SSL:-false}
+      - QUEUE_ADAPTER=${QUEUE_ADAPTER:-sidekiq}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379/0}
+      - WEB_CONCURRENCY=${WEB_CONCURRENCY:-2}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - DECIDIM_ENABLE_HTML_HEADER_SNIPPETS=${DECIDIM_ENABLE_HTML_HEADER_SNIPPETS:-true}
+      - DECIDIM_ADMIN_PASSWORD_EXPIRATION_DAYS=${DECIDIM_ADMIN_PASSWORD_EXPIRATION_DAYS:-360}
+      - SMTP_STARTTLS_AUTO=${SMTP_STARTTLS_AUTO:-true}
+      - SMTP_USERNAME=${SMTP_USERNAME:-postmaster@cercles.coop}
+      - SMTP_PASSWORD
+      - SMTP_ADDRESS=${SMTP_ADDRESS:-smtp.eu.mailgun.org}
+      - SMTP_DOMAIN=${SMTP_DOMAIN:-cercles.coop}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - DECIDIM_MAILER_SENDER=${DECIDIM_MAILER_SENDER:-no-reply@cercles.coop}
+      - MAPS_API_KEY
+      - MAPS_PROVIDER=${MAPS_PROVIDER:-here}
+      - RACK_ATTACK_SECRET
+      - SENTRY_DSN
+      - DISABLE_SEMANTIC_LOGGER
+    links:
       - redis
-  db:
-    image: postgres:13
-    ports:
-      - "54321:5432"
-    environment:
-      - POSTGRES_PASSWORD=decidim
-    volumes:
-      - pg_data:/var/lib/postgresql/data
+    networks:
+      frontend:
+        ipv4_address: 172.24.0.4
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "5"
   redis:
     image: redis
     volumes:
-      - redis_data:/data
+      - redis-data:/data
+    restart: ${RESTART_POLICY:-unless-stopped}
+    networks:
+      frontend:
+        ipv4_address: 172.24.0.5
 volumes:
-  pg_data:
-  redis_data:
-  # bundle:
-  # node_modules:
+  redis-data: {}
