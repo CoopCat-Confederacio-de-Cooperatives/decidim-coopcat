@@ -19,6 +19,8 @@ class CreateDefaultProposalStates < ActiveRecord::Migration[6.1]
     CustomProposal.reset_column_information
     Decidim::Proposals::ProposalState.reset_column_information
     Decidim::Component.unscoped.where(manifest_name: "proposals").find_each do |component|
+      next if component.participatory_space_type == "Decidim::Consultations::Question"
+
       admin_user = component.organization.admins.first
       default_states = Decidim::Proposals.create_default_states!(component, admin_user)
 

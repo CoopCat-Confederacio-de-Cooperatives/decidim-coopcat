@@ -2,73 +2,104 @@
 
 Instància de [Decidim](https://github.com/decidim/decidim) per a CoopCat
 
-## Setting up the application
+## Server configuration
 
-You will need to do some steps before having the app working properly once you've deployed it:
+Docker & Docker Compose is needed, then clone this repository:
 
-1. Open a Rails console in the server: `bundle exec rails console`
-2. Create a System Admin user:
-
-```ruby
-user = Decidim::System::Admin.new(email: <email>, password: <password>, password_confirmation: <password>)
-user.save!
+```
+git clone https://github.com/CoopCat-Confederacio-de-Cooperatives/decidim-coopcat
 ```
 
-3. Visit `<your app url>/system` and login with your system admin credentials
-4. Create a new organization. Check the locales you want to use for that organization, and select a default locale.
-5. Set the correct default host for the organization, otherwise the app will not work properly. Note that you need to include any subdomain you might be using.
-6. Fill the rest of the form and submit it.
+or update:
+```
+cd decidim-coopcat
+git pull
+```
 
-You're good to go!
-
-### How to deploy
-
-Deployment is prepared for docker.
-
-### Project management
-
-In this repo you'll find all the issues needed to fulfill CoopCat's requirements. These are epics that represent the development that needs to happen to implement the features that CoopCat needs. Among these, you'll also find other regular issues that are simply things we need to do to maintain the Rails app.
-
-Most of the implementation for these epics is happening in the separate module [decidim-module-action_delegator](https://github.com/coopdevs/decidim-module-action_delegator/). So expect to see non-epic issues and pull requests there.
-
-## Embeded Plausible analytics
-
-Plausible analytics are embeded in the admin panel. To enable them you need to set the following environment variables:
+Ensure the `.env` file has these values defined:
 
 ```bash
-PLAUSIBLE_URL=https://analytics.plausible.io
-PLAUSIBLE_YOURDOMAIN_COM=auth-code
+DATABASE_URL=postgres://xxxxx:xxxxx@db/xxxxx
+POSTGRES_USER=XXXXXX
+POSTGRES_PASSWORD=XXXXXX
+POSTGRES_DB=XXXXXX
+SECRET_KEY_BASE=XXXXXX
+MAPS_PROVIDER=here
+MAPS_API_KEY=XXXXXX
+EMAIL=XXXXXX
+SMTP_USERNAME=XXXXXX
+SMTP_PASSWORD=XXXXXX
+SMTP_ADDRESS=XXXXXX
+SMTP_DOMAIN=XXXXXX
+SMTP_PORT=XXXXXX
+DECIDIM_ENV=production
 ```
 
-Where `auth-code` is the "`auth`" parameter shown in a created shared link in the Plausible dashboard. Note that you must make the share link public (without a password).
+## Deploy
 
-### Run action delegator's seed data
+### Pull from Github Repository
 
-You can do so from the Rails console and manually executing the method:
+This instance uses Docker Compose to deploy the application into the port 3015.
 
-```sh
-$ heroku run rails c
-irb(main):001:0> Decidim::ActionDelegator::Engine.load_seed
-=> true
+First, you need to make sure you are logged into the Github Docker registry (ghcr.io).
+
+1. Go to your personal Github account, into tokens settings https://github.com/settings/tokens
+2. Generate a new token (Classic)
+3. Ensure you check the permission "read:packages" and "No expiration".
+4. In the server, login into docker, introduce your username and the token generated:
+  ```bash
+  docker login ghcr.io --username github-username
+  ```
+5. You should stay logged permanently, you should not need to repeat this process.
+
+If you want to update the image (anything in the code has change), execute:
+
+`docker pull ghcr.io/CoopCat-Confederacio-de-Cooperatives/decidim-coopcat:main` (or `staging`)
+
+To re-deploy the image this should suffice:
+
+`docker compose up -d`
+
+### Zero Downtime with docker compose
+
+It is possible to redeploy with zero downtime by using the docker plugin https://github.com/wowu/docker-rollout
+
+#### Install plugin
+
+ For production or when using `sudo`, install the plugin to `/usr/local/lib/docker/cli-plugins/` so it's available for all users.
+  ```bash
+  # production only
+  sudo mkdir -p /usr/local/lib/docker/cli-plugins
+  sudo curl https://raw.githubusercontent.com/wowu/docker-rollout/main/docker-rollout -o /usr/local/lib/docker/cli-plugins/docker-rollout
+  sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-rollout
+  ```
+
+#### Zero-downtime deploy
+
+Just execute:
+
+```
+docker rollout app --wait-after-healthy 15
 ```
 
-### Upgrading Decidim
+### Locally building the Docker image
 
-This entails updating the non-core Decidim modules we rely on, decidim-action_delegator, to support the Decidim version we want to
-upgrade to. See
-https://github.com/coopdevs/decidim-module-action_delegator/ for reference.
+This instance uses Docker Compose to deploy the application with Traefik as a proxy.
 
-Once that's done, we need to update `DECIDIM_VERSION` in the Gemfile to point to the target
-version and possibly update the `gem "decidim-action_delegator"` to point to their upgrade branches. Don't forget
-to get those merged and released so they get updated in our Gemfile later on.
+> If you want to locally build the docker image, change the line `image: ghcr.io/CoopCat-Confederacio-de-Cooperatives/decidim-coopcat:${GIT_REF:-main}` for `image: decidim-${DECIDIM_ENV:-production}` first!
 
-Then, to update run:
+You need to build and tag the image:
 
-```sh
-bundle update decidim decidim-consultations
-bundle exec rake railties:install:migrations
-bundle exec rake db:migrate
-```
+1. Ensure you have the ENV value `DECIDIM_ENV=staging` or `DECIDIM_ENV=production`
+2. Run:
+   `./build.sh`
+3. Deploy:
+  `docker compose up -d`
 
-You can check https://github.com/coopdevs/decidim-coopcat/pull/109 as an
-example.
+## Backups
+
+Database is backup every day using https://github.com/tiredofit/docker-db-backup (see docker-compose.yml for details)
+
+Backups are stored in:
+
+- `backups/*`

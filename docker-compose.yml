@@ -1,62 +1,122 @@
-networks:
-  frontend:
-    ipam:
-      config:
-        - subnet: 172.24.0.0/24
-
 services:
-  decidim:
-    container_name: rurbanive-decidim
-    image:  ghcr.io/CoopCat-Confederacio-de-Cooperatives/decidim-coopcat:${GIT_REF:-main}
-    pull_policy: always
+  traefik:
+    image: traefik:v3.6
+    container_name: traefik
+    command:
+      # Try to enable this if something isn't working. 
+      # Chances are, Traefik will tell you why.
+      # Be careful in production as it exposes the traffic you might not want to expose.
+      # - --log.level=DEBUG
+      - --api.dashboard=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entryPoints.web.http.redirections.entrypoint.scheme=https
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.websecure.asDefault=true
+      - --entrypoints.dashboard.address=:4430
+      # LetsEncrypt Staging Server - uncomment when testing
+      # - --certificatesResolvers.letsencrypt.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory
+      - --certificatesresolvers.le.acme.email=postmaster@${DECIDIM_HOST}
+      - --certificatesresolvers.le.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.le.acme.httpchallenge=true
+      - --certificatesresolvers.le.acme.httpchallenge.entrypoint=web
+    restart: ${RESTART_POLICY:-unless-stopped}
     ports:
-      - 3015:3000
+      - 80:80
+      - 443:443
+      - 4430:4430 # traefik dashboard
+    env_file:
+      - .env
+    volumes:
+      - ./letsencrypt:/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - traefik.enable=true
+      # Dashboard configuration
+      - traefik.http.routers.dashboard.rule=Host(`*.${DECIDIM_HOST}`)
+      - traefik.http.routers.dashboard.entrypoints=dashboard
+      - traefik.http.routers.dashboard.service=api@internal
+      - traefik.http.routers.dashboard.tls=true
+      - traefik.http.routers.dashboard.tls.certresolver=le
+      - traefik.http.routers.dashboard.middlewares=dashboard-auth
+      # Basic auth middleware
+      - traefik.http.middlewares.dashboard-auth.basicauth.users=admin:${DASHBOARD_AUTH_PASSWORD:-admin}
+  decidim:
+    image: ghcr.io/CoopCat-Confederacio-de-Cooperatives/decidim-coopcat:${GIT_REF:-main}
+    container_name: decidim-${DECIDIM_ENV:-production}
+    pull_policy: ${PULL_POLICY:-always}
     volumes:
       - ./storage:/app/storage
     restart: ${RESTART_POLICY:-unless-stopped}
     env_file:
+      - .env.default
       - .env
     environment:
       - RUN_RAILS=true
-      - RUN_SIDEKIQ=true
-      - DATABASE_URL=${DATABASE_URL:-postgres://${POSTGRES_USER:-rurbanive}:${POSTGRES_PASSWORD:-decidim}@${DB_HOST:-192.168.100.2}/${POSTGRES_DB:-rurbanive-decidim}}
-      - SECRET_KEY_BASE=${SECRET_KEY_BASE:-86ffb3c0f1de06a6d46776d3fa7c5631c3b49344a23e7f3d8d3ff437a29cea42ea30f20f95955c40121a4dbd0866e1bd1207d4a924236e8a440335262c615722}
-      - DECIDIM_FORCE_SSL=${DECIDIM_FORCE_SSL:-false}
-      - QUEUE_ADAPTER=${QUEUE_ADAPTER:-sidekiq}
-      - REDIS_URL=${REDIS_URL:-redis://redis:6379/0}
-      - WEB_CONCURRENCY=${WEB_CONCURRENCY:-2}
-      - LOG_LEVEL=${LOG_LEVEL:-info}
-      - DECIDIM_ENABLE_HTML_HEADER_SNIPPETS=${DECIDIM_ENABLE_HTML_HEADER_SNIPPETS:-true}
-      - DECIDIM_ADMIN_PASSWORD_EXPIRATION_DAYS=${DECIDIM_ADMIN_PASSWORD_EXPIRATION_DAYS:-360}
-      - SMTP_STARTTLS_AUTO=${SMTP_STARTTLS_AUTO:-true}
-      - SMTP_USERNAME=${SMTP_USERNAME:-postmaster@cercles.coop}
-      - SMTP_PASSWORD
-      - SMTP_ADDRESS=${SMTP_ADDRESS:-smtp.eu.mailgun.org}
-      - SMTP_DOMAIN=${SMTP_DOMAIN:-cercles.coop}
-      - SMTP_PORT=${SMTP_PORT:-587}
-      - DECIDIM_MAILER_SENDER=${DECIDIM_MAILER_SENDER:-no-reply@cercles.coop}
-      - MAPS_API_KEY
-      - MAPS_PROVIDER=${MAPS_PROVIDER:-here}
-      - RACK_ATTACK_SECRET
-      - SENTRY_DSN
-      - DISABLE_SEMANTIC_LOGGER
-    links:
+      - RUN_SIDEKIQ=false
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.decidim.rule=Host(`*.${DECIDIM_HOST}`)
+      - traefik.http.routers.decidim.entrypoints=websecure
+      - traefik.http.routers.decidim.tls=true
+      - traefik.http.routers.decidim.tls.certresolver=le
+      - traefik.http.services.decidim.loadbalancer.server.port=3000
+    depends_on:
+      - db
       - redis
-    networks:
-      frontend:
-        ipv4_address: 172.24.0.4
-    logging:
-      driver: json-file
-      options:
-        max-size: "100m"
-        max-file: "5"
+  sidekiq:
+    image: ghcr.io/CoopCat-Confederacio-de-Cooperatives/decidim-coopcat:${GIT_REF:-main}
+    container_name: decidim-sidekiq-${DECIDIM_ENV:-production}
+    pull_policy: ${PULL_POLICY:-always}
+    volumes:
+      - ./storage:/app/storage
+    restart: ${RESTART_POLICY:-unless-stopped}
+    env_file:
+      - .env.default
+      - .env
+    environment:
+      - RUN_RAILS=false
+      - RUN_SIDEKIQ=true
+    depends_on:
+      - db
+      - redis
+  db_backup:
+    image: tiredofit/db-backup
+    container_name: db_backup
+    volumes:
+      - ./backups:/backup
+    env_file:
+      - .env
+    environment:
+      - TIMEZONE=${TIMEZONE:-Europe/Vienna}
+      - CONTAINER_ENABLE_MONITORING=${CONTAINER_ENABLE_MONITORING:-FALSE}
+      - USER_DBBACKUP=${USER_DBBACKUP:-1000}
+      - GROUP_DBBACKUP=${GROUP_DBBACKUP:-1000}
+      - BACKUP_JOB_CONCURRENCY=${BACKUP_JOB_CONCURRENCY:-1}     # Only run one job at a time
+      - DEFAULT_CHECKSUM=${DEFAULT_CHECKSUM:-NONE}        # Don't create checksums
+      - DEFAULT_COMPRESSION=${DEFAULT_COMPRESSION:-Bzip2}     # Compress all with ZSTD
+      - DEFAULT_BACKUP_INTERVAL=${DEFAULT_BACKUP_INTERVAL:-1440}   # Backup every 1440 minutes
+      - DEFAULT_BACKUP_BEGIN=${DEFAULT_BACKUP_BEGIN:-0100}      # Start backing up at midnight
+      - DEFAULT_CLEANUP_TIME=${DEFAULT_CLEANUP_TIME:-10080}    # Cleanup backups after a week
+      - DB01_TYPE=pgsql
+      - DB01_HOST=db
+      - DB01_USER=${POSTGRES_USER}
+      - DB01_PASS=${POSTGRES_PASSWORD}
+      - DB01_NAME=${POSTGRES_DB}
+
+  db:
+    image: postgres:16
+    env_file:
+      - .env.default
+      - .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
   redis:
     image: redis
     volumes:
-      - redis-data:/data
-    restart: ${RESTART_POLICY:-unless-stopped}
-    networks:
-      frontend:
-        ipv4_address: 172.24.0.5
+      - redis_data:/data
 volumes:
-  redis-data: {}
+  pg_data:
+  redis_data:

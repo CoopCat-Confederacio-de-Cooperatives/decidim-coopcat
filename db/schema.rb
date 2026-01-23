@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_11_26_080339) do
+ActiveRecord::Schema[7.2].define(version: 2026_01_23_095952) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
+  enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
@@ -59,9 +60,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_26_080339) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
-
-  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
   end
 
   create_table "decidim_accountability_milestones", id: :serial, force: :cascade do |t|
@@ -603,8 +601,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_26_080339) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "participatory_space_type", null: false
-    t.boolean "visible", default: true
     t.datetime "deleted_at"
+    t.boolean "visible", default: true
     t.index ["deleted_at"], name: "index_decidim_components_on_deleted_at"
     t.index ["participatory_space_id", "participatory_space_type"], name: "index_decidim_components_on_decidim_participatory_space"
   end
@@ -1331,6 +1329,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_26_080339) do
     t.boolean "enable_participatory_space_filters", default: true
     t.jsonb "content_security_policy", default: {}
     t.jsonb "name", default: {}, null: false
+    t.jsonb "short_name", default: {}, null: false
     t.index ["host"], name: "index_decidim_organizations_on_host", unique: true
   end
 
