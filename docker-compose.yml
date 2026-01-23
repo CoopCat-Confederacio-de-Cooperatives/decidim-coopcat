@@ -62,6 +62,8 @@ services:
       - traefik.http.routers.decidim.entrypoints=websecure
       - traefik.http.routers.decidim.tls=true
       - traefik.http.routers.decidim.tls.certresolver=le
+      - traefik.http.routers.decidim.tls.domains[0].main=${ACME_MAIN_DOMAIN:-meta.${DECIDIM_HOST}}
+      - traefik.http.routers.decidim.tls.domains[0].sans=${ACME_SANS:-*.${DECIDIM_HOST}}
       - traefik.http.services.decidim.loadbalancer.server.port=3000
     depends_on:
       - db
