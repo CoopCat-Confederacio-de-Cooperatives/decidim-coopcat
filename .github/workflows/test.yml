@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.3.4
+  RUBY_VERSION: 3.3.10
   NODE_VERSION: 22.20.0
   RAILS_ENV: test
   DATABASE_USERNAME: postgres
@@ -41,7 +41,7 @@ jobs:
           fetch-depth: 1
 
       - run: |
-          sudo apt-get update; sudo apt-get -f install wkhtmltopdf imagemagick p7zip
+          sudo apt-get update; sudo apt-get -f install imagemagick p7zip
 
       - uses: nanasess/setup-chromedriver@v2
         with:

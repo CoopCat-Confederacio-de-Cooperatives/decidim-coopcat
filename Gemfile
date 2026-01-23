@@ -8,9 +8,10 @@ DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.31-stable" }.f
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-action_delegator", github: "openpoke/decidim-module-action_delegator", branch: "main"
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.31-stable"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
 gem "decidim-elections", DECIDIM_VERSION
-gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "release/0.31-stable"
+gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "main"
+gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "main"
 
 gem "bootsnap", "~> 1.7"
 gem "puma", ">= 6.3.1"
@@ -25,15 +26,6 @@ end
 
 group :development do
   gem "letter_opener_web"
-  gem "listen", "~> 3.5"
   gem "memory_profiler"
-  gem "rack-mini-profiler"
-  gem "stackprof"
-  gem "web-console", "~> 4.2"
-end
-
-group :production do
-  gem "aws-sdk-s3", require: false
-  gem "sidekiq"
-  gem "sidekiq-cron"
+  gem "web-console"
 end

@@ -9,11 +9,14 @@ local:
 s3:
   service: S3
   public: <%= Decidim::Env.new("AWS_PUBLIC", "true").to_boolean_string %>
+  force_path_style: <%= Decidim::Env.new("AWS_FORCE_PATH_STYLE", "false").to_boolean_string %>
   access_key_id: <%= Decidim::Env.new("AWS_ACCESS_KEY_ID").to_s %>
   secret_access_key: <%= Decidim::Env.new("AWS_SECRET_ACCESS_KEY").to_s %>
   bucket: <%= Decidim::Env.new("AWS_BUCKET").to_s %>
   <%= "region: #{Decidim::Env.new("AWS_REGION").to_s}" if Decidim::Env.new("AWS_REGION").present? %>
-  <%= "endpoint: #{ Decidim::Env.new("AWS_ENDPOINT").to_s}" if Decidim::Env.new("AWS_ENDPOINT").present? %>
+  <%= "endpoint: #{Decidim::Env.new("AWS_ENDPOINT").to_s}" if Decidim::Env.new("AWS_ENDPOINT").present? %>
+  request_checksum_calculation: "when_required"
+  response_checksum_validation: "when_required"
 
 azure:
   service: AzureStorage

@@ -8,7 +8,7 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.3.4
+  RUBY_VERSION: 3.3.10
   NODE_VERSION: 22.14.0
     
 jobs:
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     if: "!startsWith(github.head_ref, 'chore/l10n')"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 1
 

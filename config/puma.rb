@@ -26,12 +26,13 @@ environment ENV.fetch("RAILS_ENV", "development")
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE", "tmp/pids/server.pid")
 
-# Specifies the number of `workers` to boot in clustered mode.
-# Workers are forked web server processes. If using threads and workers together
-# the concurrency of the application would be max `threads` * `workers`.
-# Workers do not work on JRuby or Windows (both of which do not support
-# processes).
-#
+if defined?(SemanticLogger)
+  on_worker_boot do
+    # Re-open appenders after forking the process
+    SemanticLogger.reopen
+  end
+end
+
 if ENV.fetch("RAILS_ENV") == "production"
   workers ENV.fetch("WEB_CONCURRENCY", 2)
 
@@ -42,6 +43,17 @@ if ENV.fetch("RAILS_ENV") == "production"
   #
   preload_app!
 else
+  # Development SSL
+  if ENV.fetch("DEV_SSL", nil) && defined?(Bundler) && (dev_gem = Bundler.load.specs.find { |spec| spec.name == "decidim-dev" })
+    cert_dir = ENV.fetch("DEV_SSL_DIR") { "#{dev_gem.full_gem_path}/lib/decidim/dev/assets" }
+    ssl_bind(
+      "0.0.0.0",
+      ENV.fetch("DEV_SSL_PORT", 3443),
+      cert_pem: File.read("#{cert_dir}/ssl-cert.pem"),
+      key_pem: File.read("#{cert_dir}/ssl-key.pem")
+    )
+  end
+
   # Allow puma to be restarted by `rails restart` command.
   plugin :tmp_restart
 end
