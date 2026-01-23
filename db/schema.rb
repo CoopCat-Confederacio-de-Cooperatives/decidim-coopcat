@@ -13,7 +13,6 @@
 ActiveRecord::Schema[7.2].define(version: 2026_01_23_095952) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
-  enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
@@ -1769,7 +1768,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_23_095952) do
     t.datetime "deleted_at"
     t.index ["cancelled_by_user_id"], name: "index_decidim_sortitions_sortitions_on_cancelled_by_user_id"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_sortitions_sortitions_on_decidim_author"
-    t.index ["decidim_author_id"], name: "index_decidim_sortitions_sortitions_on_decidim_author_id"
+    t.index ["decidim_author_id"], name: "idx_on_decidim_author_id_c14fe8c981"
     t.index ["decidim_component_id"], name: "index_sortitions__on_feature"
     t.index ["decidim_proposals_component_id"], name: "index_sortitions__on_proposals_feature"
     t.index ["deleted_at"], name: "index_decidim_sortitions_sortitions_on_deleted_at"
