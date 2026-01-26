@@ -20,8 +20,10 @@ services:
       # - --certificatesResolvers.letsencrypt.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory
       - --certificatesresolvers.le.acme.email=postmaster@${DECIDIM_HOST}
       - --certificatesresolvers.le.acme.storage=/letsencrypt/acme.json
-      - --certificatesresolvers.le.acme.httpchallenge=true
-      - --certificatesresolvers.le.acme.httpchallenge.entrypoint=web
+      - --certificatesresolvers.le.acme.dnschallenge=true
+      - --certificatesresolvers.le.acme.dnschallenge.provider=${ACME_DNS_PROVIDER:-cloudflare}
+      # Optional: Use DNS servers with custom nameservers
+      # - --certificatesresolvers.le.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53
     restart: ${RESTART_POLICY:-unless-stopped}
     ports:
       - 80:80
@@ -29,13 +31,15 @@ services:
       - 4430:4430 # traefik dashboard
     env_file:
       - .env
+    environment:
+      - CF_DNS_API_TOKEN
     volumes:
       - ./letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
       - traefik.enable=true
       # Dashboard configuration
-      - traefik.http.routers.dashboard.rule=Host(`*.${DECIDIM_HOST}`)
+      - traefik.http.routers.dashboard.rule=Host(`traefik.${DECIDIM_HOST}`)
       - traefik.http.routers.dashboard.entrypoints=dashboard
       - traefik.http.routers.dashboard.service=api@internal
       - traefik.http.routers.dashboard.tls=true
@@ -53,34 +57,14 @@ services:
     env_file:
       - .env.default
       - .env
-    environment:
-      - RUN_RAILS=true
-      - RUN_SIDEKIQ=false
     labels:
       - traefik.enable=true
-      - traefik.http.routers.decidim.rule=Host(`*.${DECIDIM_HOST}`)
+      - traefik.http.routers.decidim.rule=HostRegexp(`{subdomain:[a-z0-9-]+}.${DECIDIM_HOST}`)
       - traefik.http.routers.decidim.entrypoints=websecure
       - traefik.http.routers.decidim.tls=true
       - traefik.http.routers.decidim.tls.certresolver=le
-      - traefik.http.routers.decidim.tls.domains[0].main=${ACME_MAIN_DOMAIN:-meta.${DECIDIM_HOST}}
-      - traefik.http.routers.decidim.tls.domains[0].sans=${ACME_SANS:-*.${DECIDIM_HOST}}
+      - traefik.http.routers.decidim.tls.domains[0].main=${ACME_MAIN_DOMAIN:-*.${DECIDIM_HOST}}
       - traefik.http.services.decidim.loadbalancer.server.port=3000
-    depends_on:
-      - db
-      - redis
-  sidekiq:
-    image: ghcr.io/coopcat-confederacio-de-cooperatives/decidim-coopcat:${GIT_REF:-main}
-    container_name: decidim-sidekiq-${DECIDIM_ENV:-production}
-    pull_policy: ${PULL_POLICY:-always}
-    volumes:
-      - ./storage:/app/storage
-    restart: ${RESTART_POLICY:-unless-stopped}
-    env_file:
-      - .env.default
-      - .env
-    environment:
-      - RUN_RAILS=false
-      - RUN_SIDEKIQ=true
     depends_on:
       - db
       - redis

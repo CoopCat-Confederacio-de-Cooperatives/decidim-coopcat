@@ -82,6 +82,28 @@ Just execute:
 docker rollout app --wait-after-healthy 15
 ```
 
+### Cloudflare configuration
+
+Make sure to defined the ENV var in the `.env` file.
+`CF_DNS_API_TOKEN`
+
+#### Create a proper Cloudflare API Token
+
+In Cloudflare dashboard:
+
+Profile → API Tokens → Create Token
+
+Template: Edit DNS
+
+Permissions:
+
+Zone → DNS → Edit
+
+Zone resources:
+
+Include → Specific zone → cercles.coop
+
+
 ### Locally building the Docker image
 
 This instance uses Docker Compose to deploy the application with Traefik as a proxy.
