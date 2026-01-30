@@ -49,7 +49,6 @@ services:
       - traefik.http.middlewares.dashboard-auth.basicauth.users=admin:${DASHBOARD_AUTH_PASSWORD:-admin}
   decidim:
     image: ghcr.io/coopcat-confederacio-de-cooperatives/decidim-coopcat:${GIT_REF:-main}
-    container_name: decidim-${DECIDIM_ENV:-production}
     pull_policy: ${PULL_POLICY:-always}
     volumes:
       - ./storage:/app/storage
