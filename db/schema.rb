@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_01_23_095952) do
+ActiveRecord::Schema[7.2].define(version: 2026_01_30_133943) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pg_trgm"
@@ -149,7 +149,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_23_095952) do
 
   create_table "decidim_action_delegator_settings", force: :cascade do |t|
     t.integer "max_grants", limit: 2, default: 0, null: false
-    t.bigint "decidim_consultation_id", null: false
+    t.bigint "decidim_consultation_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.integer "authorization_method", default: 0, null: false
@@ -798,6 +798,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_23_095952) do
     t.jsonb "census_settings", default: {}, null: false
     t.datetime "published_results_at"
     t.integer "votes_count", default: 0, null: false
+    t.boolean "allow_census_check_before_start", default: false, null: false
     t.index ["census_manifest"], name: "index_decidim_elections_elections_on_census_manifest"
     t.index ["deleted_at"], name: "index_decidim_elections_elections_on_deleted_at"
     t.index ["end_at"], name: "index_decidim_elections_elections_on_end_at"
@@ -818,6 +819,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_23_095952) do
     t.datetime "voting_enabled_at"
     t.integer "votes_count", default: 0, null: false
     t.integer "response_options_count", default: 0, null: false
+    t.integer "max_choices"
     t.index ["election_id"], name: "index_questions_on_election_id"
   end
 
