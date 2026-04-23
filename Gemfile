@@ -13,7 +13,7 @@ gem "decidim-elections", DECIDIM_VERSION
 gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "main"
 gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "main"
 
-gem "bootsnap", "~> 1.7"
+gem "bootsnap", "~> 1.23"
 gem "puma", ">= 6.3.1"
 
 gem "deface"
