@@ -11,7 +11,9 @@
   - [translations, 2]
   - [user_report, 2]
   - [block_user, 2]
+  - [invite_participants, 2]
   - [metrics, 1]
   - [exports, 1]
   - [close_meeting_reminder, 1]
+  - [delete_inactive_participants, 1]
 
