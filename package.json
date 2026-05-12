@@ -1,37 +1,21 @@
 {
   "name": "app",
   "private": true,
-  "engines": {
-    "node": ">=18.17.1",
-    "npm": ">=9.6.7"
-  },
   "scripts": {
-    "markdownlint": "markdownlint '*.md'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "eslint --no-error-on-unmatched-pattern --ignore-pattern app/packs/vendor --ext .js app/packs",
+    "lint": "eslint -c .eslintrc.json --no-error-on-unmatched-pattern --ignore-pattern app/packs/vendor --ext .js app/packs",
     "lint-fix": "eslint -c .eslintrc.json --ext .js app/packs/ --fix",
     "stylelint": "stylelint app/packs/**/*.scss",
     "stylelint-fix": "stylelint **/*.scss --fix"
-  },
-  "stylelint": {
-    "extends": "@decidim/stylelint-config"
-  },
-  "eslintConfig": {
-    "extends": "@decidim/eslint-config",
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    }
   },
   "dependencies": {
     "@decidim/browserslist-config": "file:packages/browserslist-config",
     "@decidim/core": "file:packages/core",
     "@decidim/webpacker": "file:packages/webpacker",
-    "codemirror": "^5.65.18",
-    "core-js": "^3.46.0",
+    "@rails/actioncable": "^6.1.710",
+    "codemirror": "^5.65.19",
     "form-storage": "^1.3.5",
-    "formBuilder": "^3.19.13",
+    "formBuilder": "^3.19.15",
     "highlight.js": "^11.11.1",
     "inline-attacher": "^0.0.8",
     "jsrender": "^1.0.15",
@@ -43,11 +27,20 @@
     "extends @decidim/browserslist-config"
   ],
   "devDependencies": {
+    "@babel/eslint-parser": "^7.27.1",
+    "@babel/plugin-transform-class-properties": "^7.27.1",
+    "@babel/plugin-transform-classes": "^7.27.1",
+    "@babel/plugin-transform-regenerator": "^7.27.1",
+    "@babel/plugin-transform-runtime": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
     "@decidim/dev": "file:packages/dev",
     "@decidim/eslint-config": "file:packages/eslint-config",
     "@decidim/prettier-config": "file:packages/prettier-config",
     "@decidim/stylelint-config": "file:packages/stylelint-config",
     "@tarekraafat/autocomplete.js": "^10.2.7",
+    "postcss-scss": "^4.0.9",
+    "sass-embedded": "~1.57.1",
     "shakapacker": "^8.3.0"
   }
 }
