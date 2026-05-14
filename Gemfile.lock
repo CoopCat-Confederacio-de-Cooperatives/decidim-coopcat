@@ -25,10 +25,10 @@ GIT
 
 GIT
   remote: https://github.com/openpoke/decidim-module-extra_censuses.git
-  revision: 5614bebed87cdae1c2795bb7ecd0b415e8505729
-  branch: main
+  revision: f04ac37686606b688fa7648d6969de3a297b64d4
+  branch: feature/multi-option-group
   specs:
-    decidim-extra_censuses (0.1.0)
+    decidim-extra_censuses (0.2.0)
       decidim-admin (>= 0.31.0, < 0.32)
       decidim-core (>= 0.31.0, < 0.32)
       decidim-elections (>= 0.31.0, < 0.32)
@@ -1222,7 +1222,7 @@ CHECKSUMS
   decidim-decidim_awesome (0.14.2)
   decidim-dev (0.31.5)
   decidim-elections (0.31.5)
-  decidim-extra_censuses (0.1.0)
+  decidim-extra_censuses (0.2.0)
   decidim-forms (0.31.5)
   decidim-generators (0.31.5)
   decidim-meetings (0.31.5)
