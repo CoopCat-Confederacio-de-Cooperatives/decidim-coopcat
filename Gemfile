@@ -18,7 +18,7 @@ gem "bootsnap", "~> 1.7"
 gem "puma", ">= 6.3.1"
 
 gem "deface"
-
+gem "jwt", "~> 3.1.2"
 group :development, :test do
   gem "byebug", "~> 11.1", platform: :mri
 
