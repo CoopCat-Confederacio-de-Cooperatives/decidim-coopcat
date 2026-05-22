@@ -14,7 +14,7 @@ gem "decidim-extra_censuses", github: "openpoke/decidim-module-extra_censuses", 
 gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "main"
 gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "main"
 
-gem "bootsnap", "~> 1.7"
+gem "bootsnap", "~> 1.24"
 gem "puma", ">= 6.3.1"
 
 gem "deface"
