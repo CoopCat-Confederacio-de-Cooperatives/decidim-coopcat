@@ -6,19 +6,19 @@
 namespace :coopcat do
   desc "Export database"
   task :mail_test, [:email]
-  task :export_database, [:organization_id] => :environment  do |task, args|
+  task :export_database, [:organization_id] => :environment do |_task, args|
     puts "Going to export the folloding content of the database:"
     puts "- Users from a given organization"
     puts "- Debates from a given organization"
     puts "- Comments from the debates"
 
-    if (args.organization_id.nil?) then
-        puts "You have to pass an organization"
-        exit
+    if args.organization_id.nil?
+      puts "You have to pass an organization"
+      exit
     end
 
     export_dir = Rails.root.join("tmp/decidim_export")
-    Dir.mkdir export_dir unless Dir.exist?(export_dir)
+    FileUtils.mkdir_p export_dir
 
     export_users(export_dir, organization_id)
 
@@ -28,15 +28,15 @@ namespace :coopcat do
   end
 
   desc "Import database"
-  task :import_database, :organization_id do |task, args|
+  task :import_database, :organization_id do |_task, args|
     puts "Going to import the folloding models:"
     puts "- Users that have participied in the debates: tmp/decidim_export/users.csv"
     puts "- Debates: tmp/decidim_export/debates.csv"
     puts "- Comments: tmp/decidim_export/comments.csv"
 
-    if (args.organization_id.nil?) then
-        puts "You have to pass an organization"
-        exit
+    if args.organization_id.nil?
+      puts "You have to pass an organization"
+      exit
     end
 
     import_dir = Rails.root.join("tmp/decidim_export")
@@ -49,48 +49,48 @@ namespace :coopcat do
   end
 
   desc "Import Comments"
-  task :import_comments, [:organization_id] => :environment do |task, args|
+  task :import_comments, [:organization_id] => :environment do |_task, args|
     import_dir = Rails.root.join("tmp/decidim_export")
 
     import_comments(import_dir, args.organization_id)
   end
 
   desc "Import Debates"
-  task :import_debates, [:organization_id] => :environment do |task, args|
+  task :import_debates, [:organization_id] => :environment do |_task, args|
     import_dir = Rails.root.join("tmp/decidim_export")
 
     import_debates(import_dir, args.organization_id)
   end
 
   desc "Import Users"
-  task :import_users, [:organization_id] => :environment do |task, args|
+  task :import_users, [:organization_id] => :environment do |_task, args|
     import_dir = Rails.root.join("tmp/decidim_export")
 
     import_users(import_dir, args.organization_id)
   end
 
   desc "Export Debates"
-  task :export_debates, [:organization_id] => :environment do |task, args|
+  task :export_debates, [:organization_id] => :environment do |_task, args|
     export_dir = Rails.root.join("tmp/decidim_export")
 
     export_debates(export_dir, args.organization_id)
   end
 
   desc "Export Users"
-  task :export_users, [:organization_id] => :environment do |task, args|
+  task :export_users, [:organization_id] => :environment do |_task, args|
     export_dir = Rails.root.join("tmp/decidim_export")
 
     export_users(export_dir, args.organization_id)
   end
 
   desc "Export Comments"
-    task :export_comments, [:organization_id] => :environment do |task, args|
+  task :export_comments, [:organization_id] => :environment do |_task, args|
     export_dir = Rails.root.join("tmp/decidim_export")
 
     export_comments(export_dir, args.organization_id)
   end
 
-  def export_debates(export_dir, organization_id)
+  def export_debates(export_dir, _organization_id)
     path = export_dir.join("debates.csv")
 
     debates = Decidim::Debates::Debate.all
@@ -115,7 +115,7 @@ namespace :coopcat do
     puts "Exported #{count} debates. You can find them in #{path}"
   end
 
-  def export_comments(export_dir, organization_id)
+  def export_comments(export_dir, _organization_id)
     path = export_dir.join("comments.csv")
 
     slugs = all_slugs
@@ -149,7 +149,7 @@ namespace :coopcat do
     end
   end
 
-  def export_users(export_dir, organization_id)
+  def export_users(export_dir, _organization_id)
     path = export_dir.join("users.csv")
     slugs = all_slugs
     users = []
@@ -158,6 +158,7 @@ namespace :coopcat do
 
     comments.each do |comment|
       next unless comment.respond_to?(:commentable)
+
       commentable = comment.commentable
 
       next if commentable.respond_to?(:commentable) && commentable.decidim_commentable_type.include?("Decidim::Consultations")
@@ -165,7 +166,7 @@ namespace :coopcat do
 
       begin
         space = commentable&.try(:participatory_space)
-      rescue
+      rescue StandardError
       end
       users << comment.author if space&.slug.in?(slugs)
     end
@@ -195,7 +196,7 @@ namespace :coopcat do
     path = import_dir.join("users.csv")
 
     organization = Decidim::Organization.find(organization_id)
-    
+
     csv = CSV.parse(File.read(path), headers: true)
     puts "Importing users: #{csv.length}"
     count = 0
@@ -223,7 +224,7 @@ namespace :coopcat do
     puts "Done importing users: #{count} - #{already_exists} already existed"
   end
 
-  def import_comments(import_dir, organization_id)
+  def import_comments(import_dir, _organization_id)
     path = import_dir.join("comments.csv")
 
     csv = CSV.parse(File.read(path), headers: true)
@@ -233,9 +234,9 @@ namespace :coopcat do
     new_ids = []
 
     csv.each do |row|
-      space_slug = row["space_slug"]
+      row["space_slug"]
       author_email = row["author_email"]
-      component_title = row["component_title"]
+      row["component_title"]
       commentable_type = row["commentable_type"]
       commentable_id = row["commentable_id"]
 
@@ -325,11 +326,11 @@ namespace :coopcat do
       debate.component = component
       debate.title = eval(row["title"])
       debate.description = eval(row["description"])
-      debate.instructions = eval(row["instructions"]) unless row["instructions"].blank?
-      debate.information_updates = eval(row["information_updates"]) unless row["information_updates"].blank?
+      debate.instructions = eval(row["instructions"]) if row["instructions"].present?
+      debate.information_updates = eval(row["information_updates"]) if row["information_updates"].present?
 
       author = Decidim::Organization.find(organization_id) if author_email.blank?
-      author = Decidim::User.find_by(email: author_email) unless author_email.blank?
+      author = Decidim::User.find_by(email: author_email) if author_email.present?
       debate.author = author
 
       begin
