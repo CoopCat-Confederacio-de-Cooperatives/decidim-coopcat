@@ -2,6 +2,8 @@
 
 #
 # rubocop: disable Security/Eval
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
 
 namespace :coopcat do
   desc "Export database"
@@ -166,10 +168,7 @@ namespace :coopcat do
       next if commentable.respond_to?(:commentable) && commentable.decidim_commentable_type.include?("Decidim::Consultations")
       next if commentable.respond_to?(:decidim_root_commentable_type) && commentable.decidim_root_commentable_type.include?("Decidim::Consultations")
 
-      begin
-        space = commentable&.try(:participatory_space)
-      rescue StandardError
-      end
+      space = commentable&.try(:participatory_space)
       users << comment.author if space&.slug.in?(slugs)
     end
 
@@ -360,4 +359,6 @@ namespace :coopcat do
   end
 
   # rubocop: enable Security/Eval
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 end
