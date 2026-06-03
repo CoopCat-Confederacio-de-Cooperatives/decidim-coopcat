@@ -5,7 +5,6 @@
 
 namespace :coopcat do
   desc "Export database"
-  task :mail_test, [:email]
   task :export_database, [:organization_id] => :environment do |_task, args|
     puts "Going to export the folloding content of the database:"
     puts "- Users from a given organization"
@@ -19,6 +18,8 @@ namespace :coopcat do
 
     export_dir = Rails.root.join("tmp/decidim_export")
     FileUtils.mkdir_p export_dir
+
+    organization_id = args.organization_id
 
     export_users(export_dir, organization_id)
 
@@ -90,7 +91,7 @@ namespace :coopcat do
     export_comments(export_dir, args.organization_id)
   end
 
-  def export_debates(export_dir, _organization_id)
+  def export_debates(export_dir, organization_id)
     path = export_dir.join("debates.csv")
 
     debates = Decidim::Debates::Debate.all
@@ -101,6 +102,7 @@ namespace :coopcat do
       csv << (Decidim::Debates::Debate.attribute_names + %w(component_name space_slug space_type author_email))
 
       debates.each do |debate|
+        next unless debate.organization.id != organization_id
         next unless debate.component.participatory_space.slug.in? all_slugs
 
         component_name = debate.component.name["ca"]
