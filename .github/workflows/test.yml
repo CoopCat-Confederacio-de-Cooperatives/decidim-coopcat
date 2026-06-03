@@ -43,7 +43,7 @@ jobs:
       - run: |
           sudo apt-get update; sudo apt-get -f install imagemagick p7zip
 
-      - uses: nanasess/setup-chromedriver@v2
+      - uses: nanasess/setup-chromedriver@v3
         with:
           chromedriver-version: ${{ env.CHROME_VERSION }}
 
